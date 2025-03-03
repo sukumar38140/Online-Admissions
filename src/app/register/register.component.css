@@ -1,0 +1,26 @@
+.text-color{
+    font-family: Poppins;
+    font-size: 20px;
+    color: #800000;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.custom-gradient {
+    background: linear-gradient(to bottom, #FFFFF7, #FFFFE0); 
+    box-shadow: 0 10px 12px #2F539B;
+                /* inset 0 2px 4px rgba(0, 0, 0, 0.07);  */
+    border-radius: 10px;
+}
+
+.info-box .text h3 {
+    color: #D16587;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 4px #D16587;
+    width: 65%;
+    text-indent: 5px; 
+  }
+  
+  .info-box .text p {
+    margin-bottom: 0.5rem;
+  }

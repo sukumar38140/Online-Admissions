@@ -1,0 +1,21 @@
+.header-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .mits-logo {
+    width: 800px;
+    height: 250px;
+  }
+  
+  .heading {
+    color: #E55451;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  

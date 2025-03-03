@@ -1,0 +1,61 @@
+<div >
+    <span class="m-2" style="cursor: pointer; font-family: Poppins; font-size: 28px; font-weight: 600; color: #4863A0; margin-left: 45px;" (click)="hideField()">Register</span>
+    <span class="m-2" style="font-family: Poppins; font-size: 24px; font-weight: 600; color: #4863A0; margin-left: 5px;"> / </span>
+    <span class="m-2" style="cursor: pointer; font-family: Poppins; font-size: 28px; font-weight: 600; color: #4863A0; margin-left: 5px;" (click)="showField()">Login</span>
+</div>
+
+<div class="custom-gradient" style="margin-left: 45px; margin-right: 45px; font-family: Poppins;" *ngIf="isForm">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">  <div style="margin-left: 40px;">
+        <form>
+            <div class="input-group m-5" style="margin: 20px;">
+                <label for="emailID" style="color:purple; margin-right: 10px;">Email ID or Mobile Number </label><br>
+                <div class="col-md-6">  
+                    <input type="text" class="form-control ms-2 w-100" id="firstName" placeholder="Enter here Your Registred E-Mail ID" style="font-family: Poppins; height: 35px; width:85%" maxlength="35">
+                </div>
+            </div>
+    
+            <div class="input-group m-5" style="margin: 20px;">
+                <label for="dob" style="color:purple; margin-right: 110px;">Date of Birth </label><br>
+                <div class="col-md-6">  <input type="date" class="form-control ms-2" id="dob" placeholder="Date of Birth" style="font-family: Poppins; height: 35px; width: 85%;" maxlength="35"></div>
+            </div>
+                <button type="button" class="btn btn-secondary" style="font-family: Poppins; margin-left:410px;width:140px; height: 35px; margin-top: 20px;">Login</button>
+            </form>
+        </div>
+    
+    <div>
+        <div class="info-wrapper">
+            <div class="info-box">
+                <div class="text">
+                  <h3 style="color: #D16587; margin-bottom: 0.5rem;">Step-1: New User Registration</h3>
+                  <p style="margin-bottom: 0.5rem;">
+                    1. Valid e-mail address and active mobile number are required.<br>
+                    2. Enter all the relevant details carefully.<br>
+                    3. An OTP will be sent to your registered email address for verification.<br>
+                    4. An OTP will be sent to your Registered Indian Mobile Number for verification.<br>
+                    5. All the correspondence shall be made to the registered email address and mobile number only.
+                  </p>
+                </div>
+              </div>
+                  
+            <div class="info-box">
+                <!-- <div class="icon" style="color: #D16587;"><span class="material-symbols-outlined">Step:2</span></div> -->
+                <div class="text">
+                    <h3 style="color: #D16587;">Step-2: Sign in for Registered User</h3>
+                    <p>Valid e-mail address and date of birth are required.</p>
+                </div>
+            </div>
+    
+            <div class="info-box">
+                <!-- <div class="icon" style="color: #D16587;"><span class="material-symbols-outlined">Step:3</span></div> -->
+                <div class="text">
+                    <h3 style="color: #D16587;">Step-3: Filling Online Application Form</h3>
+                    <p>1. Fill in the relevant fields carefully. <br>
+                        2. An Temporary Application Number will be generated after filling primary details.<br>
+                        3. Submit this temporary application number to Admission Department at the time of Admission.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    

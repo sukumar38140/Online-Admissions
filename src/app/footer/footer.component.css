@@ -1,0 +1,6 @@
+/* Optional CSS - styles.css or your component's CSS */
+.card {
+    border: 1px; /* remove border from card if you don't want it */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow */
+      margin-top: 20px;
+  }

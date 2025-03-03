@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(to bottom, #F5F5DC, #FFCE44); 
+  }
+
+
+  /* In your component's CSS file or styles.css */
+.login-image {
+    /* No need for margin or width/height here */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Make sure the container takes up space */
+    margin-left: 100px;
+  }
+  
+  .login-image-content {
+    max-width: 80%; /* Limit image width */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ddd; /* Add a border */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+    border-radius: 8px; /* Optional: Rounded corners */
+  }
+  
+  /* Optional: Make the image responsive */
+  @media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .login-image-content {
+      max-width: 90%;
+    }
+  }
+  .hr{
+    height:2px;
+    margin:10px 0 20px 0;
+    background:rgba(0, 0, 128, 0.2);
+}    
+.input-group-text {
+  font-size: 22px; 
+}
+
