@@ -20,7 +20,7 @@
             <!-- First Column: Image -->
             <div class="col-md-6 p-0">
                 <div class="signup-image">
-                  <img src="images/ad_002.jpg" alt="Signup Image" class="img-fluid signup-image-content">
+                  <img src="../images/ad_002.jpg" alt="Signup Image" class="img-fluid signup-image-content">
                 </div>
               </div>
 
@@ -28,24 +28,35 @@
             <div class="col-md-5 d-flex align-items-start justify-content-center">
                 <div class="p-5" style="max-width: 600px; width: 100%;">
                     <h2 class="text-center mb-4" style="color: #A52A2A; font-weight: 700;">Register</h2>
-                    <form>
-                        <div class="mb-3">
-                            <label for="signupName" class="form-label" style="font-size: 18px; color: #4863A0;">Full Name </label>
-                            <input type="text" class="form-control" id="signupName" placeholder="Enter your full name (All Caps as per SSC Certificate)">
+                    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">                      
+                      <div class="mb-3">
+                        <label for="signupName" class="form-label" style="font-size: 18px; color: #4863A0;">Full Name </label>
+                        <input type="text" class="form-control" id="signupName" placeholder="Enter your full name (All Caps as per SSC Certificate)" formControlName="fullName">
+                        @if(fullName?.dirty || fullName?.touched) {
+                          @if(fullName?.errors?.['required']) {
+                            <p style="color: #800080; font-size: x-small;">Enter Student Full Name is required</p>
+                          }
+                          @if(fullName?.errors?.['pattern']) {
+                            <p style="color: #800080; font-size: x-small;">Student Full Name must be Characters </p>
+                          }
+                        }
+                      </div>
+                      <div class="mb-3">
+                        <label for="signupGender" class="form-label" style="font-size: 18px; color: #4863A0; margin-right: 20px;">Gender</label>
+                        <div class="form-check form-check-inline mb-0 me-4">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="female" formControlName="gender" />
+                          <label class="form-check-label" for="femaleGender">Female</label>
                         </div>
-                        <div class="mb-3" >
-                                <label for="signupGender" class="form-label" style="font-size: 18px; color: #4863A0; margin-right: 20px;">Gender</label>
-                            <div class="form-check form-check-inline mb-0 me-4">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                                value="option1" />
-                              <label class="form-check-label" for="femaleGender">Female</label>
-                            </div>          
-                            <div class="form-check form-check-inline mb-0 me-4">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"value="option2" />
-                              <label class="form-check-label" for="maleGender">Male</label>
-                            </div>          
+                        <div class="form-check form-check-inline mb-0 me-4">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="male" formControlName="gender" />
+                          <label class="form-check-label" for="maleGender">Male</label>
                         </div>
-
+                        @if(gender?.dirty || gender?.touched) {
+                          @if(gender?.errors?.['required']) {
+                            <p style="color: #800080; font-size: x-small;">Select Gender Type</p>
+                          }
+                        }
+                      </div>
                         <!-- <div class="mb-3">
                             <label for="signupEmail" class="form-label" style="font-size: 18px; color: #4863A0;">Email address</label>
                             <div class="input-group">
@@ -61,54 +72,78 @@
                                 <p style="color: green;">Email Verified!</p>
                             </div>
                           </div> -->
-                        <div class="mb-3">
+                          <div class="mb-3">
                             <label for="signupEmail" class="form-label" style="font-size: 18px; color: #4863A0;">Email address</label>
-                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter Your Working Email ID here...">
-                        </div>
-                        <div class="mb-3">
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter Your Working Email ID here..." formControlName="email">
+                            @if(email?.dirty || email?.touched) {
+                              @if(email?.errors?.['required']) {
+                                <p style="color: #800080; font-size: x-small;">Email ID is required</p>
+                              }
+                              @if(email?.errors?.['pattern']) {
+                                <p style="color: #800080; font-size: xx-small;">Enter Valid E-Mail ID</p>
+                              }
+
+                            }
+                          </div>
+                          <div class="mb-3">
                             <label for="mobildNumber" class="form-label" style="font-size: 18px; color: #4863A0;">Mobile Number</label>
-                            <input type="number" class="form-control" id="mobildNumber" placeholder="Enter Your Mobile Number" name="phonenumber">
-                            <!-- <input type="number" required #phone="ngModel" pattern="^/d{10}$"  [class.is-invalid]="invalid && phone.touched" class="form-control" id="mobildNumber" placeholder="Enter Your Mobile Number" name="phonenumber" [{ngModel}]="userModel.phonenumber"> -->
-
-                            <!-- <input type="tel" class="form-control" id="mobildNumber" placeholder="Enter Your Mobile Number" name="phonenumber" [(ngModel)]="userModel.phonenumber" required #phone="ngModel" pattern="^[0-9]{10}$" [class.is-invalid]="phone.invalid && phone.touched">
-
-                            <div *ngIf="phone.invalid && phone.touched" class="invalid-feedback">
-                              Please enter a valid 10-digit phone number.
-                            </div> -->
-                        </div>
+                            <input type="number" class="form-control" id="mobildNumber" placeholder="Enter Your Mobile Number" name="phonenumber" formControlName="mobilenumber" maxlength="10">
+                            @if(mobilenumber?.dirty || mobilenumber?.touched) {
+                              @if(mobilenumber?.errors?.['required']) {
+                                <p style="color: #800080; font-size: xx-small;">Mobile Number is required</p>
+                              }
+                              @if(mobilenumber?.errors?.['pattern']) {
+                                <p style="color: #800080; font-size: xx-small;">Mobile Number must be 10 digits</p>
+                              }
+                            }
+                          </div>
                         <div class="mb-3">
                             <label for="dateofBirth" class="form-label" style="font-size: 18px; color: #4863A0;">Date of Birth (Birthday)</label>
-                            <input type="date" class="form-control" id="dateofBirth" placeholder="Date of Birth">
+                            <input type="date" class="form-control" id="dateofBirth" placeholder="Date of Birth" formControlName="dateofbirth">
+                            @if(dateofbirth?.dirty || dateofbirth?.touched) {
+                              @if(dateofbirth?.errors?.['required']) {
+                                <p style="color: #800080; font-size: x-small;">Email ID is required</p>
+                              }
+                            }
+
                         </div>
                         <div class="mb-3">
-                            <label for="courseType" class="form-label" style="font-size: 18px; color: #4863A0; margin-right: 20px;">Course Type</label>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="courseType" id="ug" value="ug" required>
-                              <label class="form-check-label" for="ug">UG</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="courseType" id="pg" value="pg" required>
-                              <label class="form-check-label" for="pg">PG</label>
-                            </div>
-                            <div class="form-group">
-                              <div class="form-check" style="font-size: 18px; color: #4863A0; margin-right: 20px;">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label" for="invalidCheck">
-                                  I Agree to Terms and Conditions
-                                </label>
-                                <div class="invalid-feedback">
-                                  You must agree before submitting
-                                </div>
-                              </div>
-                            </div>
-                            <!-- <div class="form-check" style="font-size: 18px; color: #4863A0; margin-right: 20px;">
-                              <input class="form-check-input" type="checkbox" id="gridCheck">
-                              <label class="form-check-label" for="gridCheck">
-                                I accept All Terms and Conditions
-                              </label>
-                            </div> -->
+                          <label for="courseType" class="form-label" style="font-size: 18px; color: #4863A0; margin-right: 20px;">Course Type</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="courseType" id="ug" value="ug" formControlName="coursetype" formControlName="coursetype">
+                            <label class="form-check-label" for="ug">UG</label>
                           </div>
-                        <div class="d-grid">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="courseType" id="pg" value="pg" formControlName="coursetype">
+                            <label class="form-check-label" for="pg">PG</label>
+                          </div>
+                          @if(coursetype?.dirty || coursetype?.touched) {
+                            @if(coursetype?.errors?.['required']) {
+                              <p style="color: #800080; font-size: x-small;">Select Course Type</p>
+                            }
+                          }
+                          </div>
+                          <div class="form-group">
+                            <div class="form-check" style="font-size: 18px; color: #4863A0; margin-right: 20px;">
+                              <input class="form-check-input" type="checkbox" id="invalidCheck" formControlName="terms">
+                              <label class="form-check-label" for="invalidCheck">
+                                I Agree to Terms and Conditions
+                              </label>
+                              @if(terms?.dirty || terms?.touched) {
+                                @if(terms?.errors?.['required']) {
+                                  <div class="invalid-feedback">
+                                    You must agree before submitting
+                                  </div>
+                                }
+                              }
+                            </div>
+                          </div>
+                          @if(coursetype?.dirty || coursetype?.touched) {
+                            @if(coursetype?.errors?.['required']) {
+                              <p style="color: #800080; font-size: x-small;">Select Course Type</p>
+                            }
+                          }
+                          <div class="d-grid">
                             <button type="submit" class="btn btn-primary" style="background-color: #1E90FF;;">Register</button>
                             <!-- <button type="submit" class="btn btn-primary">Sign Up</button> -->
                         </div>
@@ -118,7 +153,6 @@
                         <h4 class="mb-0" style="color: #4863A0;">Already have an account? 
                           <!-- <p>Login Component</p> -->
                           <a routerLink="/mylogin">Login</a>
-                          <button type="button" class="btn btn-secondary btn-lg btn-block m-3" >Register</button>
                           <!-- <a href="login.html">Login</a> -->
                         </h4>
                     </div>
