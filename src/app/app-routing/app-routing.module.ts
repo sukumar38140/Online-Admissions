@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+//  import { routes } from '../app.routes'; 
 import { MyloginComponent } from '../mylogin/mylogin.component';
 import { MyregisterComponent } from '../myregister/myregister.component';
+import { Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const routes: Routes = [
+ const routes: Routes = [
+  { path: '', redirectTo: '/mylogin', pathMatch: 'full' }, 
   { path: 'mylogin', component: MyloginComponent },
   { path: 'myregister', component: MyregisterComponent },
-  { path: '', redirectTo: '/mylogin', pathMatch: 'full' }, 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
