@@ -1,0 +1,475 @@
+<div class="container-fluid px-1 py-2 mx-auto">
+    <div class="row d-flex justify-content-center text-center">
+        <div class="col-lg-10 col-md-10">
+            <!-- Step 1: Terms and Conditions -->
+            <div class="card b-0 rounded-0" [class.show]="currentStep === 1">
+                <div class="row justify-content-center mx-auto step-container">
+                    <div class="col-md-2 col-4 step-box active">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">TERMS & CONDITIONS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">PERSONAL DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">QUALIFIED DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">PARENT DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">CONFIRMATION</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">APPLICATION ID</span>
+                        </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Terms and Conditions</u></h4>
+                    <div class="custom-control custom-checkbox mb-4">
+                        <input id="customCheck1" type="checkbox" class="custom-control-input" [(ngModel)]="customCheck1">
+                        <label for="customCheck1" class="custom-control-label">I have READ and AGREE to the following TERMS AND CONDITIONS</label>
+                    </div>
+                    <ol type="1" class="pl-1 text-muted mb-5">
+                        <li class="indented-list-item">I will strictly abide by the rules and regulations of the college in force at all times.</li>
+                        <li class="indented-list-item">I promise to avoid any acts of indiscipline or breach due to carelessness or wantonness from my part.</li>
+                        <li class="indented-list-item">I realize that ragging is a bad practice and I will never indulge in or be a party to ragging in any way.</li>
+                        <li class="indented-list-item">I understand that my admission may stand cancelled if I act in any way that amounts to ragging.</li>
+                        <li class="indented-list-item">I understand that the college has the right to take penal action in case I am associated with ragging.</li>
+                        <li class="indented-list-item">I agree that once the admission is taken it cannot be withdrawn.</li>
+                      </ol>
+                      
+                    <button (click)="nextStep(2)" class="btn btn-success rounded-2 mb-5">START</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Personal Details -->
+            <div class="card b-0 rounded-0" [class.show]="currentStep === 2">
+                <div class="row justify-content-center mx-auto step-container">
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-check"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">TERMS AND CONDITIONS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box step-box active">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">PERSONAL DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">QUALIFIED DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">PARENT DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">CONFIRMATION</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">APPLICATION ID</span>
+                        </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Candidate Personal Details</u></h4>
+                    <!-- <h4 class="heading">Personal Details</h4> -->
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-xl-7 col-lg-8 col-10 list text-left">
+                            <label class="text-danger mb-3">* Required</label>
+                            <div class="form-group">
+                                <form>
+                                    <div class="form-row">
+                                            <label class="form-control-label">Full Name * :</label>
+                                            <input type="text" id="fullName" placeholder="Full Name" class="form-control">
+                                                <div class="col">
+                                                    <label class="form-control-label">E-Mail ID * :</label>
+                                                    <input type="text" class="form-control" placeholder="E-Mail ID">
+                                                </div>
+                                                <div class="col">
+                                                    <label class="form-control-label">Mobile Number * :</label>
+                                                    <input type="text" class="form-control" placeholder="Mobile Number">
+                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                    <div class="col">
+                                        <label class="form-control-label">Date of Birth * :</label>
+                                        <input type="text" class="form-control" placeholder="Date of Birth">
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-control-label">Place of Birth * :</label>
+                                        <input type="text" class="form-control" placeholder="Place of Birth">
+                                    </div>
+                                </div> 
+                                <hr class="mb-4">
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label for="Quota" class="form-control-label">Quota * :</label>
+                                        <select name="Quota" class="form-control" required>
+                                            <option value="">-- Select Quota here --</option>
+                                            <option value="Management">Management</option>
+                                            <option value="Convener">Convener - Full Fee Exemption</option>
+                                            <option value="Full Fee Exemption">Convener - Not Eligible for Full Fee Exemption</option>
+                                            <option value="PH">Physically Handicapped</option>
+                                            <option value="Sports">Sports</option>
+                                            <option value="NCC">NCC </option>
+                                            <option value="EX-Service">EX-Service</option>
+                                            <option value="GOI">GOI</option>
+                                            <option value="J and K">J and K</option>
+                                            <option value="SNQ">SNQ</option>
+                                            <option value="NRI / GULF / FN / PIO">NRI / GULF / FN / PIO</option>
+                                            <option value="Lateral Entry">Lateral Entry</option>
+                                        </select>                                    
+                                    </div>                                    
+                                    <div class="col">
+                                        <label for="academic_year" style="font-family: Poppins;">Academic Year*</label><br>
+                                        <select name="academic_year" id="academic_year" required class="form-control" required>
+                                            <option value="">-- Select Academic Year --</option>
+                                            <option value="2025-2026">2025-2026</option>
+                                            <!-- <option value="2026-2027">2026-2027</option>
+                                            <option value="2027-2028">2027-2028</option> -->
+                                        </select>                                    
+                                    </div>
+                                </div> 
+
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label style="margin-top: 15px;" >Branch*</label><br>
+                                        <select name="department" id="department" class="form-control" required>
+                                        <option value="">-- Select Branch here --</option>                                      
+                                        <option value="Department of Civil Engineering-01">Department of Civil Engineering</option>
+                                        <option value="Department of Electrical & Electronics Engineering -02">Department of Electrical & Electronics Engineering</option>
+                                        <option value="Department of Mechanical Engineering-03">Department of Mechanical Engineering</option>
+                                        <option value="Department of Electronics & Communication Engineering-04">Department of Electronics & Communication Engineering</option>                                       
+                                        <option value="Department of Computer Science & Engineering-05">Department of Computer Science & Engineering</option>
+                                        <option value="Department of Computer Science & Engineering : Artificial Intelligence-31">Department of Computer Science & Engineering - Artificial Intelligence</option>
+                                        <option value="Department of Computer Science & Engineering : Data Science-32">Department of Computer Science & Engineering - Data Science</option>
+                                        <option value="Department of Computer Science & Engineering : Cyber Security-37">Department of Computer Science & Engineering - Cyber Security</option>
+                                        <option value="Department of Computer Science & Engineering : Networks-40">Department of Computer Science & Engineering Networks</option>
+                                        <option value="Department of Computer Science & Engineering : Artificial Intelligence & Machine Learning-33">Department of Computer Science & Engineering - Artificial Intelligence & Machine Learning</option>
+                                        <option value="Department of Computer Science & Technology-28">Department of Computer Science & Technology</option>
+                                    </select>
+                                    </div>
+                                </div> 
+
+                                <hr class="mb-4" style="margin-top: 40px; margin-bottom: 10px;">
+
+                                <div class="form-row" style="margin-top: 20px;">
+                                    <div class="col">
+                                        <label class="form-control-label">Nationality *:</label>
+                                        <input type="text" class="form-control" placeholder="Nationality" required>
+                                        </div>
+                                    <div class="col">
+                                        <label class="form-control-label">Religion *:</label>
+                                        <select class="form-control">
+                                            <option value="">-- Select Religion --</option>
+                                            <option value="Buddhism">Buddhism</option>
+                                            <option value="Christianity">Christianity</option>
+                                            <option value="Hinduism">Hinduism</option>
+                                            <option value="Islam">Islam</option>
+                                            <option value="Jainism">Jainism</option>
+                                            <option value="Secular">Secular</option>
+                                            <option value="Sikhism">Sikhism</option>
+                                            <option value="Spiritism">Spiritism</option>
+                                        </select>
+                                    </div>
+                                </div> 
+
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label class="form-control-label">Minority *:</label>
+                                        <select class="form-control">
+                                            <option value="">-- Select Minority --</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                          </select>
+                                        </div>
+                                    <div class="col">
+                                        <label class="form-control-label">Caste *:</label>
+                                        <input type="text" class="form-control" placeholder="Caste">
+                                        </div>
+                                </div> 
+
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label class="form-control-label">Mother Tongue *:</label>
+                                        <!-- <input type="text" class="form-control" placeholder="Nationality"> -->
+                                        <select class="form-control">
+                                            <option value="">-- Select Mother Tongue --</option>
+                                            <option value="Assamese">Assamese</option>
+                                            <option value="Bengali">Bengali</option>
+                                            <option value="Bodo">Bodo</option>
+                                            <option value="Dogri">Dogri</option>
+                                            <option value="English">English</option>
+                                            <option value="Gujarati">Gujarati</option>
+                                            <option value="Hindi">Hindi</option>
+                                            <option value="Kannada">Kannada</option>
+                                            <option value="Kashmiri">Kashmiri</option>
+                                            <option value="Konkani">Konkani</option>
+                                            <option value="Maithili">Maithili</option>
+                                            <option value="Malayalam">Malayalam</option>
+                                            <option value="Manipuri">Manipuri</option>
+                                            <option value="Marathi">Marathi</option>
+                                            <option value="Nepali">Nepali</option>
+                                            <option value="Odia">Odia</option>
+                                            <option value="Punjabi">Punjabi</option>
+                                            <option value="Sanskrit">Sanskrit</option>
+                                            <option value="Santali">Santali</option>
+                                            <option value="Sindhi">Sindhi</option>
+                                            <option value="Tamil">Tamil</option>
+                                            <option value="Telugu">Telugu</option>
+                                            <option value="Urdu">Urdu</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-control-label">Citizenship *:</label>
+                                        <input type="text" class="form-control" placeholder="Religion">
+                                        </div>
+                                </div> 
+
+                                <hr class="mb-4" style="margin-top: 10px; margin-bottom: 10px;">
+
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label class="form-control-label">Family Size * :</label>
+                                        <input type="number" class="form-control" placeholder="Family Size">
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-control-label">Blood Group * :</label>
+                                        <!-- <input type="text" class="form-control" placeholder="Place of Birth"> -->
+                                        <select class="form-control">
+                                            <option value="">-- Select Blood Group --</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                        </select>
+                                    </div>
+                                </div> 
+
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label class="form-control-label">PAN Card No. :</label>
+                                        <input type="text" class="form-control" placeholder="PAN Card Number">
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-control-label">Passport No. :</label>
+                                        <input type="text" class="form-control" placeholder="Passport Number">
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-control-label">Aadhar Card Number * :</label>
+                                        <input type="text" class="form-control" placeholder="Aadhar Card Number">
+                                    </div>
+                                </div> 
+
+                                <div class="form-row">
+                                    <label for="pc1">Accommodation (College Hostel): </label>
+                                    <div class="custom-control custom-radio">
+                                      <input type="radio" class="custom-control-input" id="a_yes" name="accommodation"/>
+                                      <label class="custom-control-label" for="a_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                      <input type="radio" class="custom-control-input" id="a_no" name="accommodation"/>
+                                      <label class="custom-control-label" for="a_no">No</label>
+                                    </div>
+        
+                                    <label for="pc1" style="margin-left: 75px;">Transport (College Bus): </label>
+                                    <div class="custom-control custom-radio">
+                                      <input type="radio" class="custom-control-input" id="t_yes" name="transport"/>
+                                      <label class="custom-control-label" for="t_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                      <input type="radio" class="custom-control-input" id="t_no" name="transport"/>
+                                      <label class="custom-control-label" for="t_no">No</label>
+                                    </div>
+                                </div> 
+
+                            <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+
+                        <div class="form-row" style="margin-top: 20px;">
+                            <label for="pc1">Handicapped *:</label>
+                            <div class="custom-control custom-radio">
+                              <input type="radio" class="custom-control-input" id="p_yes" name="handicapped" [(ngModel)]="isHandicapped" [value]="true" (change)="onHandicappedChange()"/>
+                              <label class="custom-control-label" for="p_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                              <input type="radio" class="custom-control-input" id="p_no" name="handicapped" [(ngModel)]="isHandicapped" [value]="false" (change)="onHandicappedChange()"/>
+                              <label class="custom-control-label" for="p_no">No</label>
+                            </div>
+                          </div>
+                            <div class="form-row" *ngIf="isHandicapped">
+                              <div class="col">
+                                <label class="form-control-label">Physically Challenged :</label>
+                                <select class="form-control" [(ngModel)]="physicallyChallenged">
+                                  <!-- <option value="">-- Select Yes/No --</option> -->
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                              </div>
+                              <div class="col">
+                                <label class="form-control-label">Visually Challenged :</label>
+                                <select class="form-control" [(ngModel)]="visuallyChallenged">
+                                  <!-- <option value="">-- Select Yes/No --</option> -->
+                                  <option value="yes">Yes</option>
+                                  <option value="no">No</option>
+                                </select>
+                              </div>
+                          </div>
+
+
+                        </form>
+                        <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+                        <label class="form-control-label">Full Name * :</label>
+                                <input type="text" id="sub" #sub [(ngModel)]="subject" placeholder="Subject" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Message * :</label>
+                                <textarea type="textarea" id="msg" #msg [(ngModel)]="message" placeholder="Message" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button (click)="prevStep(1)" class="btn btn-success rounded-0 mb-5 prev">Back</button>
+                    <button id="next2" (click)="nextStep(3)" class="btn btn-success rounded-0 mb-5 next">Submit</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div class="card b-0 rounded-0" [class.show]="currentStep === 3">
+                <div class="row justify-content-center mx-auto step-container">
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-check"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">TERMS AND CONDITIONS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-check"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">PERSONAL DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box step-box active">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">QUALIFIED DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">PARENT DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">CONFIRMATION</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-circle"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">APPLICATION ID</span>
+                        </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h4 class="heading">Confirmation</h4>
+                    <div class="row d-flex justify-content-center">
+                        <div class="mb-4">
+                            <h6 class="confirm">Verify all entered details and press confirm</h6>
+                        </div>
+                    </div>
+                    <button (click)="prevStep(2)" class="btn btn-success rounded-0 mb-5 prev">Back</button>
+                    <button id="next3" (click)="nextStep(4)" class="btn btn-success rounded-0 mb-5 next">Confirm</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Thank You -->
+            <div class="card b-0 rounded-0" [class.show]="currentStep === 4">
+                <div class="row justify-content-center mx-auto step-container">
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-check"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">TERMS AND CONDITIONS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-check"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">PERSONAL DETAILS</span>
+                        </h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0">
+                            <span class="fa fa-check"></span>
+                            <span class="break-line"></span>
+                            <span class="step-title">CONFIRMATION</span>
+                        </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h3 class="heading">Thank You for your Feedback!</h3>
+                    <div class="row justify-content-center">
+                        <div class="">
+                            <img src="https://i.imgur.com/4Y9xMCF.gif" class="fit-image mb-5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
