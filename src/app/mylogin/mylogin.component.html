@@ -20,60 +20,74 @@
             <!-- First Column: Image -->
             <div class="col-md-6 p-0">
                 <div class="login-image">
-                  <img src="/public/images/ad_001.jpg" alt="Login Image" class="img-fluid login-image-content">
+                  <img src="../images/ad_001.jpg" alt="Login Image" class="img-fluid login-image-content">
                 </div>
               </div>
             <!-- Second Column: Login Form -->
             <div class="col-md-5 d-flex align-items-start justify-content-center">
                 <div class="p-5" style="max-width: 600px; width: 100%;">
                     <h2 class="text-center mb-4" style="color: #A52A2A; font-weight: 700;">Login</h2>
-                    <form>
                         <!-- <div class="mb-4">
                             <label for="loginEmail" class="form-label" style="font-size: 18px; color: #4863A0;">Email address</label>
                             <input type="email" class="form-control" id="loginEmail" placeholder="Enter Your Working Email ID here....">
                         </div> -->
-
-                        <div class="mb-4">
-                            <label for="loginEmail" class="form-label" style="font-size: 18px; color: #4863A0;">Email address</label>
-                                <div class="input-group mb-2 mr-sm-2">
+                        <form (ngSubmit)="loginData()" #mylogin="ngForm">
+                            <div class="mb-4">
+                                <label for="loginEmail" class="form-label" style="font-size: 18px; color: #4863A0;">Email address</label>
+                                <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">&#64;</div>
-                                        </div>
-                                        <input type="email" id="loginEmail" name="email" class="form-control rounded-0" style="height: 50px;" minlength="6" placeholder="Enter Your Working Email ID here...." required />
                                     </div>
+                                    <input 
+                                        type="email" 
+                                        id="loginEmail" 
+                                        name="email" 
+                                        class="form-control rounded-0" 
+                                        style="height: 50px;" 
+                                        [(ngModel)]="email" 
+                                        placeholder="Enter Your registered Email ID here...." 
+                                        required />
                                 </div>
-
-                        <div class="mb-4">
-                            <label for="loginPassword" class="form-label" style="font-size: 18px; color: #4863A0;">Date of Birth</label>
-                                <div class="input-group mb-2 mr-sm-2">
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="dob" class="form-label" style="font-size: 18px; color: #4863A0;">Date of Birth</label>
+                                <div class="input-group mb-2">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text">&#xF1E2;</div>
-                                        </div>
-                                        <input type="date" id="dob" name="dateofbirth" class="form-control rounded-0" style="height: 50px;" minlength="6" placeholder="Your Date of Birth here...." required />
+                                        <div class="input-group-text">&#64;</div>
                                     </div>
-                            <!-- <label for="loginPassword" class="form-label" style="font-size: 18px; color: #4863A0;">Date of Birth</label>
-                            <input type="date" class="form-control" id="dob" placeholder="Birthday"> -->
-                        </div>
+                                    <input 
+                                        type="date" 
+                                        id="dob" 
+                                        name="dateOfBirth" 
+                                        class="form-control rounded-0" 
+                                        style="height: 50px;" 
+                                        [(ngModel)]="dateOfBirth" 
+                                        required />
+                                </div>
+                            </div>
+                        
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary" style="background-color: #1E90FF;">Login</button>
+                            </div>
+                        </form>
 
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary" style="background-color: #1E90FF;">Login</button>
-                            <!-- <button type="submit" class="btn btn-primary">Login</button> -->
-                        </div>
+                        <!-- <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" (click)="loginData()" style="background-color: #1E90FF;">Login</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div> -->
                         <div class="mb-3" style="margin-top: 20px;">
                             <h4 class="mb-0" style="color: #4863A0;">Don't have an account? 
                                 <!-- <p>Login Component</p> -->
                                 <a routerLink="/myregister">Register</a>
-                                <!-- <a routerLink="/myregister">Register</a> -->
-                                <!-- <a href="<signup.html>">Register</a> -->
                             </h4>
                         </div>
-                    </form>
                     <div class="hr"></div>
                     <div class="p-2" style="max-width: 600px; width: 100%;">
-                        <h3 class="text-center mb-4" style="color: #2B65EC; font-weight: 500; font-size: 18px;"> -- &#64;&#64; -- New Register Information -- &#64;&#64; --</h3>
+                        <h3 class="text-center mb-4" style="color: #2B65EC; font-weight: 500; font-size: 18px;"> -- &#64;&#64; -- Information to New Register -- &#64;&#64; --</h3>
                             <p style="color: #454545; font-weight: 500; font-size: 14px;">1. Valid Email address, date of birth and active mobile number are required</p> 
                             <p style="color: #454545; font-weight: 500; font-size: 14px;">2. Enter all the relevant details carefully</p>
-                            <p style="color: #454545; font-weight: 500; font-size: 14px;">3. Fill in the relevant fields carefully</p>
+                            <p style="color: #454545; font-weight: 500; font-size: 14px;">3. An OTP will be sent to your registered email address for verification</p>
                             <p style="color: #454545; font-weight: 500; font-size: 14px;">4. An Temporary Application Number will be generated after filling primary details</p>
                             <p style="color: #454545; font-weight: 500; font-size: 14px;">5. Submit this temporary application number to Admission Department at the time of Admission.</p>
                     </div>
