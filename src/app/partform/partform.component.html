@@ -1,0 +1,118 @@
+<form>
+    <div class="form-row">
+            <label class="form-control-label">Father Full Name *:</label>
+            <input type="text" id="fullName" placeholder="Father Full Name" class="form-control">
+                <div class="col">
+                    <label class="form-control-label">E-Mail ID :</label>
+                    <input type="text" class="form-control" placeholder="E-Mail ID">
+                </div>
+                <div class="col">
+                    <label class="form-control-label">Mobile Number *:</label>
+                    <input type="text" class="form-control" placeholder="Mobile Number">
+                </div>
+    </div>
+    <div class="form-row">
+    <div class="col">
+        <label class="form-control-label">Qualification *:</label>
+        <input type="text" class="form-control" placeholder="Qualification">
+    </div>
+    <div class="col">
+        <label class="form-control-label">Occupation *:</label>
+        <input type="text" class="form-control" placeholder="Occupation">
+        <!-- <input type="text" class="form-control" placeholder="Place of Birth" (input)="convertToUppercase($event)"> -->
+    </div>
+</div> 
+<hr class="mb-4">
+<div class="form-row">
+    <div class="col">
+        <label for="academic_year" style="font-family: Poppins;">Employer Details :</label><br>
+        <input type="text" class="form-control" placeholder="Employer Details">
+    </div>
+    <div class="col">
+        <label for="Quota" class="form-control-label">Designation :</label>
+        <input type="text" class="form-control" placeholder="Designation">
+    </div>                                    
+</div> 
+
+<div class="form-row">
+    <div class="col">
+    <div class="form-row">
+        <label for="pc1">Are You MITS Alumni: </label>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="al_yes" name="fatherAlumni" value="yes" [(ngModel)]="fatherAlumni" (change)="onFatherAlumniChange()">
+          <label class="custom-control-label" for="al_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="al_no" name="fatherAlumni" value="no" [(ngModel)]="fatherAlumni" (change)="onFatherAlumniChange()">
+          <label class="custom-control-label" for="al_no">No</label>
+        </div>    
+    </div> 
+    <div *ngIf="fatherAlumni === 'yes'">
+        <div class="form-group">
+          <label for="falumniRollNumber">Roll Number :</label>
+          <input type="text" class="form-control" id="falumniRollNumber" placeholder="Alumni Roll Number" [(ngModel)]="falumniRollNumber" />
+        </div>
+      </div>
+    </div>
+    </div> 
+    
+    <hr class="mb-4">
+
+<div class="form-row">
+    <label class="form-control-label">Mother Full Name *:</label>
+    <input type="text" id="fullName" placeholder="Mother Full Name" class="form-control">
+        <div class="col">
+            <label class="form-control-label">E-Mail ID :</label>
+            <input type="text" class="form-control" placeholder="E-Mail ID">
+        </div>
+        <div class="col">
+            <label class="form-control-label">Mobile Number *:</label>
+            <input type="text" class="form-control" placeholder="Mobile Number">
+        </div>
+</div>
+<div class="form-row">
+<div class="col">
+<label class="form-control-label">Qualification :</label>
+<input type="text" class="form-control" placeholder="Qualification">
+</div>
+<div class="col">
+<label class="form-control-label">Occupation :</label>
+<input type="text" class="form-control" placeholder="Occupation">
+<!-- <input type="text" class="form-control" placeholder="Place of Birth" (input)="convertToUppercase($event)"> -->
+</div>
+</div> 
+<hr class="mb-4">
+<div class="form-row">
+<div class="col">
+<label for="academic_year" style="font-family: Poppins;">Employer Details :</label><br>
+<input type="text" class="form-control" placeholder="Employer Details">
+</div>
+<div class="col">
+<label for="Quota" class="form-control-label">Designation :</label>
+<input type="text" class="form-control" placeholder="Designation">
+</div>                                    
+</div> 
+
+      <div class="form-row">
+        <div class="col">
+        <div class="form-row">
+            <label for="pc1">Are You MITS Alumni: </label>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="mal_yes" name="motherAlumni" value="yes" [(ngModel)]="motherAlumni" (change)="onMotherAlumniChange()">
+              <label class="custom-control-label" for="mal_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="mal_no" name="motherAlumni" value="no" [(ngModel)]="motherAlumni" (change)="onMotherAlumniChange()">
+              <label class="custom-control-label" for="mal_no">No</label>
+            </div>    
+        </div> 
+        </div>
+        </div> 
+
+        <div *ngIf="motherAlumni === 'yes'">
+        <div class="form-group">
+          <label for="alumniRollNumber">Roll Number :</label>
+          <input type="text" class="form-control" id="alumniRollNumber" placeholder="Alumni Roll Number" [(ngModel)]="malumniRollNumber" />
+        </div>
+      </div>
+</form>
