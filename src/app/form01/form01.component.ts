@@ -1,103 +1,145 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { PerformComponent } from '../perform/perform.component';
+import { QualformComponent } from '../qualform/qualform.component';
+import { PartformComponent } from "../partform/partform.component";
+import { RouterModule, Routes } from '@angular/router';
+import { MyloginComponent } from '../mylogin/mylogin.component';
+import { MyregisterComponent } from '../myregister/myregister.component';
+import { NgModule } from '@angular/core';
 
-@Component({
-  selector: 'app-form-01',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './form01.component.html',
-  styleUrl: './form01.component.css'
+const routes: Routes = [
+  { path: '', component: MyloginComponent },
+  { path: 'mylogin', component: MyloginComponent },
+  { path: 'myregister', component: MyregisterComponent },
+];
+
+// @Component({
+//   selector: 'app-form01',
+//   standalone: true,
+//   imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent],
+//   templateUrl: './form01.component.html',
+//   styleUrl: './form01.component.css'
+// })
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class Form01Component implements AfterViewInit {
+
+
+export class Form01Component implements AfterViewInit, OnInit {
   @ViewChild('sub') subInput!: ElementRef;
   @ViewChild('msg') msgInput!: ElementRef;
 
-  isHandicapped: boolean | null = null; // Tracks the selected radio button value
-  physicallyChallenged: string = ''; // Tracks the Physically Challenged dropdown value
-  visuallyChallenged: string = ''; // Tracks the Visually Challenged dropdown value
+  ngOnInit() {
+    this.generateRandomDigits();
+  }
+
+  generateRandomDigits() {
+    let randomDigits = '';
+    for (let i = 0; i < 4; i++) {
+      randomDigits += Math.floor(Math.random() * 10);
+    }
+    this.temporaryApplicationId += randomDigits;
+  }
+
+  isHandicapped: boolean | null = null;
+  physicallyChallenged: string = '';
+  visuallyChallenged: string = '';
+
+  currentStep: number = 1;
+  customCheck1: boolean = true;
+  subject: string = '';
+  message: string = '';
 
   constructor() {}
 
-  // Function to handle changes in the "Handicapped" radio buttons
   onHandicappedChange() {
     if (this.isHandicapped === false) {
-      // Reset dropdown values if "No" is selected
       this.physicallyChallenged = '';
       this.visuallyChallenged = '';
     }
   }
 
-  currentStep = 1;
-  customCheck1 = true;
-  subject = '';
-  message = '';
-
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {}
 
   nextStep(step: number) {
     if (this.currentStep === 1 && this.customCheck1) {
       this.currentStep = step;
-    } else if (this.currentStep === 2) {
-      if (this.validate(0)) {
-        this.currentStep = step;
-      }
-    } else if (this.currentStep === 3) {
+    } else if (this.currentStep === 2 && this.validateStep2()) {
+      this.currentStep = step;
+    } else if (this.currentStep === 3 && this.validateStep3()) {
+      this.currentStep = step;
+    } else if (this.currentStep === 4 && this.validateStep4()) {
+      this.currentStep = step;
+    } else if (this.currentStep === 5 && this.validateStep5()) {
+      this.currentStep = step;
+    } else if (this.currentStep === 6 && this.validateStep5()) {
+      this.currentStep = step;
+    } else if (this.currentStep > 6) {
       this.currentStep = step;
     }
   }
 
-  prevStep(step: number) {
-    this.currentStep = step;
-  }
-    
-  // prevStep() {
-  //   this.currentStep--;
-  // }
-
-  validate(val: number): boolean {
-    let flag = true;
-
-    if (val >= 1 || val === 0) {
-      if (!this.subject) {
-        if (this.subInput) {
-          this.subInput.nativeElement.style.borderColor = 'red';
-        }
-        flag = false;
-      } else {
-        if (this.subInput) {
-          this.subInput.nativeElement.style.borderColor = 'green';
-        }
-        flag = true;
-      }
+  prevStep() {
+    if (this.currentStep > 1) {
+      this.currentStep--;
     }
-
-    if (val >= 2 || val === 0) {
-      if (!this.message) {
-        if (this.msgInput) {
-          this.msgInput.nativeElement.style.borderColor = 'red';
-        }
-        flag = false;
-      } else {
-        if (this.msgInput) {
-          this.msgInput.nativeElement.style.borderColor = 'green';
-        }
-        flag = true;
-      }
-    }
-
-    return flag;
   }
+
+  validateStep2(): boolean {
+    if (!this.subject && this.subInput) {
+      this.subInput.nativeElement.style.borderColor = 'red';
+      return false;
+    } else if (this.subInput) {
+      this.subInput.nativeElement.style.borderColor = 'green';
+    }
+    return true;
+  }
+
+  validateStep3(): boolean {
+    if (!this.message && this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'red';
+      return false;
+    } else if (this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'green';
+    }
+    return true;
+  }
+    validateStep4(): boolean {
+    if (!this.message && this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'red';
+      return false;
+    } else if (this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'green';
+    }
+    return true;
+  }
+    validateStep5(): boolean {
+    if (!this.message && this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'red';
+      return false;
+    } else if (this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'green';
+    }
+    return true;
+  }
+  validateStep6(): boolean {
+    if (!this.message && this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'red';
+      return false;
+    } else if (this.msgInput) {
+      this.msgInput.nativeElement.style.borderColor = 'green';
+    }
+    return true;
+  }
+  closeApplication() {
+    // Add logic to close the application (e.g., clear form, navigate)
+    this.currentStep = 1; // Example: go back to step 1
+    this.temporaryApplicationId = ''; 
+    console.log('Application closed.');
+  }  
+  temporaryApplicationId: string = 'MITS-6925';  
 }
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-form-01',
-//   imports: [],
-//   templateUrl: './form01.component.html',
-//   styleUrl: './form01.component.css'
-// })
-// export class Form01Component {
-
-// }
