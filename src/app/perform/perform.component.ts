@@ -4,18 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-perform',
-  // standalone: true,
+  standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './perform.component.html',
   styleUrl: './perform.component.css'
 })
+
 export class PerformComponent implements AfterViewInit {
   @ViewChild('sub') subInput!: ElementRef;
   @ViewChild('msg') msgInput!: ElementRef;
 
-  isHandicapped: boolean | null = null; // Tracks the selected radio button value
-  physicallyChallenged: string = ''; // Tracks the Physically Challenged dropdown value
-  visuallyChallenged: string = ''; // Tracks the Visually Challenged dropdown value
+  isHandicapped: boolean | null = null; 
+  physicallyChallenged: string = ''; 
+  visuallyChallenged: string = ''; 
 
   constructor() {}
 
@@ -27,6 +28,42 @@ export class PerformComponent implements AfterViewInit {
       this.visuallyChallenged = '';
     }
   }
+communicationAddress: string = '';
+  communicationCity: string = '';
+  communicationState: string = '';
+  communicationCountry: string = '';
+  communicationZip: string = '';
+
+  permanentAddress: string = '';
+  permanentCity: string = '';
+  permanentState: string = '';
+  permanentCountry: string = '';
+  permanentZip: string = '';
+
+  presentAddress: string = '';
+  presentCity: string = '';
+  presentState: string = '';
+  presentcountry: string = '';
+  presentZip: string = '';
+
+  sameAsPermanent: boolean = false;
+
+  copyPermanentAddress() {
+    if (this.sameAsPermanent) {
+      this.presentAddress = this.permanentAddress;
+      this.presentCity = this.permanentCity;
+      this.presentState = this.permanentState;
+      this.communicationCountry = this.permanentCountry;
+      this.presentZip = this.permanentZip;
+    } else {
+      this.presentAddress = '';
+      this.presentCity = '';
+      this.presentState = '';
+      this.presentcountry = '';
+      this.presentZip = '';
+    }
+  }
+  
 
   currentStep = 1;
   customCheck1 = true;
@@ -34,6 +71,11 @@ export class PerformComponent implements AfterViewInit {
   message = '';
 
   ngAfterViewInit() {
+  }
+
+  convertToUppercase(event: any) {
+    const inputElement = event.target as HTMLInputElement;
+    inputElement.value = inputElement.value.toUpperCase();
   }
 
   nextStep(step: number) {
@@ -86,18 +128,20 @@ export class PerformComponent implements AfterViewInit {
         flag = true;
       }
     }
+    if (val >= 3 || val === 0) {
+      if (!this.message) {
+        if (this.msgInput) {
+          this.msgInput.nativeElement.style.borderColor = 'red';
+        }
+        flag = false;
+      } else {
+        if (this.msgInput) {
+          this.msgInput.nativeElement.style.borderColor = 'green';
+        }
+        flag = true;
+      }
+    }
 
     return flag;
   }
 }
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-form-01',
-//   imports: [],
-//   templateUrl: './form01.component.html',
-//   styleUrl: './form01.component.css'
-// })
-// export class Form01Component {
-
-// }
