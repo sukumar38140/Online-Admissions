@@ -1,0 +1,124 @@
+<form>
+    <div class="form-row">
+            <label for="pc1">Entrance Examination *: </label>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="eexam1" name="eexamination"/>
+              <label class="custom-control-label" for="eexam1" style="margin-left: 10px; margin-right: 10px;">EAPCET</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="eexam2" name="eexamination"/>
+              <label class="custom-control-label" for="eexam2" style="margin-left: 10px; margin-right: 10px;">ICET</label>
+            </div>        
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="eexam3" name="eexamination"/>
+                <label class="custom-control-label" for="eexam3" style="margin-left: 10px; margin-right: 10px;">ECET</label>
+              </div>        
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="eexam4" name="eexamination"/>
+                <label class="custom-control-label" for="eexam4" style="margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">NA</label>
+              </div>        
+          </div> 
+        
+            <div class="form-row">
+                <div class="col">
+                    <label class="form-control-label">Actual Category *:</label>
+                    <input type="text" class="form-control" placeholder="Actual Category">
+                </div>
+                <div class="col">
+                    <label class="form-control-label">Allocated Category *:</label>
+                    <input type="text" class="form-control" placeholder="Allocated Category">
+                </div>
+    </div>
+
+<hr class="mb-4" style="margin-top: 10px; margin-bottom: 10px;">
+<div class="form-row">
+    <label for="pc1">Domicile *: </label>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="domicile_yes" name="domicile"/>
+      <label class="custom-control-label" for="domicile_yes" style="margin-left: 10px; margin-right: 10px;">Andhra Pradesh</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="domicile_no" name="domicile"/>
+      <label class="custom-control-label" for="domicile_no">Non-Andhra Pradesh</label>
+    </div>
+</div> 
+
+<hr class="mb-4" style="margin-top: 10px; margin-bottom: 10px;">
+
+<div class="form-row" style="margin-top: 20px;">
+    <label for="pc1">Qualifying Examination *:</label>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="exam_yes" name="qualifyingExam" [(ngModel)]="qualifyingExam" value="yes" (change)="onQualifyingExamChange()" />
+      <label class="custom-control-label" for="exam_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="exam_no" name="qualifyingExam" [(ngModel)]="qualifyingExam" value="no" (change)="onQualifyingExamChange()" />
+      <label class="custom-control-label" for="exam_no">No</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="exam_not" name="qualifyingExam" [(ngModel)]="qualifyingExam" value="notAttended" (change)="onQualifyingExamChange()" />
+      <label class="custom-control-label" for="exam_not" style="margin-left: 10px;">Not Attended</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="exam_notgetrank" name="qualifyingExam" [(ngModel)]="qualifyingExam" value="notGetRank" (change)="onQualifyingExamChange()" />
+      <label class="custom-control-label" for="exam_notgetrank" style="margin-left: 10px;">Not Get Rank</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="exam_notqualified" name="qualifyingExam" [(ngModel)]="qualifyingExam" value="notQualified" (change)="onQualifyingExamChange()" />
+      <label class="custom-control-label" for="exam_notqualified" style="margin-left: 10px;">Not Qualified</label>
+    </div>
+  </div>
+    
+  <div *ngIf="qualifyingExam === 'yes'" style="margin-top: 20px;">
+    <div class="form-row">
+      <div class="col">
+        <label for="allotmentNumber">Allotment Number *:</label>
+        <input type="text" class="form-control" id="allotmentNumber" placeholder="Allotment Number" [(ngModel)]="allotmentNumber" />
+      </div>
+      <div class="col">
+        <label for="allotmentDate">Allotment Date *:</label>
+        <input type="date" class="form-control" id="allotmentDate" placeholder="Allotment Date" [(ngModel)]="allotmentDate" />
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="col">
+        <label for="entranceRollNumber">Entrance Exam Roll Number *:</label>
+        <input type="text" class="form-control" id="entranceRollNumber" placeholder="Entrance Exam Roll Number" [(ngModel)]="entranceRollNumber" />
+      </div>
+      <div class="col">
+        <label for="rank">Rank *:</label>
+        <input type="number" class="form-control" id="rank" placeholder="Rank" [(ngModel)]="rank" />
+      </div>
+      <div class="col">
+        <label for="entranceScore">Entrance Exam Score *:</label>
+        <input type="number" class="form-control" id="entranceScore" placeholder="Entrance Exam Score" [(ngModel)]="entranceScore" />
+      </div>
+    </div>
+  </div>
+
+  <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+
+  <div class="form-row">
+    <div class="col">
+        <label class="form-control-label">Previous College Name *:</label>
+        <input type="text" class="form-control" placeholder="Previous College Name">
+    </div>
+    <div class="col">
+        <label class="form-control-label">Previous College Address *:</label>
+        <input type="text" class="form-control" placeholder="Previous College Address">
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="col">
+        <label class="form-control-label">Course Studied *:</label>
+        <input type="text" class="form-control" placeholder="Previous Course Studied">
+    </div>
+    <div class="col">
+        <label class="form-control-label">Course Result / Rank *:</label>
+        <input type="text" class="form-control" placeholder="Previous Course Result / Rank">
+    </div>
+</div>
+
+</form>
