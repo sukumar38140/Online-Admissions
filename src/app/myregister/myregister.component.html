@@ -60,7 +60,7 @@
                         <!-- <div class="mb-3">
                             <label for="signupEmail" class="form-label" style="font-size: 18px; color: #4863A0;">Email address</label>
                             <div class="input-group">
-                              <input type="email" class="form-control" id="signupEmail" placeholder="Enter Your Working Email ID here..." [(ngModel)]="email" name="email" required>
+                              <input type="email" class="form-control" id="signupEmail" placeholder="Enter Your Active Email ID here..." [(ngModel)]="email" name="email" required>
                               <button class="btn btn-primary" type="button" (click)="verifyEmail()" [disabled]="emailVerified">Verify</button>
                             </div>
                             <div *ngIf="showOtpInput">
@@ -74,7 +74,7 @@
                           </div> -->
                           <div class="mb-3">
                             <label for="signupEmail" class="form-label" style="font-size: 18px; color: #4863A0;">Email address</label>
-                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter Your Working Email ID here..." formControlName="email">
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter Your Active Email ID here ....." formControlName="email">
                             @if(email?.dirty || email?.touched) {
                               @if(email?.errors?.['required']) {
                                 <p style="color: #800080; font-size: x-small;">Email ID is required</p>
