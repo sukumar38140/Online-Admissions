@@ -32,11 +32,20 @@ export class MyloginComponent {
   loginData() {
     console.log('Email:', this.email, 'DOB:', this.dateOfBirth); 
 
-    if (this.email.trim() === 'temp@example.com' && this.dateOfBirth.trim() === '2000-01-01') {
-      console.log('Navigating to Form01'); 
+    if (this.email.trim() === 'mits@mits.ac.in' && this.dateOfBirth.trim() === '2025-01-01') {
+      console.log('Navigating to Form01');
       this.router.navigate(['/form01']);
+    } else if (this.email.trim() === 'mits1@mits.ac.in' && this.dateOfBirth.trim() === '2025-01-01') {
+      console.log('Navigating to /crud');
+      this.router.navigate(['/crud']);
     } else {
       alert('Invalid credentials. Please use the temporary email and date of birth.');
     }
+    // if (this.email.trim() === 'mits@mits.ac.in' && this.dateOfBirth.trim() === '2025-01-01') {
+    //   console.log('Navigating to Form01'); 
+    //   this.router.navigate(['/form01']);
+    // } else {
+    //   alert('Invalid credentials. Please use the temporary email and date of birth.');
+    // }
   }
 }
