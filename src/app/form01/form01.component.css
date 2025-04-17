@@ -92,6 +92,13 @@ body {
     height: 0.6em; /* Ensure height matches font-size */
   }
 
+  .custom-button-size {
+    width: 300px;
+    height: 50px;
+    align-items: center;
+    background-color: #12AD2B;
+}
+
 
 /* .fa-check {
     border-radius: 50%;
@@ -140,7 +147,7 @@ button:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 1px solid #12AD2B !important;
+    border: 2px solid #12AD2B !important;
     outline-width: 0;
 }
 
@@ -162,8 +169,8 @@ button {
     margin-left: 300px;
     text-align: left;
     color: #A52A2A;
-    font-weight: 800";
-     class="indented-list-item";
+    font-weight: "800";
+     /* class="indented-list-item"; */
 
 }
 

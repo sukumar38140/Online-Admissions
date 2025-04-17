@@ -4,34 +4,35 @@ import { FormsModule } from '@angular/forms';
 import { PerformComponent } from '../perform/perform.component';
 import { QualformComponent } from '../qualform/qualform.component';
 import { PartformComponent } from "../partform/partform.component";
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { MyloginComponent } from '../mylogin/mylogin.component';
 import { MyregisterComponent } from '../myregister/myregister.component';
 import { NgModule } from '@angular/core';
 
-const routes: Routes = [
-  { path: '', component: MyloginComponent },
-  { path: 'mylogin', component: MyloginComponent },
-  { path: 'myregister', component: MyregisterComponent },
-];
+// const routes: Routes = [
+//   { path: '', component: MyloginComponent },
+//   { path: 'mylogin', component: MyloginComponent },
+//   { path: 'myregister', component: MyregisterComponent },
+// ];
 
-// @Component({
-//   selector: 'app-form01',
-//   standalone: true,
-//   imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent],
-//   templateUrl: './form01.component.html',
-//   styleUrl: './form01.component.css'
-// })
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+@Component({
+  selector: 'app-form01',
+  standalone: true,
+  imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent],
+  templateUrl: './form01.component.html',
+  styleUrl: './form01.component.css'
 })
+
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule]
+// })
 
 
 export class Form01Component implements AfterViewInit, OnInit {
   @ViewChild('sub') subInput!: ElementRef;
   @ViewChild('msg') msgInput!: ElementRef;
+
 
   ngOnInit() {
     this.generateRandomDigits();
@@ -54,7 +55,7 @@ export class Form01Component implements AfterViewInit, OnInit {
   subject: string = '';
   message: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   onHandicappedChange() {
     if (this.isHandicapped === false) {
@@ -140,6 +141,7 @@ export class Form01Component implements AfterViewInit, OnInit {
     this.currentStep = 1; // Example: go back to step 1
     this.temporaryApplicationId = ''; 
     console.log('Application closed.');
+    this.router.navigate(['/mylogin']);
   }  
   temporaryApplicationId: string = 'MITS-6925';  
 }
