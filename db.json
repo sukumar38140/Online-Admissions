@@ -1,0 +1,14 @@
+{
+    "RegisterUsers" : [
+        {
+            "ID" : 1,
+            "Name" : "Shivam",
+            "Email" : "shivam@gmail.com",
+            "Mobile" : 1123456789,
+            "AppID" : 69250001,
+            "FatherName" : "Shivam Krishna",
+            "Quota Type" : "Convener",
+            "Department" : "CSE"
+        }
+    ]
+}
