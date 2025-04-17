@@ -1,0 +1,218 @@
+<form>
+    <h3 style="text-align: center; font-weight: 600; color: #2F539B;">Generate Fee Receipt Details</h3>
+    <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+      <div class="col-md-4">
+        <label class="form-control-label">Application ID *:</label>
+        <!-- <input type="text" class="form-control" placeholder="Application ID" [(ngModel)]="applicationId" /> -->
+        <input type="text" class="form-control" placeholder="Application ID" />
+      </div>
+      <div class="col-md-8">
+        <label class="form-control-label">Candidate Full Name *:</label>
+        <!-- <input type="text" id="fullName" placeholder="Full Name" class="form-control" [(ngModel)]="fullName" /> -->
+        <input type="text" id="fullName" placeholder="Full Name" class="form-control" />
+      </div>
+      <div class="col-md-6" style="margin-top: 10px;">
+        <label class="form-control-label">Father Full Name *:</label>
+        <!-- <input type="text" class="form-control" placeholder="Father Name" [(ngModel)]="fatherName" /> -->
+        <input type="text" class="form-control" placeholder="Father Name"  />
+      </div>
+      <div class="col-md-6" style="margin-top: 10px;">
+        <label class="form-control-label">Quota *:</label>
+        <!-- <input type="text" class="form-control" placeholder="Admission Type" [(ngModel)]="quota" /> -->
+        <input type="text" class="form-control" placeholder="Admission Type"  />
+      </div>
+    </div>
+    <div class="form-row" style="margin-left: 300px; margin-right: 300px; margin-top: 10px;">
+      <div class="col-md-8">
+        <label class="form-control-label">Department *:</label>
+        <!-- <input type="text" class="form-control" placeholder="Department" [(ngModel)]="department" /> -->
+        <input type="text" class="form-control" placeholder="Department"  />
+      </div>
+      <div class="col-md-4">
+        <label class="form-control-label">Date *:</label>
+        <!-- <input type="date" class="form-control" placeholder="Date" [(ngModel)]="date" /> -->
+        <input type="date" class="form-control" placeholder="Date"  />
+      </div>
+    </div>
+    <hr class="mb-4" style="margin-top: 20px; margin-bottom: 5px; margin-left: 300px; margin-right: 300px;">
+  
+    <div class="form-row" style="margin-left: 300px; margin-right: 300px; margin-top: 10px;">
+      <label for="pt1">Mode of Payment *: </label>
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="payment_cash" name="payment" value="cash" (change)="updatePaymentFields()" [(ngModel)]="paymentType" />
+        <label class="custom-control-label" for="payment_cash" style="margin-left: 10px; margin-right: 10px;">Cash</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="payment_online" name="payment" value="online" (change)="updatePaymentFields()" [(ngModel)]="paymentType" />
+        <label class="custom-control-label" for="payment_online">Online</label>
+      </div>
+    </div>
+    
+    
+    <div *ngIf="paymentType === 'cash'">
+      <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+        <div class="col-md-4" style="margin-top: 10px;">
+          <label class="form-control-label">Tuition Fee :</label>
+          <!-- <input type="text" class="form-control" id="tuitionFee" value="Rs.67,800/-" disabled [(ngModel)]="tuitionFee" /> -->
+          <input type="text" class="form-control" id="tuitionFee" value="Rs.67,800/-" disabled  />
+        </div>
+        <div class="col-md-4" style="margin-top: 10px;">
+          <label class="form-control-label">Type of Payment *:</label>
+          <!-- <select class="form-control" [(ngModel)]="cashPaymentType" (change)="updatePaymentFields()"> -->
+            <select class="form-control"  (change)="updatePaymentFields()">
+                <option value="">-- Select Payment Type --</option>
+            <option value="partial">Partial Payment</option>
+            <option value="full">Full Payment</option>
+          </select>
+        </div>
+        <div class="col-md-4" style="margin-top: 10px;">
+          <label class="form-control-label">Amount Paid *:</label>
+          <!-- <input type="number" class="form-control" id="amountPaid" placeholder="Amount Paid" [(ngModel)]="amountPaid" [disabled]="cashPaymentType === 'full'" /> -->
+          <input type="number" class="form-control" id="amountPaid" placeholder="Amount Paid"  [disabled]="cashPaymentType === 'full'" />
+        </div>
+      </div>
+      <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Admission / Application *:</label>
+          <!-- <input type="number" class="form-control" id="admissionApp" placeholder="Rs.3,000/-" [(ngModel)]="admissionApp" disabled /> -->
+          <input type="number" class="form-control" id="admissionApp" placeholder="Rs.3,000/-"  disabled />
+        </div>
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Miscellaneous *:</label>
+          <!-- <input type="number" class="form-control" id="miscellaneous" placeholder="Rs.4,000/-" [(ngModel)]="miscellaneous" disabled /> -->
+          <input type="number" class="form-control" id="miscellaneous" placeholder="Rs.4,000/-"  disabled />
+        </div>
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Concession / Discount (if any):</label>
+          <!-- <input type="number" class="form-control" id="concessionDiscount" placeholder="Concession / Discount" [(ngModel)]="concessionDiscount" /> -->
+          <input type="number" class="form-control" id="concessionDiscount" placeholder="Concession / Discount"  />
+        </div>
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Outstanding :</label>
+          <!-- <input type="number" class="form-control" id="outstanding" placeholder="Outstanding" [(ngModel)]="outstanding" disabled /> -->
+          <input type="number" class="form-control" id="outstanding" placeholder="Outstanding"  disabled />
+        </div>
+      </div>
+  
+      <hr class="mb-4" style="margin-top: 20px; margin-bottom: 5px; margin-left: 300px; margin-right: 300px;">
+  
+      <div class="form-row" style="margin-left: 300px; margin-right: 300px; margin-top: 5px;">
+        <h6>Denomination</h6>
+      </div>
+      <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+        <div class="col-md-3" style="margin-top: 5px;">
+          <label class="form-control-label">Rs.500/- X = </label>
+          <!-- <input type="number" class="form-control" id="fiveHundred" placeholder="Number" [(ngModel)]="fiveHundredCount" (input)="calculateDenominationTotal()" /> -->
+          <input type="number" class="form-control" id="fiveHundred" placeholder="Number"  (input)="calculateTotal()" />
+        </div>
+        <div class="col-md-3" style="margin-top: 5px;">
+          <label class="form-control-label">Rs.200/- X = </label>
+          <!-- <input type="number" class="form-control" id="twoHundred" placeholder="Number" [(ngModel)]="twoHundredCount" (input)="calculateTotal()" /> -->
+          <input type="number" class="form-control" id="twoHundred" placeholder="Number"  (input)="calculateTotal()" />
+        </div>
+        <div class="col-md-3" style="margin-top: 5px;">
+          <label class="form-control-label">Rs.100/- X = </label>
+          <!-- <input type="number" class="form-control" id="oneHundred" placeholder="Number" [(ngModel)]="oneHundredCount" (input)="calculateTotal()" /> -->
+          <input type="number" class="form-control" id="oneHundred" placeholder="Number"  (input)="calculateTotal()" />
+        </div>
+        <div class="col-md-3" style="margin-top: 5px;">
+          <label class="form-control-label">Rs.50/- X = </label>
+          <!-- <input type="number" class="form-control" id="fifty" placeholder="Number" [(ngModel)]="fiftyCount" (input)="calculateTotal()" /> -->
+          <input type="number" class="form-control" id="fifty" placeholder="Number"  (input)="calculateTotal()" />
+        </div>
+      </div>
+      <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Rs.20/- X = </label>
+          <!-- <input type="number" class="form-control" id="twenty" placeholder="Number" [(ngModel)]="twentyCount" (input)="calculateTotal()" /> -->
+          <input type="number" class="form-control" id="twenty" placeholder="Number" (input)="calculateTotal()" />
+        </div>
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Rs.10/- X = </label>
+          <!-- <input type="number" class="form-control" id="ten" placeholder="Number" [(ngModel)]="tenCount" (input)="calculateTotal()" /> -->
+          <input type="number" class="form-control" id="ten" placeholder="Number"  (input)="calculateTotal()" />
+        </div>
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Others X = </label>
+          <!-- <input type="number" class="form-control" id="others" placeholder="Number" [(ngModel)]="othersAmount" (input)="calculateTotal()" /> -->
+          <input type="number" class="form-control" id="others" placeholder="Number"  (input)="calculateTotal()" />
+        </div>
+        <div class="col-md-3" style="margin-top: 10px;">
+          <label class="form-control-label">Total Amount :</label>
+          <!-- <input type="number" class="form-control" id="totalAmount1" placeholder="Total Amount" [(ngModel)]="totalDenominationAmount" disabled /> -->
+          <input type="number" class="form-control" id="totalAmount1" placeholder="Total Amount" disabled />
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="paymentType === 'online'">
+        <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+          <div class="col-md-4" style="margin-top: 10px;">
+            <label class="form-control-label">Tuition Fee :</label>
+            <input type="text" class="form-control" id="tuitionFeeOnline" value="Rs.67,800/-" disabled [(ngModel)]="tuitionFee" />
+          </div>
+          <div class="col-md-4" style="margin-top: 10px;">
+            <label class="form-control-label">Type of Payment *:</label>
+            <select class="form-control" [(ngModel)]="onlinePaymentType" (change)="updatePaymentFields()">
+              <option value="">-- Select Payment Type --</option>
+              <option value="partial">Partial Payment</option>
+              <option value="full">Full Payment</option>
+            </select>
+          </div>
+          <div class="col-md-4" style="margin-top: 10px;">
+            <label class="form-control-label">Amount Paid *:</label>
+            <input type="number" class="form-control" id="amountPaidOnline" placeholder="Paid Amount" [(ngModel)]="amountPaid" [disabled]="onlinePaymentType === 'full'" />
+          </div>
+        </div>
+        <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+          <div class="col-md-4" style="margin-top: 10px;">
+            <label class="form-control-label">Name of the Bank *:</label>
+            <input type="text" class="form-control" id="bankNameOnline" placeholder="Bank Name" [(ngModel)]="bankName" />
+          </div>
+          <div class="col-md-4" style="margin-top: 10px;">
+            <label class="form-control-label">UPI / Ref., No. *:</label>
+            <input type="text" class="form-control" id="upiRefOnline" placeholder="UPI / Reference Number" [(ngModel)]="upiRef" />
+          </div>
+          <div class="col-md-4" style="margin-top: 10px;">
+            <label class="form-control-label">Date of Payment *:</label>
+            <input type="date" class="form-control" id="paymentDateOnline" [(ngModel)]="paymentDate" [disabled]="onlinePaymentType === 'full'" />
+          </div>
+        </div>
+        <div class="form-row" style="margin-left: 300px; margin-right: 300px;">
+          <div class="col-md-3" style="margin-top: 10px;">
+            <label class="form-control-label">Admission / Application *:</label>
+            <input type="number" class="form-control" id="admissionAppOnline" placeholder="Admission / Application" [(ngModel)]="admissionApp" />
+          </div>
+          <div class="col-md-3" style="margin-top: 10px;">
+            <label class="form-control-label">Miscellaneous *:</label>
+            <input type="number" class="form-control" id="miscellaneousOnline" placeholder="Miscellaneous" [(ngModel)]="miscellaneous" />
+          </div>
+          <div class="col-md-3" style="margin-top: 10px;">
+            <label class="form-control-label">Concession / Discount (if any):</label>
+            <input type="number" class="form-control" id="concessionDiscountOnline" placeholder="Concession / Discount" [(ngModel)]="concessionDiscount" />
+          </div>
+          <div class="col-md-3" style="margin-top: 10px;">
+            <label class="form-control-label">Outstanding :</label>
+            <input type="number" class="form-control" id="outstandingOnline" placeholder="Outstanding" [(ngModel)]="outstanding" disabled />
+          </div>
+        </div>
+      </div>
+        
+    <div class="form-row" style="margin-left: 980px; margin-top: 15px;">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <button class="btn btn-primary btn-sm m-1" (click)="generatePayment()">Generate</button>
+            </td>
+            <td>
+              <button class="btn btn-primary btn-sm m-1">Printview</button>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm m-1" (click)="navigateToAccp()">Home</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
