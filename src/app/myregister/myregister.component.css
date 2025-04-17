@@ -1,8 +1,9 @@
-body {
+/* .body {
     background: linear-gradient(to bottom, #F5F5DC, #FFCE44); 
-    /* background: linear-gradient(to bottom, #E6E6FA, #98AFC7);  */
-    /* background-image: url('/public/images/bg_001.jpg'); */
-  }
+    background: linear-gradient(to bottom, #FFFFFF, #ADD8E6); 
+    background: linear-gradient(to bottom, #E6E6FA, #98AFC7); 
+    background-image: url('/public/images/bg_001.jpg');
+  } */
 
   /* In your component's CSS file or styles.css */
  .signup-image {
@@ -17,10 +18,9 @@ body {
   .signup-image-content {
     max-width: 80%; /* Limit image width */
     height: auto; /* Maintain aspect ratio */
-    border: 1px solid #ddd; /* Add a border */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
-    border-radius: 8px; /* Optional: Rounded corners */
-  }
+    /* border: 1px solid #ddd; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px;   } */
   
   /* Optional: Make the image responsive */
   @media (max-width: 768px) { /* Adjust breakpoint as needed */
@@ -32,4 +32,5 @@ body {
     height:2px;
     margin:30px 0 20px 0;
     background:rgba(0, 0, 128, 0.2);
-}    
+}
+}
