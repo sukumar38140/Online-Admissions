@@ -1,14 +1,34 @@
 {
-    "RegisterUsers" : [
-        {
-            "ID" : 1,
-            "Name" : "Shivam",
-            "Email" : "shivam@gmail.com",
-            "Mobile" : 1123456789,
-            "AppID" : 69250001,
-            "FatherName" : "Shivam Krishna",
-            "Quota Type" : "Convener",
-            "Department" : "CSE"
-        }
-    ]
+  "RegisterUsers": [
+    {
+      "ID": 1,
+      "Name": "Shivam",
+      "Email": "shivam@gmail.com",
+      "Mobile": 1123456789,
+      "AppID": 69250001,
+      "FatherName": "Shivam Krishna",
+      "Quota Type": "Convener",
+      "Department": "CSE"
+    },
+    {
+      "ID": 2,
+      "Name": "Duplicate Shivam",
+      "Email": "duplicate.shivam@gmail.com",
+      "Mobile": 1123456789,
+      "AppID": 69250001,
+      "FatherName": "Duplicate",
+      "Quota Type": "Convener",
+      "Department": "CSE"
+    },
+    {
+      "ID": 3,
+      "Name": "Another Duplicate Shivam",
+      "Email": "another.duplicate.shivam@gmail.com",
+      "Mobile": 1123456789,
+      "AppID": 69250001,
+      "FatherName": "Another",
+      "Quota Type": "Management",
+      "Department": "ECE"
+    }
+  ]
 }

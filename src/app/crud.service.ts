@@ -1,34 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Iruser } from './iruser';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
 
-
   base_url : string = "http://localhost:3000/RegisterUsers";
 
   constructor(private http : HttpClient) { }
 
-  getData(){
+  getData(): Observable<Iruser[]> {
     return this.http.get<Iruser[]>(this.base_url);
   }
 
-  // postData(data : Iuser){
-  //   return this.http.post(this.base_url,data);
-  // }
+  getDataById(id: number): Observable<Iruser> {
+    return this.http.get<Iruser>(`${this.base_url}/${id}`);
+  }
 
-  // getDataById(id : number){
-  //   return this.http.get<Iuser>(`${this.base_url}/${id}`);
-  // }
+  createData(data: Iruser): Observable<Iruser> {
+    return this.http.post<Iruser>(this.base_url, data);
+  }
 
-  // putDataById(id : number, data: Iuser){
-  //   return this.http.put(`${this.base_url}/${id}`,data);
-  // }
+  updateData(id: number, data: Iruser): Observable<Iruser> {
+    return this.http.put<Iruser>(`${this.base_url}/${id}`, data);
+  }
 
-  // deleteData(id: number){
-  //   return this.http.delete(`${this.base_url}/${id}`);
-  // }
+  deleteData(id: number): Observable<any> {
+    return this.http.delete(`${this.base_url}/${id}`);
+  }
+
 }

@@ -4,8 +4,15 @@
           <h4 style="margin-left: 130px; color: #1E90FF;">Temporary Application ID:</h4>
       </div>
       <div class="col-5">
-        <!-- <input type="text" class="form-control" id="temporaryApplicationId" placeholder="Enter Temporary Application ID here ....." [formControl]="temporaryApplicationId"/> -->
-        <input type="text" class="form-control" id="temporaryApplicationId" placeholder="Enter Temporary Application ID here ....." />
+        <!-- Bind the input to the FormControl and add conditional invalid class -->
+        <input type="text" class="form-control" id="temporaryApplicationId"
+               placeholder="Enter Temporary Application ID here ....."
+               [formControl]="temporaryApplicationId"
+               [class.is-invalid]="isSearchInvalid" />
+        <!-- Updated invalid feedback message -->
+        <div *ngIf="isSearchInvalid" class="invalid-feedback">
+          {{ validationMessage }} <!-- Display specific validation message -->
+        </div>
       </div>
       <div class="col-3">
           <button type="submit" class="btn btn-primary" style="background-color: #1E90FF;" (click)="searchData()">Search</button>
@@ -27,60 +34,39 @@
           </tr>
       </thead>
       <tbody>
+          <!-- Iterate over filteredApiData -->
           <tr *ngFor="let data of filteredApiData; let i = index">
               <td>{{i + 1}}</td>
               <td>{{data.name}}</td>
               <td>{{data.mobile}}</td>
-              <td>{{data.appid}}</td>
+              <td>{{temporaryApplicationId.value}}</td>
               <td>{{data.department}}</td>
               <td>
                   <button class="btn btn-primary btn-sm m-1">Update</button>
               </td>
               <td>
-                  <button class="btn btn btn-secondary btn-sm m-1">Printview</button>
+                  <button class="btn btn-secondary btn-sm m-1" (click)="printData(data)">Printview</button>
               </td>
               <td>
-                  <button class="btn btn btn-danger btn-sm m-1" >Download</button>
+                  <button class="btn btn-danger btn-sm m-1" (click)="downloadData(data)">Download</button>
               </td>
           </tr>
-          <tr *ngIf="filteredApiData.length === 0 && temporaryApplicationId.value">
-              <td colspan="8" class="text-center">No data found for the given Temporary Application ID.</td>
+          <!-- Message when no data is found (and input was valid) -->
+          <tr *ngIf="filteredApiData.length === 0 && !isSearchInvalid && temporaryApplicationId.value?.trim()">
+              <td colspan="8" class="text-center">No data found for the Application ID '{{ temporaryApplicationId.value }}'.</td>
+          </tr>
+          <!-- Message when validation fails (handled by invalid-feedback now) -->
+          <!--
+          <tr *ngIf="isSearchInvalid">
+            <td colspan="8" class="text-center text-danger">{{ validationMessage }}</td>
+          </tr>
+          -->
+          <!-- Message when input is empty and search hasn't been clicked yet -->
+           <tr *ngIf="filteredApiData.length === 0 && !isSearchInvalid && !temporaryApplicationId.value?.trim()">
+            <td colspan="8" class="text-center">Enter an Application ID and click Search.</td>
           </tr>
       </tbody>
   </table>
-        
-        <!-- <div>
-            <button class="formbold-confirm-btn active">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="11" r="10.5" fill="white" stroke="#DDE3EC"/>
-              <g clip-path="url(#clip0_1667_1314)">
-              <path d="M9.83343 12.8509L15.1954 7.48828L16.0208 8.31311L9.83343 14.5005L6.12109 10.7882L6.94593 9.96336L9.83343 12.8509Z" fill="#536387"/>
-              </g>
-              <defs>
-              <clipPath id="clip0_1667_1314">
-              <rect width="14" height="14" fill="white" transform="translate(4 4)"/>
-              </clipPath>
-              </defs>
-              </svg>
-              Yes! I want it.
-            </button>
 
-            <button class="formbold-confirm-btn">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="11" r="10.5" fill="white" stroke="#DDE3EC"/>
-              <g clip-path="url(#clip0_1667_1314)">
-              <path d="M9.83343 12.8509L15.1954 7.48828L16.0208 8.31311L9.83343 14.5005L6.12109 10.7882L6.94593 9.96336L9.83343 12.8509Z" fill="#536387"/>
-              </g>
-              <defs>
-              <clipPath id="clip0_1667_1314">
-              <rect width="14" height="14" fill="white" transform="translate(4 4)"/>
-              </clipPath>
-              </defs>
-              </svg>
-              No! I don’t want it.
-            </button>
-          </div> -->
-          
-          
-    <!-- <button class="btn btn-info m-2">Add New User</button> -->
+  <app-preview-modal  [show]="showPreviewModal" [data]="previewData" (closed)="closePreviewModal()"/>
 </div>
