@@ -35,7 +35,7 @@ export class CrudComponent implements OnInit {
    private generateRandomMobile(): string {
         const firstDigit = Math.floor(Math.random() * 4) + 6; // Generates a random number between 6 and 9
         const remainingDigits = Math.floor(Math.random() * 1000000000); // Generates a random 9-digit number
-        return firstDigit.toString() + remainingDigits.toString().padStart(9, '0'); // Combines the first digit with the remaining digits
+        return  firstDigit.toString() + remainingDigits.toString().padStart(9, '0'); // Combines the first digit with the remaining digits
     }
 
     private generateRandomDepartment(): string {
@@ -47,10 +47,10 @@ export class CrudComponent implements OnInit {
     constructor(private crud: CrudService, private router: Router) { }
 
     ngOnInit(): void {
-        this.getAllData();
+        this.loadAllData();
     }
 
-    getAllData() {
+    loadAllData() {
         this.crud.getData().subscribe(res => {
             this.apiData = res;
             this.filteredApiData = this.apiData;
@@ -79,6 +79,8 @@ export class CrudComponent implements OnInit {
             console.log('Validation failed: Input not alphanumeric');
             this.isSearchInvalid = true;
             this.validationMessage = 'Application ID can only contain letters and numbers.';
+        } else {
+            console.log('Validation failed: Input is correct');
         }
 
         console.log('isSearchInvalid:', this.isSearchInvalid);
@@ -106,11 +108,12 @@ export class CrudComponent implements OnInit {
                     quotatype: 'Dummy Quota',
                     searchedAppId: tempIdString
                 }];
-            }
+        }   
         } else {
             console.log('Validation failed. Clearing results.');
             this.filteredApiData = [];
         }
+
         console.log('filteredApiData:', this.filteredApiData);
     }
 
@@ -126,25 +129,31 @@ export class CrudComponent implements OnInit {
     }
 
    downloadData(data: Iruser) {
-        const doc = new jsPDF();
-        doc.text('User Data', 10, 10);
+        let textContent = `Name: ${data.name}
+`;
+        textContent += `Mobile: ${data.mobile}
+`;
+        textContent += `Application ID: ${data.searchedAppId || data.appid}
+`;
+        textContent += `Department: ${data.department}
+`;
+        textContent += `Email: ${data.email}
+`;
+        textContent += `Father Name: ${data.fathername}
+`;
+        textContent += `Quota Type: ${data.quotatype}
+`;
 
-        // Define the table headers
-        const headers = [['Name', 'Mobile', 'App ID', 'Department', 'Email', 'Father Name', 'Quota Type']];
-
-        // Add the data to the table
-        const dataTable = [
-            [data.name, data.mobile.toString(), data.appid.toString(), data.department, data.email, data.fathername, data.quotatype]
-        ];
-
-        // Use jspdf-autotable plugin to add the table
-        (doc as any).autoTable({
-            head: headers,
-            body: dataTable,
-        });
-
-        doc.save('data.pdf');
-        console.log('Downloading data as PDF:', data);
+        const blob = new Blob([textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        console.log('Downloading data as text file:', data);
     }
 
     onLogout() {

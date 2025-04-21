@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Iruser } from '../iruser';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-preview-modal',
@@ -12,15 +14,16 @@ import { Iruser } from '../iruser';
         <span class="close" (click)="closeModal()">&times;</span>
         <h4>Print Preview:</h4>
         <div *ngIf="data">
-            <p><strong>Name:</strong> {{ data.name }}</p>
-            <p><strong>Mobile:</strong> {{ data.mobile }}</p>
-            <p><strong>Application ID:</strong> {{ data.appid }}</p>
-            <p><strong>Department:</strong> {{ data.department }}</p>
-            <p><strong>Email:</strong> {{data.email}}</p>
-            <p><strong>Father Name:</strong>{{data.fathername}}</p>
-            <p><strong>Quota Type:</strong>{{data.quotatype}}</p>
+          <p><strong>Name:</strong> {{ data.name }}</p>
+          <p><strong>Mobile:</strong> {{ data.mobile }}</p>
+          <p><strong>Application ID:</strong> {{ data.appid }}</p>
+          <p><strong>Department:</strong> {{ data.department }}</p>
+          <p><strong>Email:</strong> {{data.email}}</p>
+          <p><strong>Father Name:</strong> {{data.fathername}}</p>
+          <p><strong>Quota Type:</strong> {{data.quotatype}}</p>
           <!-- Add more fields as needed -->
         </div>
+        <button (click)="downloadData()">Download</button>
         <button (click)="closeModal()">Close</button>
       </div>
     </div>
@@ -58,6 +61,8 @@ import { Iruser } from '../iruser';
     .close:focus {
       color: black;
       text-decoration: none;
+      /* padding: 10px;
+      text-align: center; */
     }
     button {
       padding: 10px 20px;
@@ -77,6 +82,47 @@ export class PreviewModalComponent {
   @Input() show: boolean = false;
   @Input() data: Iruser | null = null;
   @Output() closed = new EventEmitter<void>();
+
+   downloadData() {
+        console.log('downloadData() called in PreviewModalComponent');
+
+        if (!this.data) {
+            console.error('No data to download!');
+            return;
+        }
+
+        console.log('Data to download:', this.data);
+
+        const doc = new jsPDF();
+        doc.text('User Data', 10, 10);
+
+        // Define the table headers
+        const headers = [['Name', 'Mobile', 'App ID', 'Department', 'Email', 'Father Name', 'Quota Type']];
+
+        // Add the data to the table
+        const dataTable = [
+            [this.data.name, this.data.mobile.toString(), this.data.appid.toString(), this.data.department, this.data.email, this.data.fathername, this.data.quotatype]
+        ];
+
+        // Use jspdf-autotable plugin to add the table
+        try {
+            (doc as any).autoTable({
+                head: headers,
+                body: dataTable,
+            });
+            console.log('PDF table generated successfully');
+        } catch (error) {
+            console.error('Error generating PDF table:', error);
+            return;
+        }
+
+        try {
+            doc.save('data.pdf');
+            console.log('PDF saved successfully');
+        } catch (error) {
+            console.error('Error saving PDF:', error);
+        }
+    }
 
   closeModal() {
     this.show = false;
