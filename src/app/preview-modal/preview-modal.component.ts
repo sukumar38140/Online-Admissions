@@ -23,7 +23,6 @@ import 'jspdf-autotable';
           <p><strong>Quota Type:</strong> {{data.quotatype}}</p>
           <!-- Add more fields as needed -->
         </div>
-        <button (click)="downloadData()">Download</button>
         <button (click)="closeModal()">Close</button>
       </div>
     </div>

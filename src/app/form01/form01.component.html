@@ -1,33 +1,408 @@
-<div class="container">
-  <h2>Form 01</h2>
-  <form [formGroup]="form01Form" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" formControlName="name">
-      <div *ngIf="form01Form.get('name')?.invalid && (form01Form.get('name')?.dirty || form01Form.get('name')?.touched)" class="alert alert-danger">
-        Name is required.
-      </div>
-    </div>
+<div class="container-fluid px-1 py-2 mx-auto">
+  <div class="row d-flex justify-content-center text-center">
+      <div class="col-lg-10 col-md-10">
 
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" formControlName="email">
-      <div *ngIf="form01Form.get('email')?.invalid && (form01Form.get('email')?.dirty || form01Form.get('email')?.touched)" class="alert alert-danger">
-        <div *ngIf="form01Form.get('email')?.errors?.['required']">Email is required.</div>
-        <div *ngIf="form01Form.get('email')?.errors?.['email']">Invalid email format.</div>
-      </div>
-    </div>
+          <!-- Step 1: Terms and Conditions -->
+          <div class="card b-0 rounded-0" [class.show]="currentStep === 1">
+              <div class="row justify-content-center mx-auto step-container">
+                  <div class="col-md-2 col-4 step-box active">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">TERMS & CONDITIONS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">PERSONAL DETAILS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">QUALIFIED DETAILS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">PARENT DETAILS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">CONFIRMATION</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">APPLICATION ID</span>
+                      </h6>
+                  </div>
+              </div>
+              <div class="p-3 justify-content-center text-center">
+                  <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Terms and Conditions</u></h4>
+                  <div class="custom-control custom-checkbox mb-4">
+                      <input id="customCheck1" type="checkbox" class="custom-control-input" [(ngModel)]="customCheck1">
+                      <label for="customCheck1" class="custom-control-label">I have READ and AGREE to the following TERMS AND CONDITIONS</label>
+                  </div>
+                  <ol type="1" class="pl-1 text-muted mb-5">
+                      <li class="indented-list-item">I will strictly abide by the rules and regulations of the college in force at all times.</li>
+                      <li class="indented-list-item">I promise to avoid any acts of indiscipline or breach due to carelessness or wantonness from my part.</li>
+                      <li class="indented-list-item">I realize that ragging is a bad practice and I will never indulge in or be a party to ragging in any way.</li>
+                      <li class="indented-list-item">I understand that my admission may stand cancelled if I act in any way that amounts to ragging.</li>
+                      <li class="indented-list-item">I understand that the college has the right to take penal action in case I am associated with ragging.</li>
+                      <li class="indented-list-item">I agree that once the admission is taken it cannot be withdrawn.</li>
+                    </ol>
+                    
+                  <button (click)="nextStep(2)" class="btn btn-success rounded-2 mb-5">START</button>
+              </div>
+          </div>
 
-    <div class="form-group">
-      <label for="mobile">Mobile:</label>
-      <input type="tel" class="form-control" id="mobile" formControlName="mobile">
-      <div *ngIf="form01Form.get('mobile')?.invalid && (form01Form.get('mobile')?.dirty || form01Form.get('mobile')?.touched)" class="alert alert-danger">
-        <div *ngIf="form01Form.get('mobile')?.errors?.['required']">Mobile is required.</div>
-        <div *ngIf="form01Form.get('mobile')?.errors?.['pattern']">Invalid mobile format. Must be 10 digits.</div>
-      </div>
-    </div>
+          <!-- Step 2: Personal Details -->
+          <div class="card b-0 rounded-0" [class.show]="currentStep === 2">
+              <div class="row justify-content-center mx-auto step-container">
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-check"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">TERMS AND CONDITIONS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box step-box active">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">PERSONAL DETAILS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">QUALIFIED DETAILS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box" >
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">PARENT DETAILS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">CONFIRMATION</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">APPLICATION ID</span>
+                      </h6>
+                  </div>
+              </div>
+              <div class="p-3 justify-content-center text-center">
+                  <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Candidate Personal Details</u></h4>
+                  <!-- <h4 class="heading">Personal Details</h4> -->
+                  <div class="row justify-content-center mb-4">
+                      <div class="col-xl-7 col-lg-8 col-10 list text-left">
+                          <label class="text-danger mb-3">* Required</label>
+                          <div class="form-group">
+                              <div>
+                                  <app-perform></app-perform>
+                              </div>
+                              <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+                      <!-- <label class="form-control-label">Full Name * :</label> -->
+                              <!-- <input type="text" id="sub" #sub [(ngModel)]="subject" placeholder="Subject" class="form-control"> -->
+                          </div>
+                          <!-- <div class="form-group">
+                              <label class="form-control-label">Message * :</label>
+                              <textarea type="textarea" id="msg" #msg [(ngModel)]="message" placeholder="Message" class="form-control"></textarea>
+                          </div> -->
+                      </div>
+                  </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="button" class="btn btn-secondary" (click)="closeApplication()">Close</button>
-  </form>
+                  <button (click)="prevStep()" [disabled]="currentStep === 1" class="btn btn-success rounded-0 mb-5 prev">Back</button>
+                  <button id="next2" (click)="nextStep(3)" class="btn btn-success rounded-0 mb-5 next">Next</button>                
+              </div>
+          </div>
+
+
+          <!-- Step 3: Qualification Details -->
+          <div class="card b-0 rounded-0" [class.show]="currentStep === 3">
+              <div class="row justify-content-center mx-auto step-container">
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">TERMS AND CONDITIONS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">PERSONAL DETAILS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box step-box active">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">QUALIFIED DETAILS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">PARENT DETAILS</span>
+                  </h6>
+                </div>
+                 <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">CONFIRMATION</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">APPLICATION ID</span>
+                  </h6>
+                </div>
+              </div>
+              <div class="p-3 justify-content-center text-center">
+                <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Candidate Qualified Details</u></h4>
+                <div class="row justify-content-center mb-4">
+                  <div class="col-xl-7 col-lg-8 col-10 list text-left">
+                    <label class="text-danger mb-3">* Required</label>
+                    <div class="form-group">
+                      <div>
+                        <app-qualform></app-qualform>
+                      </div>
+                      <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+                    </div>
+                  </div>
+                </div>
+                <button (click)="prevStep()" class="btn btn-success rounded-0 mb-5 prev">Back</button>
+                <button id="next3" (click)="nextStep(4)" class="btn btn-success rounded-0 mb-5 next">Next</button>
+              </div>
+            </div>
+
+          <!-- Step 4: Parent -->
+          <div class="card b-0 rounded-0" [class.show]="currentStep === 4">
+              <div class="row justify-content-center mx-auto step-container">
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">TERMS AND CONDITIONS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">PERSONAL DETAILS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">QUALIFIED DETAILS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box active">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">PARENT DETAILS</span>
+                  </h6>
+                </div>
+                 <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">CONFIRMATION</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">APPLICATION ID</span>
+                  </h6>
+                </div>
+              </div>
+              <div class="p-3 justify-content-center text-center">
+                <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Candidate Parent Details</u></h4>
+                <div class="row justify-content-center mb-4">
+                  <div class="col-xl-7 col-lg-8 col-10 list text-left">
+                    <label class="text-danger mb-3">* Required</label>
+                    <div class="form-group">
+                      <div>
+                        <app-partform></app-partform>
+                      </div>
+                      <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+                    </div>
+                  </div>
+                </div>
+                <button (click)="prevStep()" class="btn btn-success rounded-0 mb-5 prev">Back</button>
+                <button id="next3" (click)="nextStep(5)" class="btn btn-success rounded-0 mb-5 next">Confirm</button>
+              </div>
+            </div>
+
+
+          <!-- Step 5: Thank You -->
+          <div class="card b-0 rounded-0" [class.show]="currentStep === 5">
+              <div class="row justify-content-center mx-auto step-container">
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-check"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">TERMS AND CONDITIONS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-check"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">PERSONAL DETAILS</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box step-box">
+                      <h6 class="step-title-0">
+                        <span class="fa fa-check"></span>
+                        <span class="break-line"></span>
+                        <span class="step-title">QUALIFIED DETAILS</span>
+                      </h6>
+                    </div>
+                    <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                        <span class="fa fa-check"></span>
+                        <span class="break-line"></span>
+                        <span class="step-title">PARENT DETAILS</span>
+                      </h6>
+                    </div>    
+                  <div class="col-md-2 col-4 step-box active">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-check"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">CONFIRMATION</span>
+                      </h6>
+                  </div>
+                  <div class="col-md-2 col-4 step-box">
+                      <h6 class="step-title-0">
+                        <span class="fa fa-circle"></span>
+                        <span class="break-line"></span>
+                        <span class="step-title">APPLICATION ID</span>
+                      </h6>
+                    </div>          
+              </div>
+              <div class="p-3 justify-content-center text-center">
+                  <h3 class="heading" style="color: #4863A0; font-weight: 700;"><u>Thank You for choosing MITS College</u></h3>
+                  <div class="row justify-content-center">
+                      <div class="">
+                          <!-- <img src="https://i.imgur.com/GwStPmg.png" class="fit-image mb-5" style="height: 200px; width: 200px;"> -->
+                          <img src="https://i.imgur.com/4Y9xMCF.gif" class="fit-image mb-5" style="height: 200px; width: 200px;">
+                          <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.1 65.1" width="25%" height="25%">
+                              <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="3" stroke-miterlimit="10" cx="32.55" cy="32.55" r="31.05" />
+                              <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" points="50.1,20.1 25.75,44.4 14.9,33.75 " />
+                            </svg> -->
+                          </div>
+                      <div class="col-7 text-center" style="color: green; font-weight: 700;">
+                          <h5>Your information has been submitted Successfully</h5>
+                      </div>
+                      <h6 class="heading" style="color: #810541; font-weight: 700;">
+                          For More Details Contact: 
+                          <a href="https://mits.ac.in/admisson" target="_blank" rel="noopener noreferrer">Admission Department</a>, 
+                          MITS College
+                          <p> Mobile: +91- 8712655132 / 8712655134 / 8712655138 / 9100601116</p>
+                      </h6>
+                  </div>
+                  <button id="next3" (click)="nextStep(6)" class="btn btn-success rounded-0 mb-5 next custom-button-size">Temporary Application ID</button>
+              </div>
+          </div>
+
+          <!-- Step 6: Application ID -->
+          <div class="card b-0 rounded-0" [class.show]="currentStep === 6">
+              <div class="row justify-content-center mx-auto step-container">
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">TERMS AND CONDITIONS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">PERSONAL DETAILS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">QUALIFIED DETAILS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">PARENT DETAILS</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-check"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">CONFIRMATION</span>
+                  </h6>
+                </div>
+                <div class="col-md-2 col-4 step-box active">
+                  <h6 class="step-title-0">
+                    <span class="fa fa-circle"></span>
+                    <span class="break-line"></span>
+                    <span class="step-title">APPLICATION ID</span>
+                  </h6>
+                </div>
+              </div>
+              <div class="p-3 justify-content-center text-center">
+                <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Temporary Application ID</u></h4>
+                <div class="row justify-content-center mb-4">
+                  <div class="col-xl-7 col-lg-8 col-10 list text-left">
+                    <div class="form-group">
+                      <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+                      <div>
+                        <p style="text-align: center; color: #A52A2A; font-size: 28px;">Temporary Application ID is: <strong>{{ temporaryApplicationId }}</strong></p>
+                      </div>
+                      <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
+                      <div><p style="text-align: center; color: red; font-size: 18px;">--- Note: This is a Temporary Application Number --- </p></div>
+                    </div>
+                  </div>
+                </div>
+                <button id="next3" (click)="closeApplication()" class="btn btn-success rounded-0 mb-5 next">Close</button>
+              </div>
+            </div>              
+  </div>
+</div>
 </div>
