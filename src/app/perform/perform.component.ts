@@ -18,7 +18,7 @@ export class PerformComponent implements AfterViewInit {
   email: string = '';
   mobile: string = '';
   dob: string = '';
-  pob: string = '';
+  placeOfBirth: string = '';
   quota: string = '';
   academicYear: string = '';
   branch: string = '';
@@ -31,6 +31,10 @@ export class PerformComponent implements AfterViewInit {
   familySize: string = '';
   bloodGroup: string = '';
   aadhar: string = '';
+  department: string = ''; // Added
+  transport: string = ''; // Added
+  accommodation: string = ''; // Added
+
 
   isHandicapped: boolean | null = null; 
   physicallyChallenged: string = ''; 
@@ -71,12 +75,12 @@ export class PerformComponent implements AfterViewInit {
       this.presentZip = '';
     }
   }
-  
+
 
   currentStep = 1;
   customCheck1 = true;
-  subject = '';
-  message = '';
+  subject: string = '';
+  message: string = '';
 
   formErrors: { [key: string]: string } = {};
   submitted: boolean = false;
@@ -98,7 +102,7 @@ export class PerformComponent implements AfterViewInit {
     if (!this.email) isValid = false;
     if (!this.mobile) isValid = false;
     if (!this.dob) isValid = false;
-    if (!this.pob) isValid = false;
+    if (!this.placeOfBirth) isValid = false;
     if (!this.quota) isValid = false;
     if (!this.academicYear) isValid = false;
     if (!this.branch) isValid = false;
@@ -115,6 +119,10 @@ export class PerformComponent implements AfterViewInit {
     if (!this.communicationCity) isValid = false;
     if (!this.communicationState) isValid = false;
     if (!this.communicationCountry) isValid = false;
+    if (!this.department) isValid = false; // Added
+    if (!this.transport) isValid = false; // Added
+    if (!this.accommodation) isValid = false; // Added
+
 
     // Required field validations
     const requiredFields = {
@@ -122,7 +130,7 @@ export class PerformComponent implements AfterViewInit {
       email: 'Email ID',
       mobile: 'Mobile Number',
       dob: 'Date of Birth',
-      pob: 'Place of Birth',
+      placeOfBirth: 'Place of Birth',
       quota: 'Quota',
       academicYear: 'Academic Year',
       branch: 'Branch',
@@ -139,7 +147,10 @@ export class PerformComponent implements AfterViewInit {
       communicationCity: 'City',
       communicationState: 'State',
       communicationCountry: 'Country',
-      communicationZip: 'Zip Code'
+      communicationZip: 'Zip Code',
+      department: 'Department', // Added
+      transport: 'Transport', // Added
+      accommodation: 'Accommodation' // Added
     };
 
     // Check each required field
@@ -183,7 +194,7 @@ export class PerformComponent implements AfterViewInit {
   prevStep(step: number) {
     this.currentStep = step;
   }
-    
+
   // prevStep() {
   //   this.currentStep--;
   // }

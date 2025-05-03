@@ -33,7 +33,7 @@
     </div>
     <div class="col">
         <label class="form-control-label">Place of Birth *:</label>
-        <input type="text" name="placeOfBirth" [(ngModel)]="placeOfBirth" class="form-control" placeholder="Place of Birth" (input)="convertToUppercase($event)" [class.is-invalid]="submitted && !placeOfBirth" required>
+        <input type="text" name="placeOfBirth" [(ngModel)]="pob" class="form-control" placeholder="Place of Birth" (input)="convertToUppercase($event)" [class.is-invalid]="submitted && !placeOfBirth" required>
         <div class="invalid-feedback" *ngIf="submitted && !placeOfBirth">
             Place of Birth is required
         </div>
