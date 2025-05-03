@@ -1,14 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CrudService } from '../crud.service';
 import { PerformComponent } from '../perform/perform.component';
 import { QualformComponent } from '../qualform/qualform.component';
-import { PartformComponent } from "../partform/partform.component";
-import { RouterModule, Routes, Router } from '@angular/router';
-import { MyloginComponent } from '../mylogin/mylogin.component';
-import { MyregisterComponent } from '../myregister/myregister.component';
-import { NgModule } from '@angular/core';
-import { CrudService } from '../crud.service';
+import { PartformComponent } from '../partform/partform.component';
 
 // const routes: Routes = [
 //   { path: '', component: MyloginComponent },
@@ -19,7 +16,7 @@ import { CrudService } from '../crud.service';
 @Component({
   selector: 'app-form01',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent],
   providers: [CrudService],
   templateUrl: './form01.component.html',
   styleUrl: './form01.component.css'
