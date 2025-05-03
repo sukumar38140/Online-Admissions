@@ -76,9 +76,9 @@ export class Form01Component implements AfterViewInit, OnInit {
     } 
     else if (this.currentStep === 2) {
       // Validate personal details from perform component
-      const performElement = document.querySelector('app-perform');
-      if (performElement && typeof performElement['validateForm'] === 'function') {
-        if (!performElement['validateForm']()) {
+      const performElement = document.querySelector('app-perform') as any;
+      if (performElement?.validateForm && typeof performElement.validateForm === 'function') {
+        if (!performElement.validateForm()) {
           alert('Please fill all required personal details correctly');
           return;
         }
@@ -87,9 +87,9 @@ export class Form01Component implements AfterViewInit, OnInit {
     }
     else if (this.currentStep === 3) {
       // Validate qualification details from qualform component
-      const qualformElement = document.querySelector('app-qualform');
-      if (qualformElement && typeof qualformElement['validateForm'] === 'function') {
-        if (!qualformElement['validateForm']()) {
+      const qualformElement = document.querySelector('app-qualform') as any;
+      if (qualformElement?.validateForm && typeof qualformElement.validateForm === 'function') {
+        if (!qualformElement.validateForm()) {
           alert('Please fill all required qualification details correctly');
           return;
         }
@@ -98,9 +98,9 @@ export class Form01Component implements AfterViewInit, OnInit {
     }
     else if (this.currentStep === 4) {
       // Validate parent details from partform component
-      const partformElement = document.querySelector('app-partform');
-      if (partformElement && typeof partformElement['validateForm'] === 'function') {
-        if (!partformElement['validateForm']()) {
+      const partformElement = document.querySelector('app-partform') as any;
+      if (partformElement?.validateForm && typeof partformElement.validateForm === 'function') {
+        if (!partformElement.validateForm()) {
           alert('Please fill all required parent details correctly');
           return;
         }
