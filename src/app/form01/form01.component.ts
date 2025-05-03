@@ -103,6 +103,9 @@ export class Form01Component implements AfterViewInit, OnInit {
     if (step === 5) {
       this.saveFormData();
     }
+    if (step === 6 && this.confirmationSection) {
+      this.confirmationContent = this.confirmationSection.nativeElement.innerHTML;
+    }
     if (this.currentStep === 1) {
       if (!this.customCheck1) {
         alert('Please agree to the terms and conditions to proceed');
@@ -170,14 +173,6 @@ export class Form01Component implements AfterViewInit, OnInit {
   }
   @ViewChild('confirmationSection') confirmationSection!: ElementRef;
   confirmationContent: string = '';
-
-  nextStep(step: number) {
-    if (step === 6) {
-      // Copy confirmation content before moving to application ID section
-      this.confirmationContent = this.confirmationSection.nativeElement.innerHTML;
-    }
-    this.currentStep = step;
-  }
 
   closeApplication() {
     this.currentStep = 1;
