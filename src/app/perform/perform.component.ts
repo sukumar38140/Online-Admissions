@@ -66,11 +66,11 @@ export class PerformComponent implements AfterViewInit {
 
   copyPermanentAddress() {
     if (this.sameAsPermanent) {
-      this.presentAddress = this.permanentAddress;
-      this.presentCity = this.permanentCity;
-      this.presentState = this.permanentState;
-      this.communicationCountry = this.permanentCountry;
-      this.presentZip = this.permanentZip;
+      this.presentAddress = this.communicationAddress;
+      this.presentCity = this.communicationCity;
+      this.presentState = this.communicationState;
+      this.presentcountry = this.communicationCountry;
+      this.presentZip = this.communicationZip;
     } else {
       this.presentAddress = '';
       this.presentCity = '';
