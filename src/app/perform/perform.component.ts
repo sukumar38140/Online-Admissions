@@ -71,7 +71,7 @@ export class PerformComponent implements AfterViewInit {
       this.presentZip = '';
     }
   }
-  
+
 
   currentStep = 1;
   customCheck1 = true;
@@ -117,7 +117,13 @@ export class PerformComponent implements AfterViewInit {
       communicationCity: 'City',
       communicationState: 'State',
       communicationCountry: 'Country',
-      communicationZip: 'Zip Code'
+      communicationZip: 'Zip Code',
+      permanentAddress: 'Permanent Address',
+      permanentCity: 'Permanent City',
+      permanentState: 'Permanent State',
+      permanentCountry: 'Permanent Country',
+      permanentZip: 'Permanent Zip Code'
+
     };
 
     // Check each required field
@@ -130,17 +136,27 @@ export class PerformComponent implements AfterViewInit {
     });
 
     // Email validation
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (this.email && !emailRegex.test(this.email)) {
-      this.formErrors['email'] = 'Please enter a valid email address';
+    if (this.email && !this.email.trim()) {
+      this.formErrors['email'] = 'Email is required';
       isValid = false;
+    } else {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (this.email && !emailRegex.test(this.email)) {
+        this.formErrors['email'] = 'Please enter a valid email address';
+        isValid = false;
+      }
     }
 
-    // Mobile validation
-    const mobileRegex = /^[0-9]{10}$/;
-    if (this.mobile && !mobileRegex.test(this.mobile.toString())) {
-      this.formErrors['mobile'] = 'Please enter a valid 10-digit mobile number';
+    // Mobile validation  
+    if (!this.mobile || !this.mobile.trim()) {
+      this.formErrors['mobile'] = 'Mobile number is required';
       isValid = false;
+    } else {
+      const mobileRegex = /^[0-9]{10}$/;
+      if (!mobileRegex.test(this.mobile)) {
+        this.formErrors['mobile'] = 'Please enter a valid 10-digit mobile number';
+        isValid = false;
+      }
     }
 
     return isValid;
@@ -161,10 +177,7 @@ export class PerformComponent implements AfterViewInit {
   prevStep(step: number) {
     this.currentStep = step;
   }
-    
-  // prevStep() {
-  //   this.currentStep--;
-  // }
+
 
   onHandicappedChange() {
     if (this.isHandicapped === false) {

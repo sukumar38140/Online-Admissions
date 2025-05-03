@@ -2,27 +2,35 @@
     <div class="form-row">
             <label class="form-control-label">Full Name *:</label>
             <input type="text" id="fullName" name="fullName" [(ngModel)]="fullName" placeholder="Full Name" 
-    class="form-control" [class.is-invalid]="submitted && formErrors['fullName']">
+    class="form-control" [class.is-invalid]="submitted && formErrors['fullName']" required>
 <div class="invalid-feedback" *ngIf="submitted && formErrors['fullName']">
     {{ formErrors['fullName'] }}
 </div>
                 <div class="col">
                     <label class="form-control-label">E-Mail ID *:</label>
-                    <input type="text" class="form-control" placeholder="E-Mail ID">
+                    <input type="email" name="email" [(ngModel)]="email" class="form-control" placeholder="E-Mail ID" 
+                           [class.is-invalid]="submitted && formErrors['email']" required>
+                    <div class="invalid-feedback" *ngIf="submitted && formErrors['email']">
+                        {{ formErrors['email'] }}
+                    </div>
                 </div>
                 <div class="col">
                     <label class="form-control-label">Mobile Number *:</label>
-                    <input type="text" class="form-control" placeholder="Mobile Number">
+                    <input type="text" name="mobile" [(ngModel)]="mobile" class="form-control" placeholder="Mobile Number"
+                           [class.is-invalid]="submitted && formErrors['mobile']" required>
+                    <div class="invalid-feedback" *ngIf="submitted && formErrors['mobile']">
+                        {{ formErrors['mobile'] }}
+                    </div>
                 </div>
     </div>
     <div class="form-row">
     <div class="col">
         <label class="form-control-label">Date of Birth *:</label>
-        <input type="date" class="form-control" placeholder="Date of Birth">
+        <input type="date" class="form-control" placeholder="Date of Birth" required>
     </div>
     <div class="col">
         <label class="form-control-label">Place of Birth *:</label>
-        <input type="text" class="form-control" placeholder="Place of Birth" (input)="convertToUppercase($event)">
+        <input type="text" class="form-control" placeholder="Place of Birth" (input)="convertToUppercase($event)" required>
         <!-- <input type="text" class="form-control" placeholder="Place of Birth"> -->
     </div>
 </div> 
@@ -86,7 +94,7 @@
         </div>
     <div class="col">
         <label class="form-control-label">Religion *:</label>
-        <select class="form-control">
+        <select class="form-control" required>
             <option value="">-- Select Religion --</option>
             <option value="Buddhism">Buddhism</option>
             <option value="Christianity">Christianity</option>
@@ -103,7 +111,7 @@
 <div class="form-row">
     <div class="col">
         <label class="form-control-label">Minority *:</label>
-        <select class="form-control">
+        <select class="form-control" required>
             <option value="">-- Select Minority --</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
@@ -111,7 +119,7 @@
         </div>
     <div class="col">
         <label class="form-control-label">Caste *:</label>
-        <input type="text" class="form-control" placeholder="Caste">
+        <input type="text" class="form-control" placeholder="Caste" required>
         </div>
 </div> 
 
@@ -119,7 +127,7 @@
     <div class="col">
         <label class="form-control-label">Mother Tongue *:</label>
         <!-- <input type="text" class="form-control" placeholder="Nationality"> -->
-        <select class="form-control">
+        <select class="form-control" required>
             <option value="">-- Select Mother Tongue --</option>
             <option value="Assamese">Assamese</option>
             <option value="Bengali">Bengali</option>
@@ -148,7 +156,7 @@
     </div>
     <div class="col">
         <label class="form-control-label">Citizenship *:</label>
-        <input type="text" class="form-control" placeholder="Citizenship">
+        <input type="text" class="form-control" placeholder="Citizenship" required>
         </div>
 </div> 
 
@@ -157,12 +165,12 @@
 <div class="form-row">
     <div class="col">
         <label class="form-control-label">Family Size *:</label>
-        <input type="number" class="form-control" placeholder="Family Size">
+        <input type="number" class="form-control" placeholder="Family Size" required>
     </div>
     <div class="col">
         <label class="form-control-label">Blood Group *:</label>
         <!-- <input type="text" class="form-control" placeholder="Place of Birth"> -->
-        <select class="form-control">
+        <select class="form-control" required>
             <option value="">-- Select Blood Group --</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
@@ -187,28 +195,28 @@
     </div>
     <div class="col">
         <label class="form-control-label">Aadhar Card Number *:</label>
-        <input type="text" class="form-control" placeholder="Aadhar Card Number">
+        <input type="text" class="form-control" placeholder="Aadhar Card Number" required>
     </div>
 </div> 
 
 <div class="form-row">
     <label for="pc1">Accommodation (College Hostel): </label>
     <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="a_yes" name="accommodation"/>
+      <input type="radio" class="custom-control-input" id="a_yes" name="accommodation" required>
       <label class="custom-control-label" for="a_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
     </div>
     <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="a_no" name="accommodation"/>
+      <input type="radio" class="custom-control-input" id="a_no" name="accommodation" required>
       <label class="custom-control-label" for="a_no">No</label>
     </div>
 
     <label for="pc1" style="margin-left: 75px;">Transport (College Bus): </label>
     <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="t_yes" name="transport"/>
+      <input type="radio" class="custom-control-input" id="t_yes" name="transport" required>
       <label class="custom-control-label" for="t_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
     </div>
     <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="t_no" name="transport"/>
+      <input type="radio" class="custom-control-input" id="t_no" name="transport" required>
       <label class="custom-control-label" for="t_no">No</label>
     </div>
 </div> 
@@ -218,18 +226,18 @@
 <div class="form-row" style="margin-top: 20px;">
 <label for="pc1">Handicapped *:</label>
 <div class="custom-control custom-radio">
-<input type="radio" class="custom-control-input" id="p_yes" name="handicapped" [(ngModel)]="isHandicapped" [value]="true" (change)="onHandicappedChange()"/>
+<input type="radio" class="custom-control-input" id="p_yes" name="handicapped" [(ngModel)]="isHandicapped" [value]="true" (change)="onHandicappedChange()" required>
 <label class="custom-control-label" for="p_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
 </div>
 <div class="custom-control custom-radio">
-<input type="radio" class="custom-control-input" id="p_no" name="handicapped" [(ngModel)]="isHandicapped" [value]="false" (change)="onHandicappedChange()"/>
+<input type="radio" class="custom-control-input" id="p_no" name="handicapped" [(ngModel)]="isHandicapped" [value]="false" (change)="onHandicappedChange()" required>
 <label class="custom-control-label" for="p_no">No</label>
 </div>
 </div>
 <div class="form-row" *ngIf="isHandicapped">
 <div class="col">
 <label class="form-control-label">Physically Challenged :</label>
-<select class="form-control" [(ngModel)]="physicallyChallenged">
+<select class="form-control" [(ngModel)]="physicallyChallenged" required>
   <!-- <option value="">-- Select Yes/No --</option> -->
     <option value="yes">Yes</option>
     <option value="no">No</option>
@@ -237,7 +245,7 @@
 </div>
 <div class="col">
 <label class="form-control-label">Visually Challenged :</label>
-<select class="form-control" [(ngModel)]="visuallyChallenged">
+<select class="form-control" [(ngModel)]="visuallyChallenged" required>
   <!-- <option value="">-- Select Yes/No --</option> -->
   <option value="yes">Yes</option>
   <option value="no">No</option>
@@ -250,15 +258,15 @@
     <div class="col">
         <label for="pc2">Address for Communication *:</label>
         <label class="form-control-label">Permanent Address *:</label>
-        <textarea class="form-control" id="communicationAddress" rows="3" [(ngModel)]="communicationAddress"></textarea>
+        <textarea class="form-control" id="communicationAddress" rows="3" [(ngModel)]="communicationAddress" required></textarea>
         <div class="form-group">
             <label for="communicationCity">City</label>
-            <input type="text" class="form-control" id="communicationCity" [(ngModel)]="communicationCity">
+            <input type="text" class="form-control" id="communicationCity" [(ngModel)]="communicationCity" required>
           </div>
           <div class="form-group">
             <label for="communicationState">State</label>
                     <!-- <input type="text" class="form-control" id="communicationState" [(ngModel)]="communicationState"> -->
-                    <select class="form-control" id="communicationState" [(ngModel)]="communicationState">
+                    <select class="form-control" id="communicationState" [(ngModel)]="communicationState" required>
                     <option value="">-- Select a State --</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -293,7 +301,7 @@
           <div class="form-group">
             <label for="communicationCountry">Country</label>
             <!-- <input type="text" class="form-control" id="communicationCountry" [(ngModel)]="communicationCountry"> -->
-            <select class="form-control" id="communicationCountry" [(ngModel)]="communicationCountry">
+            <select class="form-control" id="communicationCountry" [(ngModel)]="communicationCountry" required>
                 <option value=""> -- Select a Country --</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Argentina">Argentina</option>
@@ -357,7 +365,7 @@
           </div>
           <div class="form-group">
             <label for="communicationZip">Zip Code</label>
-            <input type="text" class="form-control" id="communicationZip" [(ngModel)]="communicationZip">
+            <input type="text" class="form-control" id="communicationZip" [(ngModel)]="communicationZip" required>
           </div>
     </div>
     <div class="col">
@@ -368,16 +376,16 @@
                 <!-- <input type="checkbox" class="form-check-input" id="sameAsPermanent" [(ngModel)]="sameAsPermanent" (change)="copyPermanentAddress()"> -->
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="presentAddress" rows="3" [(ngModel)]="presentAddress" [disabled]="sameAsPermanent"></textarea>
+            <textarea class="form-control" id="presentAddress" rows="3" [(ngModel)]="presentAddress" [disabled]="sameAsPermanent" required></textarea>
           </div>
           <div class="form-group">
             <label for="presentCity">City</label>
-            <input type="text" class="form-control" id="presentCity" [(ngModel)]="presentCity" [disabled]="sameAsPermanent">
+            <input type="text" class="form-control" id="presentCity" [(ngModel)]="presentCity" [disabled]="sameAsPermanent" required>
           </div>
           <div class="form-group">
             <label for="presentState">State</label>
             <!-- <input type="text" class="form-control" id="presentState" [(ngModel)]="presentState" [disabled]="sameAsPermanent"> -->
-            <select class="form-control" id="presentState" [(ngModel)]="presentState" [disabled]="sameAsPermanent">
+            <select class="form-control" id="presentState" [(ngModel)]="presentState" [disabled]="sameAsPermanent" required>
                 <option value="">-- Select a State --</option>
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -412,7 +420,7 @@
           <div class="form-group">
             <label for="communicationCountry">Country</label>
             <!-- <input type="text" class="form-control" id="communicationCountry" [(ngModel)]="communicationCountry"> -->
-            <select class="form-control" id="presentcountry" [(ngModel)]="presentcountry">
+            <select class="form-control" id="presentcountry" [(ngModel)]="presentcountry" required>
                 <option value=""> -- Select a Country --</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Argentina">Argentina</option>
@@ -476,8 +484,10 @@
         </div>
           <div class="form-group">
             <label for="presentZip">Zip Code</label>
-            <input type="text" class="form-control" id="presentZip" [(ngModel)]="presentZip" [disabled]="sameAsPermanent">
+            <input type="text" class="form-control" id="presentZip" [(ngModel)]="presentZip" [disabled]="sameAsPermanent" required>
           </div>
         </div>
         <!-- <input type="text" class="form-control" placeholder="Place of Birth"> -->
     </div>
+
+</form>
