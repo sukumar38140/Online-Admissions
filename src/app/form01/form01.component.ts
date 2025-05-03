@@ -55,7 +55,34 @@ export class Form01Component implements AfterViewInit, OnInit {
   subject: string = '';
   message: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private crudService: CrudService) {}
+
+  saveFormData() {
+    // Get data from child components
+    const performElement = document.querySelector('app-perform') as any;
+    const qualformElement = document.querySelector('app-qualform') as any;
+    const partformElement = document.querySelector('app-partform') as any;
+
+    const formData = {
+      id: Math.floor(Math.random() * 1000),
+      appid: this.temporaryApplicationId,
+      name: performElement?.name || '',
+      mobile: performElement?.mobile || '',
+      email: performElement?.email || '',
+      department: qualformElement?.qualifyingExam || '',
+      fathername: partformElement?.fatherName || '',
+      quotatype: qualformElement?.allocatedCategory || ''
+    };
+
+    this.crudService.createData(formData).subscribe({
+      next: (response) => {
+        console.log('Form data saved successfully', response);
+      },
+      error: (error) => {
+        console.error('Error saving form data', error);
+      }
+    });
+  }
 
   onHandicappedChange() {
     if (this.isHandicapped === false) {
