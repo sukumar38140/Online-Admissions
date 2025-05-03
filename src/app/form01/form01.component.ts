@@ -168,10 +168,20 @@ export class Form01Component implements AfterViewInit, OnInit {
     }
     return true;
   }
+  @ViewChild('confirmationSection') confirmationSection!: ElementRef;
+  confirmationContent: string = '';
+
+  nextStep(step: number) {
+    if (step === 6) {
+      // Copy confirmation content before moving to application ID section
+      this.confirmationContent = this.confirmationSection.nativeElement.innerHTML;
+    }
+    this.currentStep = step;
+  }
+
   closeApplication() {
-    // Add logic to close the application (e.g., clear form, navigate)
-    this.currentStep = 1; // Example: go back to step 1
-    this.temporaryApplicationId = ''; 
+    this.currentStep = 1;
+    this.temporaryApplicationId = '';
     console.log('Application closed.');
     this.router.navigate(['/mylogin']);
   }

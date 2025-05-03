@@ -265,7 +265,7 @@
             </div>
 
 
-          <!-- Step 5: Thank You -->
+          <!-- Step 5: Confirmation -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 5">
               <div class="row justify-content-center mx-auto step-container">
                   <div class="col-md-2 col-4 step-box" (click)="goToStep(1)">
@@ -282,6 +282,35 @@
                           <span class="step-title">PERSONAL DETAILS</span>
                       </h6>
                   </div>
+                  <div class="row justify-content-center">
+                      <div class="confirmation-content" #confirmationSection>
+                          <p style="text-align: center; color: #A52A2A; font-size: 28px; margin-bottom: 20px;">Your Application ID: <strong>{{ temporaryApplicationId }}</strong></p>
+                          <button (click)="prevStep()" class="btn btn-success rounded-0 mb-5 prev">Back</button>
+                          <button (click)="nextStep(6)" class="btn btn-success rounded-0 mb-5 next">Next</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Step 6: Application ID -->
+          <div class="card b-0 rounded-0" [class.show]="currentStep === 6">
+              <div class="row justify-content-center mx-auto step-container">
+                  <div class="application-id-content">
+                      <div [innerHTML]="confirmationContent"></div>
+                      <div class="col-7 text-center" style="color: green; font-weight: 700;">
+                          <h5>Your information has been submitted Successfully</h5>
+                          <p style="color: red; font-size: 16px;">Please save your Application ID for future reference</p>
+                      </div>
+                      <h6 class="heading" style="color: #810541; font-weight: 700;">
+                          For More Details Contact: 
+                          <a href="https://mits.ac.in/admisson" target="_blank" rel="noopener noreferrer">Admission Department</a>, 
+                          MITS College
+                          <p> Mobile: +91- 8712655132 / 8712655134 / 8712655138 / 9100601116</p>
+                      </h6>
+                      <button id="close" (click)="closeApplication()" class="btn btn-success rounded-0 mb-5">Close</button>
+                  </div>
+              </div>
+          </div>
                   <div class="col-md-2 col-4 step-box" (click)="goToStep(3)">
                       <h6 class="step-title-0">
                         <span class="fa fa-check"></span>
