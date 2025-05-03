@@ -49,7 +49,7 @@ import 'jspdf-autotable';
           </div>
         </div>
         <div class="button-group">
-          <button class="print-button" (click)="downloadData()">Print</button>
+          <button class="print-button" (click)="printData()">Print</button>
           <button class="close-button" (click)="closeModal()">Close</button>
         </div>
       </div>
@@ -137,8 +137,16 @@ import 'jspdf-autotable';
       }
       .modal-content {
         margin: 0;
-        padding: 0;
+        padding: 20px;
         border: none;
+        box-shadow: none;
+      }
+      .print-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .data-grid {
+        page-break-inside: avoid;
       }
     }
   `]
@@ -147,6 +155,10 @@ export class PreviewModalComponent {
   @Input() show: boolean = false;
   @Input() data: Iruser | null = null;
   @Output() closed = new EventEmitter<void>();
+
+  printData() {
+    window.print();
+  }
 
   downloadData() {
     if (!this.data) {
