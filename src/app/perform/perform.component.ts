@@ -21,16 +21,22 @@ export class PerformComponent implements AfterViewInit {
   pob: string = '';
   quota: string = '';
   academicYear: string = '';
+  // Form fields
   branch: string = '';
   nationality: string = '';
   religion: string = '';
   minority: string = '';
   caste: string = '';
   motherTongue: string = '';
-  citizenship: string = '';
-  familySize: string = '';
   bloodGroup: string = '';
-  aadhar: string = '';
+  panCardNo: string = '';
+  aadharNo: string = '';
+  passportNo: string = '';
+  accommodation: boolean | undefined;
+  transport: boolean | undefined;
+  handicapped: boolean | undefined;
+  submitted: boolean = false;
+
 
   isHandicapped: boolean | null = null; 
   physicallyChallenged: string = ''; 
@@ -79,7 +85,7 @@ export class PerformComponent implements AfterViewInit {
   message = '';
 
   formErrors: { [key: string]: string } = {};
-  submitted: boolean = false;
+  
 
   ngAfterViewInit() {
   }
@@ -89,10 +95,34 @@ export class PerformComponent implements AfterViewInit {
     inputElement.value = inputElement.value.toUpperCase();
   }
 
+  isPANValid(): boolean {
+    if (!this.panCardNo) return true;
+    const panRegex = /[A-Z]{5}[0-9]{4}[A-Z]{1}/;
+    return panRegex.test(this.panCardNo);
+  }
+
+  isAadharValid(): boolean {
+    if (!this.aadharNo) return false;
+    return /^[0-9]{12}$/.test(this.aadharNo);
+  }
+
   validateForm(): boolean {
     this.submitted = true;
-    this.formErrors = {};
-    let isValid = true;
+
+    // Required fields validation
+    if (!this.branch || !this.nationality || !this.religion || 
+        !this.minority || !this.caste || !this.motherTongue || 
+        !this.bloodGroup || !this.isAadharValid() ||
+        this.accommodation === undefined || 
+        this.transport === undefined || 
+        this.handicapped === undefined) {
+      return false;
+    }
+
+    // Optional PAN validation
+    if (this.panCardNo && !this.isPANValid()) {
+      return false;
+    }
 
     // Required field validations
     const requiredFields = {
@@ -103,16 +133,6 @@ export class PerformComponent implements AfterViewInit {
       pob: 'Place of Birth',
       quota: 'Quota',
       academicYear: 'Academic Year',
-      branch: 'Branch',
-      nationality: 'Nationality',
-      religion: 'Religion',
-      minority: 'Minority',
-      caste: 'Caste',
-      motherTongue: 'Mother Tongue',
-      citizenship: 'Citizenship',
-      familySize: 'Family Size',
-      bloodGroup: 'Blood Group',
-      aadhar: 'Aadhar Card Number',
       communicationAddress: 'Communication Address',
       communicationCity: 'City',
       communicationState: 'State',
@@ -131,35 +151,30 @@ export class PerformComponent implements AfterViewInit {
       const value = (this as any)[field];
       if (!value || (typeof value === 'string' && value.trim() === '')) {
         this.formErrors[field] = `${label} is required`;
-        isValid = false;
       }
     });
 
     // Email validation
     if (this.email && !this.email.trim()) {
       this.formErrors['email'] = 'Email is required';
-      isValid = false;
     } else {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (this.email && !emailRegex.test(this.email)) {
         this.formErrors['email'] = 'Please enter a valid email address';
-        isValid = false;
       }
     }
 
     // Mobile validation  
     if (!this.mobile || !this.mobile.trim()) {
       this.formErrors['mobile'] = 'Mobile number is required';
-      isValid = false;
     } else {
       const mobileRegex = /^[0-9]{10}$/;
       if (!mobileRegex.test(this.mobile)) {
         this.formErrors['mobile'] = 'Please enter a valid 10-digit mobile number';
-        isValid = false;
       }
     }
 
-    return isValid;
+    return Object.keys(this.formErrors).length === 0;
   }
 
   nextStep(step: number) {

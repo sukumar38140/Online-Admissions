@@ -101,170 +101,149 @@
 
 <hr class="mb-4" style="margin-top: 40px; margin-bottom: 10px;">
 
-<div class="form-row" style="margin-top: 20px;">
-    <div class="col">
-        <label class="form-control-label">Nationality *:</label>
-        <input type="text" class="form-control" placeholder="Nationality" required (input)="convertToUppercase($event)">
-        </div>
-    <div class="col">
-        <label class="form-control-label">Religion *:</label>
-        <select class="form-control" required>
-            <option value="">-- Select Religion --</option>
-            <option value="Buddhism">Buddhism</option>
-            <option value="Christianity">Christianity</option>
-            <option value="Hinduism">Hinduism</option>
-            <option value="Islam">Islam</option>
-            <option value="Jainism">Jainism</option>
-            <option value="Secular">Secular</option>
-            <option value="Sikhism">Sikhism</option>
-            <option value="Spiritism">Spiritism</option>
-        </select>
-    </div>
-</div> 
+<div class="form-row mt-3">
+  <div class="col-md-4">
+    <label class="form-control-label">Branch *:</label>
+    <select class="form-control" name="branch" [(ngModel)]="branch" [class.is-invalid]="submitted && !branch" required>
+      <option value="">-- Select Branch here --</option>
+      <option value="CSE">Computer Science Engineering</option>
+      <option value="ECE">Electronics & Communication Engineering</option>
+      <option value="EEE">Electrical & Electronics Engineering</option>
+      <option value="MECH">Mechanical Engineering</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && !branch">Branch is required</div>
+  </div>
 
-<div class="form-row">
-    <div class="col">
-        <label class="form-control-label">Minority *:</label>
-        <select class="form-control" required>
-            <option value="">-- Select Minority --</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-    <div class="col">
-        <label class="form-control-label">Caste *:</label>
-        <input type="text" class="form-control" placeholder="Caste" required>
-        </div>
-</div> 
+  <div class="col-md-4">
+    <label class="form-control-label">Nationality *:</label>
+    <input type="text" class="form-control" name="nationality" [(ngModel)]="nationality" [class.is-invalid]="submitted && !nationality" required>
+    <div class="invalid-feedback" *ngIf="submitted && !nationality">Nationality is required</div>
+  </div>
 
-<div class="form-row">
-    <div class="col">
-        <label class="form-control-label">Mother Tongue *:</label>
-        <!-- <input type="text" class="form-control" placeholder="Nationality"> -->
-        <select class="form-control" required>
-            <option value="">-- Select Mother Tongue --</option>
-            <option value="Assamese">Assamese</option>
-            <option value="Bengali">Bengali</option>
-            <option value="Bodo">Bodo</option>
-            <option value="Dogri">Dogri</option>
-            <option value="English">English</option>
-            <option value="Gujarati">Gujarati</option>
-            <option value="Hindi">Hindi</option>
-            <option value="Kannada">Kannada</option>
-            <option value="Kashmiri">Kashmiri</option>
-            <option value="Konkani">Konkani</option>
-            <option value="Maithili">Maithili</option>
-            <option value="Malayalam">Malayalam</option>
-            <option value="Manipuri">Manipuri</option>
-            <option value="Marathi">Marathi</option>
-            <option value="Nepali">Nepali</option>
-            <option value="Odia">Odia</option>
-            <option value="Punjabi">Punjabi</option>
-            <option value="Sanskrit">Sanskrit</option>
-            <option value="Santali">Santali</option>
-            <option value="Sindhi">Sindhi</option>
-            <option value="Tamil">Tamil</option>
-            <option value="Telugu">Telugu</option>
-            <option value="Urdu">Urdu</option>
-        </select>
-    </div>
-    <div class="col">
-        <label class="form-control-label">Citizenship *:</label>
-        <input type="text" class="form-control" placeholder="Citizenship" required>
-        </div>
-</div> 
-
-<hr class="mb-4" style="margin-top: 10px; margin-bottom: 10px;">
-
-<div class="form-row">
-    <div class="col">
-        <label class="form-control-label">Family Size *:</label>
-        <input type="number" class="form-control" placeholder="Family Size" required>
-    </div>
-    <div class="col">
-        <label class="form-control-label">Blood Group *:</label>
-        <!-- <input type="text" class="form-control" placeholder="Place of Birth"> -->
-        <select class="form-control" required>
-            <option value="">-- Select Blood Group --</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-        </select>
-    </div>
-</div> 
-
-<div class="form-row">
-    <div class="col">
-        <label class="form-control-label">PAN Card No. :</label>
-        <input type="text" class="form-control" placeholder="PAN Card Number">
-    </div>
-    <div class="col">
-        <label class="form-control-label">Passport No. :</label>
-        <input type="text" class="form-control" placeholder="Passport Number">
-    </div>
-    <div class="col">
-        <label class="form-control-label">Aadhar Card Number *:</label>
-        <input type="text" class="form-control" placeholder="Aadhar Card Number" required>
-    </div>
-</div> 
-
-<div class="form-row">
-    <label for="pc1">Accommodation (College Hostel): </label>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="a_yes" name="accommodation" required>
-      <label class="custom-control-label" for="a_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="a_no" name="accommodation" required>
-      <label class="custom-control-label" for="a_no">No</label>
-    </div>
-
-    <label for="pc1" style="margin-left: 75px;">Transport (College Bus): </label>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="t_yes" name="transport" required>
-      <label class="custom-control-label" for="t_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="t_no" name="transport" required>
-      <label class="custom-control-label" for="t_no">No</label>
-    </div>
-</div> 
-
-<hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
-
-<div class="form-row" style="margin-top: 20px;">
-<label for="pc1">Handicapped *:</label>
-<div class="custom-control custom-radio">
-<input type="radio" class="custom-control-input" id="p_yes" name="handicapped" [(ngModel)]="isHandicapped" [value]="true" (change)="onHandicappedChange()" required>
-<label class="custom-control-label" for="p_yes" style="margin-left: 10px; margin-right: 10px;">Yes</label>
+  <div class="col-md-4">
+    <label class="form-control-label">Religion *:</label>
+    <select class="form-control" name="religion" [(ngModel)]="religion" [class.is-invalid]="submitted && !religion" required>
+      <option value="">-- Select Religion --</option>
+      <option value="Hindu">Hindu</option>
+      <option value="Muslim">Muslim</option>
+      <option value="Christian">Christian</option>
+      <option value="Sikh">Sikh</option>
+      <option value="Others">Others</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && !religion">Religion is required</div>
+  </div>
 </div>
-<div class="custom-control custom-radio">
-<input type="radio" class="custom-control-input" id="p_no" name="handicapped" [(ngModel)]="isHandicapped" [value]="false" (change)="onHandicappedChange()" required>
-<label class="custom-control-label" for="p_no">No</label>
+
+<div class="form-row mt-3">
+  <div class="col-md-4">
+    <label class="form-control-label">Minority *:</label>
+    <select class="form-control" name="minority" [(ngModel)]="minority" [class.is-invalid]="submitted && !minority" required>
+      <option value="">-- Select Minority --</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && !minority">Minority status is required</div>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-control-label">Caste *:</label>
+    <input type="text" class="form-control" name="caste" [(ngModel)]="caste" [class.is-invalid]="submitted && !caste" required>
+    <div class="invalid-feedback" *ngIf="submitted && !caste">Caste is required</div>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-control-label">Mother Tongue *:</label>
+    <select class="form-control" name="motherTongue" [(ngModel)]="motherTongue" [class.is-invalid]="submitted && !motherTongue" required>
+      <option value="">-- Select Mother Tongue --</option>
+      <option value="Telugu">Telugu</option>
+      <option value="Hindi">Hindi</option>
+      <option value="English">English</option>
+      <option value="Tamil">Tamil</option>
+      <option value="Others">Others</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && !motherTongue">Mother tongue is required</div>
+  </div>
 </div>
+
+<div class="form-row mt-3">
+  <div class="col-md-3">
+    <label class="form-control-label">Citizenship *:</label>
+    <input type="text" class="form-control" name="citizenship" [(ngModel)]="citizenship" [class.is-invalid]="submitted && !citizenship" required>
+    <div class="invalid-feedback" *ngIf="submitted && !citizenship">Citizenship is required</div>
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-control-label">Family Size *:</label>
+    <input type="number" class="form-control" name="familySize" [(ngModel)]="familySize" [class.is-invalid]="submitted && !familySize" required>
+    <div class="invalid-feedback" *ngIf="submitted && !familySize">Family size is required</div>
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-control-label">Blood Group *:</label>
+    <select class="form-control" name="bloodGroup" [(ngModel)]="bloodGroup" [class.is-invalid]="submitted && !bloodGroup" required>
+      <option value="">-- Select Blood Group --</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && !bloodGroup">Blood group is required</div>
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-control-label">PAN Card No.:</label>
+    <input type="text" class="form-control" name="panCardNo" [(ngModel)]="panCardNo" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" [class.is-invalid]="submitted && panCardNo && !isPANValid()">
+    <div class="invalid-feedback" *ngIf="submitted && panCardNo && !isPANValid()">Invalid PAN Card format</div>
+  </div>
 </div>
-<div class="form-row" *ngIf="isHandicapped">
-<div class="col">
-<label class="form-control-label">Physically Challenged :</label>
-<select class="form-control" [(ngModel)]="physicallyChallenged" required>
-  <!-- <option value="">-- Select Yes/No --</option> -->
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-</select>
+
+<div class="form-row mt-3">
+  <div class="col-md-4">
+    <label class="form-control-label">Aadhar Card Number *:</label>
+    <input type="text" class="form-control" name="aadharNo" [(ngModel)]="aadharNo" pattern="[0-9]{12}" [class.is-invalid]="submitted && !isAadharValid()" required>
+    <div class="invalid-feedback" *ngIf="submitted && !isAadharValid()">Please enter valid 12-digit Aadhar number</div>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-control-label">Passport No.:</label>
+    <input type="text" class="form-control" name="passportNo" [(ngModel)]="passportNo">
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-control-label">Accommodation (College Hostel) *:</label>
+    <select class="form-control" name="accommodation" [(ngModel)]="accommodation" [class.is-invalid]="submitted && accommodation === undefined" required>
+      <option value="">-- Select Option --</option>
+      <option [ngValue]="true">Yes</option>
+      <option [ngValue]="false">No</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && accommodation === undefined">Please select accommodation preference</div>
+  </div>
 </div>
-<div class="col">
-<label class="form-control-label">Visually Challenged :</label>
-<select class="form-control" [(ngModel)]="visuallyChallenged" required>
-  <!-- <option value="">-- Select Yes/No --</option> -->
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
-</select>
-</div>
+
+<div class="form-row mt-3">
+  <div class="col-md-4">
+    <label class="form-control-label">Transport (College Bus) *:</label>
+    <select class="form-control" name="transport" [(ngModel)]="transport" [class.is-invalid]="submitted && transport === undefined" required>
+      <option value="">-- Select Option --</option>
+      <option [ngValue]="true">Yes</option>
+      <option [ngValue]="false">No</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && transport === undefined">Please select transport preference</div>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-control-label">Handicapped *:</label>
+    <select class="form-control" name="handicapped" [(ngModel)]="handicapped" [class.is-invalid]="submitted && handicapped === undefined" required>
+      <option value="">-- Select Option --</option>
+      <option [ngValue]="true">Yes</option>
+      <option [ngValue]="false">No</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="submitted && handicapped === undefined">Please select handicapped status</div>
+  </div>
 </div>
 <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
 
