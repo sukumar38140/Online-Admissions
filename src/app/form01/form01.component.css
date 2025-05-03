@@ -37,6 +37,14 @@ body {
     border-left: 1px solid lightgrey;
     border-right: 1px solid lightgrey;
     background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
 .fa-circle {
@@ -72,11 +80,6 @@ body {
     border-right: 1px solid #2196F3;
 }
 
-/* .active .fa-circle {
-    background-color: #fff !important;
-    color: #2196F3;
-} */
-
 
 .fa-check {
     background-color: #12AD2B;
@@ -98,14 +101,6 @@ body {
     align-items: center;
     background-color: #12AD2B;
 }
-
-
-/* .fa-check {
-    border-radius: 50%;
-    background-color: #00C853;
-    color: #fff;
-    padding: 3px;
-} */
 
 .step-title-0 {
     margin-bottom: 0px;
@@ -170,8 +165,6 @@ button {
     text-align: left;
     color: #A52A2A;
     font-weight: "800";
-     /* class="indented-list-item"; */
-
 }
 
 @media screen and (max-width: 768px) {

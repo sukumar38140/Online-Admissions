@@ -186,6 +186,13 @@ export class Form01Component implements AfterViewInit, OnInit {
     this.temporaryApplicationId = ''; 
     console.log('Application closed.');
     this.router.navigate(['/mylogin']);
-  }  
+  }
+
+  goToStep(step: number) {
+    if (step <= this.currentStep) {
+      this.currentStep = step;
+    }
+  }
+  
   temporaryApplicationId: string = 'MITS-6925';  
 }
