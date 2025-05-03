@@ -11,10 +11,10 @@ import 'jspdf-autotable';
   imports: [CommonModule],
   template: `
     <div *ngIf="show" class="modal">
-      <div class="modal-content">
+      <div class="modal-content print-view">
         <div class="print-header">
           <img src="../../public/images/college_logo.png" alt="College Logo" class="logo">
-          <h2>Student Information</h2>
+          <h2>Student Information Preview</h2>
         </div>
         <div class="print-body">
           <div *ngIf="data" class="data-grid">
@@ -49,7 +49,8 @@ import 'jspdf-autotable';
           </div>
         </div>
         <div class="button-group">
-          <button class="print-button" (click)="downloadData()">Print</button>
+          <button class="print-button" (click)="window.print()">Print</button>
+          <button class="download-button" (click)="downloadData()">Download PDF</button>
           <button class="close-button" (click)="closeModal()">Close</button>
         </div>
       </div>
@@ -79,8 +80,8 @@ import 'jspdf-autotable';
     .print-header {
       text-align: center;
       margin-bottom: 30px;
-      border-bottom: 2px solid #333;
       padding-bottom: 20px;
+      border-bottom: 2px solid #333;
     }
     .logo {
       max-width: 150px;
@@ -112,7 +113,7 @@ import 'jspdf-autotable';
       gap: 15px;
       margin-top: 30px;
     }
-    .print-button, .close-button {
+    button {
       padding: 10px 20px;
       border: none;
       border-radius: 4px;
@@ -123,22 +124,33 @@ import 'jspdf-autotable';
       background-color: #4CAF50;
       color: white;
     }
+    .download-button {
+      background-color: #2196F3;
+      color: white;
+    }
     .close-button {
       background-color: #f44336;
       color: white;
     }
     @media print {
-      .button-group {
-        display: none;
-      }
       .modal {
-        position: static;
+        position: absolute;
         background: none;
       }
       .modal-content {
         margin: 0;
         padding: 0;
         border: none;
+        box-shadow: none;
+      }
+      .button-group {
+        display: none;
+      }
+      .print-header {
+        margin-bottom: 20px;
+      }
+      .data-row {
+        page-break-inside: avoid;
       }
     }
   `]
@@ -147,6 +159,7 @@ export class PreviewModalComponent {
   @Input() show: boolean = false;
   @Input() data: Iruser | null = null;
   @Output() closed = new EventEmitter<void>();
+  window = window;
 
   downloadData() {
     if (!this.data) {
