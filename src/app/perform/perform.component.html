@@ -81,9 +81,21 @@
 
 <div class="form-row">
     <div class="col">
-        <label style="margin-top: 15px;" >Branch *:</label> Engineering : Artificial Intelligence & Machine Learning-33">Department of Computer Science & Engineering - Artificial Intelligence & Machine Learning</option>
-        <option value="Department of Computer Science & Technology-28">Department of Computer Science & Technology</option>
-    </select>
+        <label style="margin-top: 15px;">Branch *:</label>
+        <select name="branch" class="form-control" [(ngModel)]="branch" [class.is-invalid]="submitted && !branch" required>
+            <option value="">-- Select Branch here --</option>
+            <option value="Department of Civil Engineering-01">Department of Civil Engineering</option>
+            <option value="Department of Electrical & Electronics Engineering -02">Department of Electrical & Electronics Engineering</option>
+            <option value="Department of Mechanical Engineering-03">Department of Mechanical Engineering</option>
+            <option value="Department of Electronics & Communication Engineering-04">Department of Electronics & Communication Engineering</option>
+            <option value="Department of Computer Science & Engineering-05">Department of Computer Science & Engineering</option>
+            <option value="Department of Computer Science & Engineering : Artificial Intelligence-31">Department of Computer Science & Engineering - Artificial Intelligence</option>
+            <option value="Department of Computer Science & Engineering : Data Science-32">Department of Computer Science & Engineering - Data Science</option>
+            <option value="Department of Computer Science & Engineering : Cyber Security-37">Department of Computer Science & Engineering - Cyber Security</option>
+            <option value="Department of Computer Science & Engineering : Networks-40">Department of Computer Science & Engineering Networks</option>
+            <option value="Department of Computer Science & Engineering : Artificial Intelligence & Machine Learning-33">Department of Computer Science & Engineering - Artificial Intelligence & Machine Learning</option>
+            <option value="Department of Computer Science & Technology-28">Department of Computer Science & Technology</option>
+        </select>
     </div>
 </div> 
 
