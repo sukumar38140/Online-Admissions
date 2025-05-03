@@ -19,6 +19,7 @@ export class PerformComponent implements AfterViewInit {
   mobile: string = '';
   dob: string = '';
   placeOfBirth: string = '';
+  pob: string = '';
   quota: string = '';
   academicYear: string = '';
   branch: string = '';
