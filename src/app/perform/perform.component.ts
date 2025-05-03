@@ -14,21 +14,29 @@ export class PerformComponent implements AfterViewInit {
   @ViewChild('sub') subInput!: ElementRef;
   @ViewChild('msg') msgInput!: ElementRef;
 
+  fullName: string = '';
+  email: string = '';
+  mobile: string = '';
+  dob: string = '';
+  pob: string = '';
+  quota: string = '';
+  academicYear: string = '';
+  branch: string = '';
+  nationality: string = '';
+  religion: string = '';
+  minority: string = '';
+  caste: string = '';
+  motherTongue: string = '';
+  citizenship: string = '';
+  familySize: string = '';
+  bloodGroup: string = '';
+  aadhar: string = '';
+
   isHandicapped: boolean | null = null; 
   physicallyChallenged: string = ''; 
   visuallyChallenged: string = ''; 
 
-  constructor() {}
-
-  // Function to handle changes in the "Handicapped" radio buttons
-  onHandicappedChange() {
-    if (this.isHandicapped === false) {
-      // Reset dropdown values if "No" is selected
-      this.physicallyChallenged = '';
-      this.visuallyChallenged = '';
-    }
-  }
-communicationAddress: string = '';
+  communicationAddress: string = '';
   communicationCity: string = '';
   communicationState: string = '';
   communicationCountry: string = '';
@@ -70,6 +78,9 @@ communicationAddress: string = '';
   subject = '';
   message = '';
 
+  formErrors: { [key: string]: string } = {};
+  submitted: boolean = false;
+
   ngAfterViewInit() {
   }
 
@@ -78,11 +89,68 @@ communicationAddress: string = '';
     inputElement.value = inputElement.value.toUpperCase();
   }
 
+  validateForm(): boolean {
+    this.submitted = true;
+    this.formErrors = {};
+    let isValid = true;
+
+    // Required field validations
+    const requiredFields = {
+      fullName: 'Full Name',
+      email: 'Email ID',
+      mobile: 'Mobile Number',
+      dob: 'Date of Birth',
+      pob: 'Place of Birth',
+      quota: 'Quota',
+      academicYear: 'Academic Year',
+      branch: 'Branch',
+      nationality: 'Nationality',
+      religion: 'Religion',
+      minority: 'Minority',
+      caste: 'Caste',
+      motherTongue: 'Mother Tongue',
+      citizenship: 'Citizenship',
+      familySize: 'Family Size',
+      bloodGroup: 'Blood Group',
+      aadhar: 'Aadhar Card Number',
+      communicationAddress: 'Communication Address',
+      communicationCity: 'City',
+      communicationState: 'State',
+      communicationCountry: 'Country',
+      communicationZip: 'Zip Code'
+    };
+
+    // Check each required field
+    Object.entries(requiredFields).forEach(([field, label]) => {
+      const value = (this as any)[field];
+      if (!value || (typeof value === 'string' && value.trim() === '')) {
+        this.formErrors[field] = `${label} is required`;
+        isValid = false;
+      }
+    });
+
+    // Email validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (this.email && !emailRegex.test(this.email)) {
+      this.formErrors['email'] = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    // Mobile validation
+    const mobileRegex = /^[0-9]{10}$/;
+    if (this.mobile && !mobileRegex.test(this.mobile.toString())) {
+      this.formErrors['mobile'] = 'Please enter a valid 10-digit mobile number';
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
   nextStep(step: number) {
     if (this.currentStep === 1 && this.customCheck1) {
       this.currentStep = step;
     } else if (this.currentStep === 2) {
-      if (this.validate(0)) {
+      if (this.validateForm()) {
         this.currentStep = step;
       }
     } else if (this.currentStep === 3) {
@@ -98,50 +166,11 @@ communicationAddress: string = '';
   //   this.currentStep--;
   // }
 
-  validate(val: number): boolean {
-    let flag = true;
-
-    if (val >= 1 || val === 0) {
-      if (!this.subject) {
-        if (this.subInput) {
-          this.subInput.nativeElement.style.borderColor = 'red';
-        }
-        flag = false;
-      } else {
-        if (this.subInput) {
-          this.subInput.nativeElement.style.borderColor = 'green';
-        }
-        flag = true;
-      }
+  onHandicappedChange() {
+    if (this.isHandicapped === false) {
+      // Reset dropdown values if "No" is selected
+      this.physicallyChallenged = '';
+      this.visuallyChallenged = '';
     }
-
-    if (val >= 2 || val === 0) {
-      if (!this.message) {
-        if (this.msgInput) {
-          this.msgInput.nativeElement.style.borderColor = 'red';
-        }
-        flag = false;
-      } else {
-        if (this.msgInput) {
-          this.msgInput.nativeElement.style.borderColor = 'green';
-        }
-        flag = true;
-      }
-    }
-    if (val >= 3 || val === 0) {
-      if (!this.message) {
-        if (this.msgInput) {
-          this.msgInput.nativeElement.style.borderColor = 'red';
-        }
-        flag = false;
-      } else {
-        if (this.msgInput) {
-          this.msgInput.nativeElement.style.borderColor = 'green';
-        }
-        flag = true;
-      }
-    }
-
-    return flag;
   }
 }

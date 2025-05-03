@@ -1,7 +1,11 @@
 <form>
     <div class="form-row">
             <label class="form-control-label">Full Name *:</label>
-            <input type="text" id="fullName" placeholder="Full Name" class="form-control">
+            <input type="text" id="fullName" name="fullName" [(ngModel)]="fullName" placeholder="Full Name" 
+    class="form-control" [class.is-invalid]="submitted && formErrors['fullName']">
+<div class="invalid-feedback" *ngIf="submitted && formErrors['fullName']">
+    {{ formErrors['fullName'] }}
+</div>
                 <div class="col">
                     <label class="form-control-label">E-Mail ID *:</label>
                     <input type="text" class="form-control" placeholder="E-Mail ID">
