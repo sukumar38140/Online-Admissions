@@ -72,12 +72,12 @@ export class Form01Component implements AfterViewInit, OnInit {
     const formData = {
       id: Math.floor(Math.random() * 1000),
       appid: parseInt(this.temporaryApplicationId.replace('MITS-', '')),
-      name: performElement?.name || '',
-      mobile: performElement?.mobile || '',
-      email: performElement?.email || '',
-      department: qualformElement?.qualifyingExam || '',
-      fathername: partformElement?.fatherName || '',
-      quotatype: qualformElement?.allocatedCategory || ''
+      name: this.performElement?.name || '',
+      mobile: this.performElement?.mobile || '',
+      email: this.performElement?.email || '',
+      department: this.qualformElement?.qualifyingExam || '',
+      fathername: this.partformElement?.fatherName || '',
+      quotatype: this.qualformElement?.allocatedCategory || ''
     };
 
     this.crudService.createData(formData).subscribe({
