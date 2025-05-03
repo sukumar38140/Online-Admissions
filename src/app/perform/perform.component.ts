@@ -18,7 +18,6 @@ export class PerformComponent implements AfterViewInit {
   email: string = '';
   mobile: string = '';
   dob: string = '';
-  placeOfBirth: string = '';
   pob: string = '';
   quota: string = '';
   academicYear: string = '';
@@ -32,10 +31,6 @@ export class PerformComponent implements AfterViewInit {
   familySize: string = '';
   bloodGroup: string = '';
   aadhar: string = '';
-  department: string = ''; // Added
-  transport: string = ''; // Added
-  accommodation: string = ''; // Added
-
 
   isHandicapped: boolean | null = null; 
   physicallyChallenged: string = ''; 
@@ -76,12 +71,12 @@ export class PerformComponent implements AfterViewInit {
       this.presentZip = '';
     }
   }
-
+  
 
   currentStep = 1;
   customCheck1 = true;
-  subject: string = '';
-  message: string = '';
+  subject = '';
+  message = '';
 
   formErrors: { [key: string]: string } = {};
   submitted: boolean = false;
@@ -96,34 +91,8 @@ export class PerformComponent implements AfterViewInit {
 
   validateForm(): boolean {
     this.submitted = true;
+    this.formErrors = {};
     let isValid = true;
-
-    // Check required fields
-    if (!this.fullName) isValid = false;
-    if (!this.email) isValid = false;
-    if (!this.mobile) isValid = false;
-    if (!this.dob) isValid = false;
-    if (!this.placeOfBirth) isValid = false;
-    if (!this.quota) isValid = false;
-    if (!this.academicYear) isValid = false;
-    if (!this.branch) isValid = false;
-    if (!this.nationality) isValid = false;
-    if (!this.religion) isValid = false;
-    if (!this.minority) isValid = false;
-    if (!this.caste) isValid = false;
-    if (!this.motherTongue) isValid = false;
-    if (!this.citizenship) isValid = false;
-    if (!this.familySize) isValid = false;
-    if (!this.bloodGroup) isValid = false;
-    if (!this.aadhar) isValid = false;
-    if (!this.communicationAddress) isValid = false;
-    if (!this.communicationCity) isValid = false;
-    if (!this.communicationState) isValid = false;
-    if (!this.communicationCountry) isValid = false;
-    if (!this.department) isValid = false; // Added
-    if (!this.transport) isValid = false; // Added
-    if (!this.accommodation) isValid = false; // Added
-
 
     // Required field validations
     const requiredFields = {
@@ -131,7 +100,7 @@ export class PerformComponent implements AfterViewInit {
       email: 'Email ID',
       mobile: 'Mobile Number',
       dob: 'Date of Birth',
-      placeOfBirth: 'Place of Birth',
+      pob: 'Place of Birth',
       quota: 'Quota',
       academicYear: 'Academic Year',
       branch: 'Branch',
@@ -148,10 +117,7 @@ export class PerformComponent implements AfterViewInit {
       communicationCity: 'City',
       communicationState: 'State',
       communicationCountry: 'Country',
-      communicationZip: 'Zip Code',
-      department: 'Department', // Added
-      transport: 'Transport', // Added
-      accommodation: 'Accommodation' // Added
+      communicationZip: 'Zip Code'
     };
 
     // Check each required field
@@ -195,7 +161,7 @@ export class PerformComponent implements AfterViewInit {
   prevStep(step: number) {
     this.currentStep = step;
   }
-
+    
   // prevStep() {
   //   this.currentStep--;
   // }
