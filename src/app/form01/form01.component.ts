@@ -19,7 +19,8 @@ import { CrudService } from '../crud.service';
 @Component({
   selector: 'app-form01',
   standalone: true,
-  imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent, CrudService],
+  imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent],
+  providers: [CrudService],
   templateUrl: './form01.component.html',
   styleUrl: './form01.component.css'
 })
@@ -66,7 +67,7 @@ export class Form01Component implements AfterViewInit, OnInit {
 
     const formData = {
       id: Math.floor(Math.random() * 1000),
-      appid: this.temporaryApplicationId,
+      appid: parseInt(this.temporaryApplicationId.replace('MITS-', '')),
       name: performElement?.name || '',
       mobile: performElement?.mobile || '',
       email: performElement?.email || '',
