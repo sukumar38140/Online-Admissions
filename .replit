@@ -7,3 +7,15 @@ channel = "stable-24_05"
 [deployment]
 run = ["sh", "-c", "node dist/my_form_25/server/server.mjs"]
 build = ["sh", "-c", "ng build"]
+
+[workflows]
+runButton = "Angular Dev"
+
+[[workflows.workflow]]
+name = "Angular Dev"
+author = 42194780
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "ng serve --host 0.0.0.0 --port 5000 --poll 1000 --max-old-space-size=512"
