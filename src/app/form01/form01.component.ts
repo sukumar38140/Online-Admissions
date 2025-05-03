@@ -51,6 +51,8 @@ export class Form01Component implements AfterViewInit, OnInit {
   visuallyChallenged: string = '';
 
   currentStep: number = 1;
+  totalSteps = 6; // Updated total steps
+
   customCheck1: boolean = true;
   subject: string = '';
   message: string = '';
@@ -152,4 +154,8 @@ export class Form01Component implements AfterViewInit, OnInit {
     this.router.navigate(['/mylogin']);
   }  
   temporaryApplicationId: string = 'MITS-6925';  
+
+  getProgressPercentage(): number {
+    return (this.currentStep / this.totalSteps) * 100;
+  }
 }

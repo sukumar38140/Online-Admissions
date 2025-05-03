@@ -4,6 +4,9 @@
 
           <!-- Step 1: Terms and Conditions -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 1">
+              <div class="progress-container">
+                  <div class="progress-bar" [style.width]="(currentStep / 6 * 100) + '%'"></div>
+              </div>
               <div class="row justify-content-center mx-auto step-container">
                   <div class="col-md-2 col-4 step-box active">
                       <h6 class="step-title-0">
@@ -65,13 +68,16 @@
                       <li class="indented-list-item">I understand that the college has the right to take penal action in case I am associated with ragging.</li>
                       <li class="indented-list-item">I agree that once the admission is taken it cannot be withdrawn.</li>
                     </ol>
-                    
+
                   <button (click)="nextStep(2)" class="btn btn-success rounded-2 mb-5">START</button>
               </div>
           </div>
 
           <!-- Step 2: Personal Details -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 2">
+              <div class="progress-container">
+                  <div class="progress-bar" [style.width]="(currentStep / 6 * 100) + '%'"></div>
+              </div>
               <div class="row justify-content-center mx-auto step-container">
                   <div class="col-md-2 col-4 step-box">
                       <h6 class="step-title-0">
@@ -118,7 +124,6 @@
               </div>
               <div class="p-3 justify-content-center text-center">
                   <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Candidate Personal Details</u></h4>
-                  <!-- <h4 class="heading">Personal Details</h4> -->
                   <div class="row justify-content-center mb-4">
                       <div class="col-xl-7 col-lg-8 col-10 list text-left">
                           <label class="text-danger mb-3">* Required</label>
@@ -127,13 +132,7 @@
                                   <app-perform></app-perform>
                               </div>
                               <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
-                      <!-- <label class="form-control-label">Full Name * :</label> -->
-                              <!-- <input type="text" id="sub" #sub [(ngModel)]="subject" placeholder="Subject" class="form-control"> -->
                           </div>
-                          <!-- <div class="form-group">
-                              <label class="form-control-label">Message * :</label>
-                              <textarea type="textarea" id="msg" #msg [(ngModel)]="message" placeholder="Message" class="form-control"></textarea>
-                          </div> -->
                       </div>
                   </div>
 
@@ -145,6 +144,9 @@
 
           <!-- Step 3: Qualification Details -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 3">
+              <div class="progress-container">
+                  <div class="progress-bar" [style.width]="(currentStep / 6 * 100) + '%'"></div>
+              </div>
               <div class="row justify-content-center mx-auto step-container">
                 <div class="col-md-2 col-4 step-box">
                   <h6 class="step-title-0">
@@ -209,6 +211,9 @@
 
           <!-- Step 4: Parent -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 4">
+              <div class="progress-container">
+                  <div class="progress-bar" [style.width]="(currentStep / 6 * 100) + '%'"></div>
+              </div>
               <div class="row justify-content-center mx-auto step-container">
                 <div class="col-md-2 col-4 step-box">
                   <h6 class="step-title-0">
@@ -274,6 +279,9 @@
 
           <!-- Step 5: Thank You -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 5">
+              <div class="progress-container">
+                  <div class="progress-bar" [style.width]="(currentStep / 6 * 100) + '%'"></div>
+              </div>
               <div class="row justify-content-center mx-auto step-container">
                   <div class="col-md-2 col-4 step-box">
                       <h6 class="step-title-0">
@@ -322,12 +330,7 @@
                   <h3 class="heading" style="color: #4863A0; font-weight: 700;"><u>Thank You for choosing MITS College</u></h3>
                   <div class="row justify-content-center">
                       <div class="">
-                          <!-- <img src="https://i.imgur.com/GwStPmg.png" class="fit-image mb-5" style="height: 200px; width: 200px;"> -->
                           <img src="https://i.imgur.com/4Y9xMCF.gif" class="fit-image mb-5" style="height: 200px; width: 200px;">
-                          <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.1 65.1" width="25%" height="25%">
-                              <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="3" stroke-miterlimit="10" cx="32.55" cy="32.55" r="31.05" />
-                              <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" points="50.1,20.1 25.75,44.4 14.9,33.75 " />
-                            </svg> -->
                           </div>
                       <div class="col-7 text-center" style="color: green; font-weight: 700;">
                           <h5>Your information has been submitted Successfully</h5>
@@ -345,6 +348,9 @@
 
           <!-- Step 6: Application ID -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 6">
+              <div class="progress-container">
+                  <div class="progress-bar" [style.width]="(currentStep / 6 * 100) + '%'"></div>
+              </div>
               <div class="row justify-content-center mx-auto step-container">
                 <div class="col-md-2 col-4 step-box">
                   <h6 class="step-title-0">
