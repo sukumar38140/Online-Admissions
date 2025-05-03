@@ -37,12 +37,7 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
-            },
-            "optimization": false,
-            "sourceMap": false,
-            "namedChunks": false,
-            "extractLicenses": false,
-            "buildOptimizer": false
+            }
           },
           "configurations": {
             "production": {
