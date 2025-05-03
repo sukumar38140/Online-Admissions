@@ -59,11 +59,15 @@ export class Form01Component implements AfterViewInit, OnInit {
 
   constructor(private router: Router, private crudService: CrudService) {}
 
+  @ViewChild('performComponent') performElement: any;
+  @ViewChild('qualformComponent') qualformElement: any;
+  @ViewChild('partformComponent') partformElement: any;
+
   saveFormData() {
-    // Get data from child components
-    const performElement = document.querySelector('app-perform') as any;
-    const qualformElement = document.querySelector('app-qualform') as any;
-    const partformElement = document.querySelector('app-partform') as any;
+    if (!this.performElement || !this.qualformElement || !this.partformElement) {
+      console.error('One or more form components not found');
+      return;
+    }
 
     const formData = {
       id: Math.floor(Math.random() * 1000),

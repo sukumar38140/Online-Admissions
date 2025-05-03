@@ -65,7 +65,7 @@
                       <li class="indented-list-item">I understand that the college has the right to take penal action in case I am associated with ragging.</li>
                       <li class="indented-list-item">I agree that once the admission is taken it cannot be withdrawn.</li>
                     </ol>
-                    
+
                   <button (click)="nextStep(2)" class="btn btn-success rounded-2 mb-5">START</button>
               </div>
           </div>
@@ -118,22 +118,15 @@
               </div>
               <div class="p-3 justify-content-center text-center">
                   <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Candidate Personal Details</u></h4>
-                  <!-- <h4 class="heading">Personal Details</h4> -->
                   <div class="row justify-content-center mb-4">
                       <div class="col-xl-7 col-lg-8 col-10 list text-left">
                           <label class="text-danger mb-3">* Required</label>
                           <div class="form-group">
                               <div>
-                                  <app-perform></app-perform>
+                                  <app-perform #performComponent></app-perform>
                               </div>
                               <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
-                      <!-- <label class="form-control-label">Full Name * :</label> -->
-                              <!-- <input type="text" id="sub" #sub [(ngModel)]="subject" placeholder="Subject" class="form-control"> -->
                           </div>
-                          <!-- <div class="form-group">
-                              <label class="form-control-label">Message * :</label>
-                              <textarea type="textarea" id="msg" #msg [(ngModel)]="message" placeholder="Message" class="form-control"></textarea>
-                          </div> -->
                       </div>
                   </div>
 
@@ -339,67 +332,6 @@
                   <button id="next3" (click)="closeApplication()" class="btn btn-success rounded-0 mb-5 next">Close</button>
               </div>
           </div>
-              <div class="row justify-content-center mx-auto step-container">
-                <div class="col-md-2 col-4 step-box">
-                  <h6 class="step-title-0">
-                    <span class="fa fa-check"></span>
-                    <span class="break-line"></span>
-                    <span class="step-title">TERMS AND CONDITIONS</span>
-                  </h6>
-                </div>
-                <div class="col-md-2 col-4 step-box">
-                  <h6 class="step-title-0">
-                    <span class="fa fa-check"></span>
-                    <span class="break-line"></span>
-                    <span class="step-title">PERSONAL DETAILS</span>
-                  </h6>
-                </div>
-                <div class="col-md-2 col-4 step-box">
-                  <h6 class="step-title-0">
-                    <span class="fa fa-check"></span>
-                    <span class="break-line"></span>
-                    <span class="step-title">QUALIFIED DETAILS</span>
-                  </h6>
-                </div>
-                <div class="col-md-2 col-4 step-box">
-                  <h6 class="step-title-0">
-                    <span class="fa fa-check"></span>
-                    <span class="break-line"></span>
-                    <span class="step-title">PARENT DETAILS</span>
-                  </h6>
-                </div>
-                <div class="col-md-2 col-4 step-box">
-                  <h6 class="step-title-0">
-                    <span class="fa fa-check"></span>
-                    <span class="break-line"></span>
-                    <span class="step-title">CONFIRMATION</span>
-                  </h6>
-                </div>
-                <div class="col-md-2 col-4 step-box active">
-                  <h6 class="step-title-0">
-                    <span class="fa fa-circle"></span>
-                    <span class="break-line"></span>
-                    <span class="step-title">APPLICATION ID</span>
-                  </h6>
-                </div>
-              </div>
-              <div class="p-3 justify-content-center text-center">
-                <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Temporary Application ID</u></h4>
-                <div class="row justify-content-center mb-4">
-                  <div class="col-xl-7 col-lg-8 col-10 list text-left">
-                    <div class="form-group">
-                      <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
-                      <div>
-                        <p style="text-align: center; color: #A52A2A; font-size: 28px;">Temporary Application ID is: <strong>{{ temporaryApplicationId }}</strong></p>
-                      </div>
-                      <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
-                      <div><p style="text-align: center; color: red; font-size: 18px;">--- Note: This is a Temporary Application Number --- </p></div>
-                    </div>
-                  </div>
-                </div>
-                <button id="next3" (click)="closeApplication()" class="btn btn-success rounded-0 mb-5 next">Close</button>
-              </div>
-            </div>              
+      </div>
   </div>
-</div>
 </div>
