@@ -189,7 +189,19 @@ export class Form01Component implements AfterViewInit, OnInit {
   }
 
   goToStep(step: number) {
-    if (step <= this.currentStep) {
+    if (step === 1) {
+      this.currentStep = step;
+    } 
+    else if (step === 2 && this.customCheck1) {
+      this.currentStep = step;
+    }
+    else if (step === 3 && this.performElement?.validateForm()) {
+      this.currentStep = step;
+    }
+    else if (step === 4 && this.qualformElement?.validateForm()) {
+      this.currentStep = step;
+    }
+    else if (step === 5 && this.partformElement?.validateForm()) {
       this.currentStep = step;
     }
   }
