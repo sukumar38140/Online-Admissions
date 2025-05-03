@@ -8,6 +8,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { MyloginComponent } from '../mylogin/mylogin.component';
 import { MyregisterComponent } from '../myregister/myregister.component';
 import { NgModule } from '@angular/core';
+import { CrudService } from '../crud.service';
 
 // const routes: Routes = [
 //   { path: '', component: MyloginComponent },
@@ -18,7 +19,7 @@ import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-form01',
   standalone: true,
-  imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent],
+  imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent, CrudService],
   templateUrl: './form01.component.html',
   styleUrl: './form01.component.css'
 })
@@ -75,10 +76,10 @@ export class Form01Component implements AfterViewInit, OnInit {
     };
 
     this.crudService.createData(formData).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         console.log('Form data saved successfully', response);
       },
-      error: (error) => {
+      error: (error: any) => {
         console.error('Error saving form data', error);
       }
     });
