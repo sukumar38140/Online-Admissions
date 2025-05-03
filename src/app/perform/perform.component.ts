@@ -28,6 +28,8 @@ export class PerformComponent implements AfterViewInit {
   minority: string = '';
   caste: string = '';
   motherTongue: string = '';
+  citizenship: string = '';
+  familySize: string = '';
   bloodGroup: string = '';
   panCardNo: string = '';
   aadharNo: string = '';
