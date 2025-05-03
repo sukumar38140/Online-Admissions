@@ -91,8 +91,30 @@ export class PerformComponent implements AfterViewInit {
 
   validateForm(): boolean {
     this.submitted = true;
-    this.formErrors = {};
     let isValid = true;
+
+    // Check required fields
+    if (!this.fullName) isValid = false;
+    if (!this.email) isValid = false;
+    if (!this.mobile) isValid = false;
+    if (!this.dob) isValid = false;
+    if (!this.pob) isValid = false;
+    if (!this.quota) isValid = false;
+    if (!this.academicYear) isValid = false;
+    if (!this.branch) isValid = false;
+    if (!this.nationality) isValid = false;
+    if (!this.religion) isValid = false;
+    if (!this.minority) isValid = false;
+    if (!this.caste) isValid = false;
+    if (!this.motherTongue) isValid = false;
+    if (!this.citizenship) isValid = false;
+    if (!this.familySize) isValid = false;
+    if (!this.bloodGroup) isValid = false;
+    if (!this.aadhar) isValid = false;
+    if (!this.communicationAddress) isValid = false;
+    if (!this.communicationCity) isValid = false;
+    if (!this.communicationState) isValid = false;
+    if (!this.communicationCountry) isValid = false;
 
     // Required field validations
     const requiredFields = {
