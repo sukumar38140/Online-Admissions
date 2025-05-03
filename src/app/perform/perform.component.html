@@ -26,19 +26,29 @@
     <div class="form-row">
     <div class="col">
         <label class="form-control-label">Date of Birth *:</label>
-        <input type="date" class="form-control" placeholder="Date of Birth" required>
+        <input type="date" name="dob" [(ngModel)]="dob" class="form-control" placeholder="Date of Birth" 
+               [class.is-invalid]="submitted && formErrors['dob']" required>
+        <div class="invalid-feedback" *ngIf="submitted && formErrors['dob']">
+            {{ formErrors['dob'] }}
+        </div>
     </div>
     <div class="col">
         <label class="form-control-label">Place of Birth *:</label>
-        <input type="text" class="form-control" placeholder="Place of Birth" (input)="convertToUppercase($event)" required>
-        <!-- <input type="text" class="form-control" placeholder="Place of Birth"> -->
+        <input type="text" name="pob" [(ngModel)]="pob" class="form-control" placeholder="Place of Birth" 
+               (input)="convertToUppercase($event)" [class.is-invalid]="submitted && formErrors['pob']" required>
+        <div class="invalid-feedback" *ngIf="submitted && formErrors['pob']">
+            {{ formErrors['pob'] }}
+        </div>
     </div>
 </div> 
 <hr class="mb-4">
 <div class="form-row">
     <div class="col">
         <label for="Quota" class="form-control-label">Quota *:</label>
-        <select name="Quota" class="form-control" required>
+        <select name="quota" [(ngModel)]="quota" class="form-control" [class.is-invalid]="submitted && formErrors['quota']" required>
+        <div class="invalid-feedback" *ngIf="submitted && formErrors['quota']">
+            {{ formErrors['quota'] }}
+        </div>
             <option value="">-- Select Quota here --</option>
             <option value="Management">Management</option>
             <option value="Convener">Convener - Full Fee Exemption</option>
@@ -56,7 +66,11 @@
     </div>                                    
     <div class="col">
         <label for="academic_year" style="font-family: Poppins;">Academic Year *:</label><br>
-        <select name="academic_year" id="academic_year" required class="form-control" required>
+        <select name="academicYear" [(ngModel)]="academicYear" id="academic_year" class="form-control" 
+                [class.is-invalid]="submitted && formErrors['academicYear']" required>
+        <div class="invalid-feedback" *ngIf="submitted && formErrors['academicYear']">
+            {{ formErrors['academicYear'] }}
+        </div>
             <option value="">-- Select Academic Year --</option>
             <option value="2025-2026">2025-2026</option>
             <!-- <option value="2026-2027">2026-2027</option>
