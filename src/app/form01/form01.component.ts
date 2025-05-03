@@ -111,35 +111,23 @@ export class Form01Component implements AfterViewInit, OnInit {
       this.currentStep = step;
     } 
     else if (this.currentStep === 2) {
-      // Validate personal details from perform component
-      const performElement = document.querySelector('app-perform') as any;
-      if (performElement?.validateForm && typeof performElement.validateForm === 'function') {
-        if (!performElement.validateForm()) {
-          alert('Please fill all required personal details correctly');
-          return;
-        }
+      if (this.performElement && !this.performElement.validateForm()) {
+        alert('Please fill all required personal details correctly');
+        return;
       }
       this.currentStep = step;
     }
     else if (this.currentStep === 3) {
-      // Validate qualification details from qualform component
-      const qualformElement = document.querySelector('app-qualform') as any;
-      if (qualformElement?.validateForm && typeof qualformElement.validateForm === 'function') {
-        if (!qualformElement.validateForm()) {
-          alert('Please fill all required qualification details correctly');
-          return;
-        }
+      if (this.qualformElement && !this.qualformElement.validateForm()) {
+        alert('Please fill all required qualification details correctly');
+        return;
       }
       this.currentStep = step;
     }
     else if (this.currentStep === 4) {
-      // Validate parent details from partform component
-      const partformElement = document.querySelector('app-partform') as any;
-      if (partformElement?.validateForm && typeof partformElement.validateForm === 'function') {
-        if (!partformElement.validateForm()) {
-          alert('Please fill all required parent details correctly');
-          return;
-        }
+      if (this.partformElement && !this.partformElement.validateForm()) {
+        alert('Please fill all required parent details correctly');
+        return;
       }
       this.currentStep = step;
     }
