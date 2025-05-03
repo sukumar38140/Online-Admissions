@@ -129,31 +129,28 @@ export class CrudComponent implements OnInit {
     }
 
    downloadData(data: Iruser) {
-        let textContent = `Name: ${data.name}
-`;
-        textContent += `Mobile: ${data.mobile}
-`;
-        textContent += `Application ID: ${data.searchedAppId || data.appid}
-`;
-        textContent += `Department: ${data.department}
-`;
-        textContent += `Email: ${data.email}
-`;
-        textContent += `Father Name: ${data.fathername}
-`;
-        textContent += `Quota Type: ${data.quotatype}
-`;
+        const doc = new jsPDF();
+        
+        // Add title
+        doc.setFontSize(16);
+        doc.text('Student Information', 105, 15, { align: 'center' });
+        
+        // Add content
+        doc.setFontSize(12);
+        const startY = 30;
+        const lineHeight = 10;
+        
+        doc.text(`Name: ${data.name}`, 20, startY);
+        doc.text(`Mobile: ${data.mobile}`, 20, startY + lineHeight);
+        doc.text(`Application ID: ${data.searchedAppId || data.appid}`, 20, startY + lineHeight * 2);
+        doc.text(`Department: ${data.department}`, 20, startY + lineHeight * 3);
+        doc.text(`Email: ${data.email}`, 20, startY + lineHeight * 4);
+        doc.text(`Father Name: ${data.fathername}`, 20, startY + lineHeight * 5);
+        doc.text(`Quota Type: ${data.quotatype}`, 20, startY + lineHeight * 6);
 
-        const blob = new Blob([textContent], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'data.txt';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        console.log('Downloading data as text file:', data);
+        // Save PDF
+        doc.save('student-information.pdf');
+        console.log('Downloading data as PDF:', data);
     }
 
     onLogout() {
