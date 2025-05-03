@@ -25,90 +25,24 @@ body {
     margin-bottom: 50px;
 }
 
+.fa-circle {
+    background-color: lightgrey;
+    color: #fff;
+    padding: 2px 3.1555px;
+    border-radius: 50%;
+}
+
 .step-box {
-    position: relative;
-    text-align: center;
-    padding: 20px;
-    margin: 0 10px;
+    padding: 10px;
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    background-color: #fff;
 }
 
 .step-box.active {
-    animation: pulse 1.5s infinite;
-}
-
-.fa-circle {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background: #ddd;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-}
-
-.active .fa-circle {
-    background: #4CAF50;
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
-}
-
-.break-line {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: #ddd;
-    margin: 15px 0;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.active .break-line {
-    background: #4CAF50;
-}
-
-.step-title-0 {
-    font-size: 14px;
-    position: relative;
-}
-
-.step-title {
-    color: #666;
-    font-weight: 500;
-    font-size: 13px;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-}
-
-.active .step-title {
-    color: #4CAF50;
-    font-weight: 600;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.progress-container {
-    width: 100%;
-    height: 4px;
-    background: #f0f0f0;
-    margin: 20px 0;
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #4CAF50, #81C784);
-    transition: width 0.5s ease-in-out;
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    color: #fff !important;
+    border-left: 1px solid #2196F3;
+    border-right: 1px solid #2196F3;
 }
 
 .fa-check {
@@ -116,16 +50,16 @@ body {
     color: #fff;
     padding: 2px 3.1555px;
     border-radius: 50%;
-    font-size: 1.3em; 
-    line-height: 1; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
-    width: 0.6em; 
-    height: 0.6em; 
-  }
+    font-size: 1.3em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.6em;
+    height: 0.6em;
+}
 
-  .custom-button-size {
+.custom-button-size {
     width: 300px;
     height: 50px;
     align-items: center;
@@ -135,7 +69,6 @@ body {
 .step-title-0 {
     margin-bottom: 0px;
 }
-
 
 .heading {
     margin-bottom: 40px;
@@ -181,7 +114,7 @@ button {
 }
 
 .fit-image {
-    width: 100%; 
+    width: 100%;
     object-fit: cover;
 }
 
