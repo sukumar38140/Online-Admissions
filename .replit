@@ -18,4 +18,4 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "ng serve --host 0.0.0.0 --port 5000 --poll 1000 --max-old-space-size=512"
+args = "NODE_OPTIONS=\"--max-old-space-size=512\" ng serve --host 0.0.0.0 --port 5000 --poll 1000"
