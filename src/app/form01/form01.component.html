@@ -322,15 +322,12 @@
                   <h3 class="heading" style="color: #4863A0; font-weight: 700;"><u>Thank You for choosing MITS College</u></h3>
                   <div class="row justify-content-center">
                       <div class="">
-                          <!-- <img src="https://i.imgur.com/GwStPmg.png" class="fit-image mb-5" style="height: 200px; width: 200px;"> -->
+                          <p style="text-align: center; color: #A52A2A; font-size: 28px; margin-bottom: 20px;">Your Application ID: <strong>{{ temporaryApplicationId }}</strong></p>
                           <img src="https://i.imgur.com/4Y9xMCF.gif" class="fit-image mb-5" style="height: 200px; width: 200px;">
-                          <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.1 65.1" width="25%" height="25%">
-                              <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="3" stroke-miterlimit="10" cx="32.55" cy="32.55" r="31.05" />
-                              <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" points="50.1,20.1 25.75,44.4 14.9,33.75 " />
-                            </svg> -->
-                          </div>
+                      </div>
                       <div class="col-7 text-center" style="color: green; font-weight: 700;">
                           <h5>Your information has been submitted Successfully</h5>
+                          <p style="color: red; font-size: 16px;">Please save your Application ID for future reference</p>
                       </div>
                       <h6 class="heading" style="color: #810541; font-weight: 700;">
                           For More Details Contact: 
@@ -339,12 +336,9 @@
                           <p> Mobile: +91- 8712655132 / 8712655134 / 8712655138 / 9100601116</p>
                       </h6>
                   </div>
-                  <button id="next3" (click)="saveFormData(); nextStep(6)" class="btn btn-success rounded-0 mb-5 next custom-button-size">Temporary Application ID</button>
+                  <button id="next3" (click)="closeApplication()" class="btn btn-success rounded-0 mb-5 next">Close</button>
               </div>
           </div>
-
-          <!-- Step 6: Application ID -->
-          <div class="card b-0 rounded-0" [class.show]="currentStep === 6">
               <div class="row justify-content-center mx-auto step-container">
                 <div class="col-md-2 col-4 step-box">
                   <h6 class="step-title-0">

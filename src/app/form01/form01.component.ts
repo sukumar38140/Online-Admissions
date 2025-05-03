@@ -96,6 +96,9 @@ export class Form01Component implements AfterViewInit, OnInit {
   ngAfterViewInit() {}
 
   nextStep(step: number) {
+    if (step === 5) {
+      this.saveFormData();
+    }
     if (this.currentStep === 1) {
       if (!this.customCheck1) {
         alert('Please agree to the terms and conditions to proceed');
