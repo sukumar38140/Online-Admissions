@@ -251,7 +251,8 @@
     <div class="col">
         <label for="pc2">Address for Communication *:</label>
         <label class="form-control-label">Permanent Address *:</label>
-        <textarea class="form-control" id="communicationAddress" rows="3" [(ngModel)]="communicationAddress" required></textarea>
+        <textarea class="form-control" name="communicationAddress" [(ngModel)]="communicationAddress" rows="3" [class.is-invalid]="submitted && !communicationAddress" required></textarea>
+        <div class="invalid-feedback" *ngIf="submitted && !communicationAddress">Communication address is required</div>
         <div class="form-group">
             <label for="communicationCity">City</label>
             <input type="text" class="form-control" id="communicationCity" [(ngModel)]="communicationCity" required>

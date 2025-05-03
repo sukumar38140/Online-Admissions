@@ -117,7 +117,12 @@ export class PerformComponent implements AfterViewInit {
         !this.bloodGroup || !this.isAadharValid() ||
         this.accommodation === undefined || 
         this.transport === undefined || 
-        this.handicapped === undefined) {
+        this.handicapped === undefined ||
+        !this.communicationAddress || !this.communicationCity ||
+        !this.communicationState || !this.communicationCountry ||
+        !this.communicationZip || !this.presentAddress ||
+        !this.presentCity || !this.presentState ||
+        !this.presentcountry || !this.presentZip) {
       return false;
     }
 
