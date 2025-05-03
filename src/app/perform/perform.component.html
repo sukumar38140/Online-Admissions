@@ -106,10 +106,17 @@
     <label class="form-control-label">Branch *:</label>
     <select class="form-control" name="branch" [(ngModel)]="branch" [class.is-invalid]="submitted && !branch" required>
       <option value="">-- Select Branch here --</option>
-      <option value="CSE">Computer Science Engineering</option>
-      <option value="ECE">Electronics & Communication Engineering</option>
-      <option value="EEE">Electrical & Electronics Engineering</option>
-      <option value="MECH">Mechanical Engineering</option>
+      <option value="Department of Civil Engineering-01">Department of Civil Engineering</option>
+      <option value="Department of Electrical & Electronics Engineering -02">Department of Electrical & Electronics Engineering</option>
+      <option value="Department of Mechanical Engineering-03">Department of Mechanical Engineering</option>
+      <option value="Department of Electronics & Communication Engineering-04">Department of Electronics & Communication Engineering</option>                                       
+      <option value="Department of Computer Science & Engineering-05">Department of Computer Science & Engineering</option>
+      <option value="Department of Computer Science & Engineering : Artificial Intelligence-31">Department of Computer Science & Engineering - Artificial Intelligence</option>
+      <option value="Department of Computer Science & Engineering : Data Science-32">Department of Computer Science & Engineering - Data Science</option>
+      <option value="Department of Computer Science & Engineering : Cyber Security-37">Department of Computer Science & Engineering - Cyber Security</option>
+      <option value="Department of Computer Science & Engineering : Networks-40">Department of Computer Science & Engineering Networks</option>
+      <option value="Department of Computer Science & Engineering : Artificial Intelligence & Machine Learning-33">Department of Computer Science & Engineering - Artificial Intelligence & Machine Learning</option>
+      <option value="Department of Computer Science & Technology-28">Department of Computer Science & Technology</option>
     </select>
     <div class="invalid-feedback" *ngIf="submitted && !branch">Branch is required</div>
   </div>
@@ -159,6 +166,14 @@
       <option value="Hindi">Hindi</option>
       <option value="English">English</option>
       <option value="Tamil">Tamil</option>
+      <option value="Kannada">Kannada</option>
+      <option value="Malayalam">Malayalam</option>
+      <option value="Marathi">Marathi</option>
+      <option value="Bengali">Bengali</option>
+      <option value="Gujarati">Gujarati</option>
+      <option value="Urdu">Urdu</option>
+      <option value="Punjabi">Punjabi</option>
+      <option value="Odia">Odia</option>
       <option value="Others">Others</option>
     </select>
     <div class="invalid-feedback" *ngIf="submitted && !motherTongue">Mother tongue is required</div>
