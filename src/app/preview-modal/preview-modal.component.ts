@@ -1,3 +1,4 @@
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Iruser } from '../iruser';
@@ -11,19 +12,46 @@ import 'jspdf-autotable';
   template: `
     <div *ngIf="show" class="modal">
       <div class="modal-content">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <h4>Print Preview:</h4>
-        <div *ngIf="data">
-          <p><strong>Name:</strong> {{ data.name }}</p>
-          <p><strong>Mobile:</strong> {{ data.mobile }}</p>
-          <p><strong>Application ID:</strong> {{ data.appid }}</p>
-          <p><strong>Department:</strong> {{ data.department }}</p>
-          <p><strong>Email:</strong> {{data.email}}</p>
-          <p><strong>Father Name:</strong> {{data.fathername}}</p>
-          <p><strong>Quota Type:</strong> {{data.quotatype}}</p>
-          <!-- Add more fields as needed -->
+        <div class="print-header">
+          <img src="../../public/images/college_logo.png" alt="College Logo" class="logo">
+          <h2>Student Information</h2>
         </div>
-        <button (click)="closeModal()">Close</button>
+        <div class="print-body">
+          <div *ngIf="data" class="data-grid">
+            <div class="data-row">
+              <div class="label">Name:</div>
+              <div class="value">{{ data.name }}</div>
+            </div>
+            <div class="data-row">
+              <div class="label">Mobile:</div>
+              <div class="value">{{ data.mobile }}</div>
+            </div>
+            <div class="data-row">
+              <div class="label">Application ID:</div>
+              <div class="value">{{ data.appid }}</div>
+            </div>
+            <div class="data-row">
+              <div class="label">Department:</div>
+              <div class="value">{{ data.department }}</div>
+            </div>
+            <div class="data-row">
+              <div class="label">Email:</div>
+              <div class="value">{{ data.email }}</div>
+            </div>
+            <div class="data-row">
+              <div class="label">Father Name:</div>
+              <div class="value">{{ data.fathername }}</div>
+            </div>
+            <div class="data-row">
+              <div class="label">Quota Type:</div>
+              <div class="value">{{ data.quotatype }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="button-group">
+          <button class="print-button" (click)="downloadData()">Print</button>
+          <button class="close-button" (click)="closeModal()">Close</button>
+        </div>
       </div>
     </div>
   `,
@@ -40,40 +68,78 @@ import 'jspdf-autotable';
       background-color: rgba(0,0,0,0.5);
     }
     .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto;
+      background-color: #ffffff;
+      margin: 5% auto;
       padding: 20px;
       border: 1px solid #888;
-      width: 80%;
-      max-width: 500px;
-      border-radius: 5px;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 8px;
+    }
+    .print-header {
       text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 20px;
     }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
+    .logo {
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+    .print-body {
+      padding: 20px;
+    }
+    .data-grid {
+      display: grid;
+      gap: 15px;
+    }
+    .data-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
+    .label {
       font-weight: bold;
-      cursor: pointer;
+      color: #333;
     }
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      /* padding: 10px;
-      text-align: center; */
+    .value {
+      color: #666;
     }
-    button {
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .print-button, .close-button {
       padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      margin-top: 15px;
+      font-weight: bold;
     }
-    button:hover {
-      background-color: #45a049;
+    .print-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .close-button {
+      background-color: #f44336;
+      color: white;
+    }
+    @media print {
+      .button-group {
+        display: none;
+      }
+      .modal {
+        position: static;
+        background: none;
+      }
+      .modal-content {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
     }
   `]
 })
@@ -82,46 +148,38 @@ export class PreviewModalComponent {
   @Input() data: Iruser | null = null;
   @Output() closed = new EventEmitter<void>();
 
-   downloadData() {
-        console.log('downloadData() called in PreviewModalComponent');
-
-        if (!this.data) {
-            console.error('No data to download!');
-            return;
-        }
-
-        console.log('Data to download:', this.data);
-
-        const doc = new jsPDF();
-        doc.text('User Data', 10, 10);
-
-        // Define the table headers
-        const headers = [['Name', 'Mobile', 'App ID', 'Department', 'Email', 'Father Name', 'Quota Type']];
-
-        // Add the data to the table
-        const dataTable = [
-            [this.data.name, this.data.mobile.toString(), this.data.appid.toString(), this.data.department, this.data.email, this.data.fathername, this.data.quotatype]
-        ];
-
-        // Use jspdf-autotable plugin to add the table
-        try {
-            (doc as any).autoTable({
-                head: headers,
-                body: dataTable,
-            });
-            console.log('PDF table generated successfully');
-        } catch (error) {
-            console.error('Error generating PDF table:', error);
-            return;
-        }
-
-        try {
-            doc.save('data.pdf');
-            console.log('PDF saved successfully');
-        } catch (error) {
-            console.error('Error saving PDF:', error);
-        }
+  downloadData() {
+    if (!this.data) {
+      console.error('No data to download!');
+      return;
     }
+
+    const doc = new jsPDF();
+    doc.text('Student Information', 10, 10);
+
+    const headers = [['Field', 'Value']];
+    const dataTable = [
+      ['Name', this.data.name],
+      ['Mobile', this.data.mobile.toString()],
+      ['Application ID', this.data.appid.toString()],
+      ['Department', this.data.department],
+      ['Email', this.data.email],
+      ['Father Name', this.data.fathername],
+      ['Quota Type', this.data.quotatype]
+    ];
+
+    try {
+      (doc as any).autoTable({
+        head: headers,
+        body: dataTable,
+        startY: 20,
+        theme: 'grid'
+      });
+      doc.save('student-information.pdf');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    }
+  }
 
   closeModal() {
     this.show = false;
