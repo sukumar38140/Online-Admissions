@@ -18,4 +18,8 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "NODE_OPTIONS=--max_old_space_size=512 ng serve --host 0.0.0.0 --port 5000 --disable-host-check"
+args = "ng serve --host 0.0.0.0 --port 5000 --disable-host-check --poll 2000"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
