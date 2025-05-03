@@ -129,28 +129,65 @@ export class CrudComponent implements OnInit {
     }
 
    downloadData(data: Iruser) {
-        const doc = new jsPDF();
-        
-        // Add title
-        doc.setFontSize(16);
-        doc.text('Student Information', 105, 15, { align: 'center' });
-        
-        // Add content
-        doc.setFontSize(12);
-        const startY = 30;
-        const lineHeight = 10;
-        
-        doc.text(`Name: ${data.name}`, 20, startY);
-        doc.text(`Mobile: ${data.mobile}`, 20, startY + lineHeight);
-        doc.text(`Application ID: ${data.searchedAppId || data.appid}`, 20, startY + lineHeight * 2);
-        doc.text(`Department: ${data.department}`, 20, startY + lineHeight * 3);
-        doc.text(`Email: ${data.email}`, 20, startY + lineHeight * 4);
-        doc.text(`Father Name: ${data.fathername}`, 20, startY + lineHeight * 5);
-        doc.text(`Quota Type: ${data.quotatype}`, 20, startY + lineHeight * 6);
-
-        // Save PDF
-        doc.save('student-information.pdf');
-        console.log('Downloading data as PDF:', data);
+        try {
+            const doc = new jsPDF();
+            
+            // Add header with styling
+            doc.setFillColor(51, 122, 183);
+            doc.rect(0, 0, 210, 20, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(16);
+            doc.text('MITS - Student Information', 105, 15, { align: 'center' });
+            
+            // Reset text color for content
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(12);
+            
+            // Add content with better formatting
+            const startY = 40;
+            const lineHeight = 12;
+            const labels = [
+                'Name',
+                'Mobile',
+                'Application ID',
+                'Department',
+                'Email',
+                'Father Name',
+                'Quota Type'
+            ];
+            const values = [
+                data.name,
+                data.mobile.toString(),
+                data.searchedAppId || data.appid.toString(),
+                data.department,
+                data.email,
+                data.fathername,
+                data.quotatype
+            ];
+            
+            // Add content with alternating background
+            labels.forEach((label, index) => {
+                const yPos = startY + (lineHeight * index);
+                if (index % 2 === 0) {
+                    doc.setFillColor(240, 240, 240);
+                    doc.rect(20, yPos - 5, 170, 10, 'F');
+                }
+                doc.text(`${label}: `, 25, yPos);
+                doc.text(values[index], 70, yPos);
+            });
+            
+            // Add footer
+            const pageHeight = doc.internal.pageSize.height;
+            doc.setFontSize(10);
+            doc.text('Generated on: ' + new Date().toLocaleString(), 20, pageHeight - 10);
+            
+            // Save PDF with formatted name
+            const fileName = `MITS_${data.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
+            doc.save(fileName);
+            console.log('PDF generated successfully:', fileName);
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+        }
     }
 
     onLogout() {
