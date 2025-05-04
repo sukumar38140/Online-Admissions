@@ -118,6 +118,12 @@ export class PerformComponent implements AfterViewInit {
     return mobileRegex.test(mobile);
   }
 
+  isValidZipCode(zipCode: string): boolean {
+    if (!zipCode) return false;
+    const zipRegex = /^[0-9]{6}$/;
+    return zipRegex.test(zipCode);
+  }
+
   validateForm(): boolean {
     this.submitted = true;
 
@@ -129,7 +135,11 @@ export class PerformComponent implements AfterViewInit {
         !this.dob ||
         !this.pob?.trim() ||
         !this.quota ||
-        !this.academicYear?.trim()) {
+        !this.academicYear?.trim() ||
+        !this.communicationCity?.trim() ||
+        !this.communicationState ||
+        !this.communicationCountry ||
+        !this.isValidZipCode(this.communicationZip)) {
       return false;
     }
     return true;

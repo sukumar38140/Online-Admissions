@@ -276,12 +276,15 @@
             <textarea class="form-control" name="communicationAddress" [(ngModel)]="communicationAddress" rows="3" [class.is-invalid]="submitted && !communicationAddress" required></textarea>
             <div class="invalid-feedback" *ngIf="submitted && !communicationAddress">Communication address is required</div>
             <div class="form-group">
-                <label for="communicationCity">City</label>
-                <input type="text" class="form-control" id="communicationCity" [(ngModel)]="communicationCity" required>
+                <label for="communicationCity">City *</label>
+                <input type="text" class="form-control" id="communicationCity" name="communicationCity" [(ngModel)]="communicationCity" [class.is-invalid]="submitted && !communicationCity?.trim()" required>
+                <div class="invalid-feedback" *ngIf="submitted && !communicationCity?.trim()">
+                    City is required
+                </div>
             </div>
             <div class="form-group">
-                <label for="communicationState">State</label>
-                <select class="form-control" id="communicationState" [(ngModel)]="communicationState" required>
+                <label for="communicationState">State *</label>
+                <select class="form-control" id="communicationState" name="communicationState" [(ngModel)]="communicationState" [class.is-invalid]="submitted && !communicationState" required>
                     <option value="">-- Select a State --</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -314,8 +317,8 @@
                 </select>                
             </div>
             <div class="form-group">
-                <label for="communicationCountry">Country</label>
-                <select class="form-control" id="communicationCountry" [(ngModel)]="communicationCountry" required>
+                <label for="communicationCountry">Country *</label>
+                <select class="form-control" id="communicationCountry" name="communicationCountry" [(ngModel)]="communicationCountry" [class.is-invalid]="submitted && !communicationCountry" required>
                     <option value=""> -- Select a Country --</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Argentina">Argentina</option>
@@ -378,8 +381,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="communicationZip">Zip Code</label>
-                <input type="text" class="form-control" id="communicationZip" [(ngModel)]="communicationZip" required>
+                <label for="communicationZip">Zip Code *</label>
+                <input type="text" class="form-control" id="communicationZip" name="communicationZip" [(ngModel)]="communicationZip" [class.is-invalid]="submitted && !isValidZipCode(communicationZip)" required>
+                <div class="invalid-feedback" *ngIf="submitted && !isValidZipCode(communicationZip)">
+                    Please enter a valid zip code
+                </div>
             </div>
         </div>
         <div class="col">
