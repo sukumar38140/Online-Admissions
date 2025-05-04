@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +12,57 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class QualformComponent {
+  submitted: boolean = false;
+  entranceExam: string = '';
+  actualCategory: string = '';
+  allocatedCategory: string = '';
+  domicile: string = '';
   qualifyingExam: string = '';
   allotmentNumber: string = '';
   allotmentDate: Date | null = null;
   entranceRollNumber: string = '';
   rank: number | null = null;
   entranceScore: number | null = null;
-  actualCategory: string = '';
-  allocatedCategory: string = '';
+  prevCollegeName: string = '';
+  prevCollegeAddress: string = '';
+  courseStudied: string = '';
+  courseResult: string = '';
   
   onQualifyingExamChange() {
-    // You can add additional logic here if needed
+    if (this.qualifyingExam !== 'yes') {
+      this.allotmentNumber = '';
+      this.allotmentDate = null;
+      this.entranceRollNumber = '';
+      this.rank = null;
+      this.entranceScore = null;
+    }
+  }
+
+  validateForm(): boolean {
+    this.submitted = true;
+
+    if (!this.entranceExam ||
+        !this.actualCategory?.trim() ||
+        !this.allocatedCategory?.trim() ||
+        !this.domicile ||
+        !this.qualifyingExam ||
+        !this.prevCollegeName?.trim() ||
+        !this.prevCollegeAddress?.trim() ||
+        !this.courseStudied?.trim() ||
+        !this.courseResult?.trim()) {
+      return false;
+    }
+
+    if (this.qualifyingExam === 'yes') {
+      if (!this.allotmentNumber?.trim() ||
+          !this.allotmentDate ||
+          !this.entranceRollNumber?.trim() ||
+          !this.rank ||
+          !this.entranceScore) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }
