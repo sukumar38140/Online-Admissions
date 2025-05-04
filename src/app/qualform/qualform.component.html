@@ -2,23 +2,25 @@
 <form #qualForm="ngForm">
     <div class="form-row">
         <label for="pc1">Entrance Examination *: </label>
-        <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="eexam1" name="entranceExam" [(ngModel)]="entranceExam" value="EAPCET" [class.is-invalid]="submitted && !entranceExam" required/>
-            <label class="custom-control-label" for="eexam1" style="margin-left: 10px; margin-right: 10px;">EAPCET</label>
+        <div [class.is-invalid]="submitted && !entranceExam" class="custom-radio-group">
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="eexam1" name="entranceExam" [(ngModel)]="entranceExam" value="EAPCET" required/>
+                <label class="custom-control-label" for="eexam1" style="margin-left: 10px; margin-right: 10px;">EAPCET</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="eexam2" name="entranceExam" [(ngModel)]="entranceExam" value="ICET"/>
+                <label class="custom-control-label" for="eexam2" style="margin-left: 10px; margin-right: 10px;">ICET</label>
+            </div>        
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="eexam3" name="entranceExam" [(ngModel)]="entranceExam" value="ECET"/>
+                <label class="custom-control-label" for="eexam3" style="margin-left: 10px; margin-right: 10px;">ECET</label>
+            </div>        
+            <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="eexam4" name="entranceExam" [(ngModel)]="entranceExam" value="NA"/>
+                <label class="custom-control-label" for="eexam4" style="margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">NA</label>
+            </div>
         </div>
-        <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="eexam2" name="entranceExam" [(ngModel)]="entranceExam" value="ICET"/>
-            <label class="custom-control-label" for="eexam2" style="margin-left: 10px; margin-right: 10px;">ICET</label>
-        </div>        
-        <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="eexam3" name="entranceExam" [(ngModel)]="entranceExam" value="ECET"/>
-            <label class="custom-control-label" for="eexam3" style="margin-left: 10px; margin-right: 10px;">ECET</label>
-        </div>        
-        <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="eexam4" name="entranceExam" [(ngModel)]="entranceExam" value="NA"/>
-            <label class="custom-control-label" for="eexam4" style="margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">NA</label>
-        </div>
-        <div class="invalid-feedback" *ngIf="submitted && !entranceExam">
+        <div class="invalid-feedback d-block" *ngIf="submitted && !entranceExam">
             Please select an entrance examination
         </div>        
     </div> 

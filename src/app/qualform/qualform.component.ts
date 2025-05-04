@@ -41,15 +41,19 @@ export class QualformComponent {
   validateForm(): boolean {
     this.submitted = true;
 
-    if (!this.entranceExam ||
-        !this.actualCategory?.trim() ||
-        !this.allocatedCategory?.trim() ||
-        !this.domicile ||
-        !this.qualifyingExam ||
-        !this.prevCollegeName?.trim() ||
-        !this.prevCollegeAddress?.trim() ||
-        !this.courseStudied?.trim() ||
-        !this.courseResult?.trim()) {
+    const isBasicFieldsValid = !!(
+        this.entranceExam &&
+        this.actualCategory?.trim() &&
+        this.allocatedCategory?.trim() &&
+        this.domicile &&
+        this.qualifyingExam &&
+        this.prevCollegeName?.trim() &&
+        this.prevCollegeAddress?.trim() &&
+        this.courseStudied?.trim() &&
+        this.courseResult?.trim()
+    );
+    
+    if (!isBasicFieldsValid) {
       return false;
     }
 
