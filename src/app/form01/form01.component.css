@@ -19,59 +19,61 @@ body {
 
 .step-container {
     width: 95%;
-    margin-top: 40px;
-    margin-bottom: 50px;
+    margin: 40px auto;
     display: flex;
     justify-content: space-between;
-    gap: 15px;
+    position: relative;
+    z-index: 0;
 }
 
-.fa-circle {
-    background-color: lightgrey;
-    color: #fff;
-    padding: 2px 3.1555px;
-    border-radius: 50%;
-    font-size: 1.3em;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 0.6em;
-    height: 0.6em;
+.step-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background: #e0e0e0;
+    z-index: -1;
 }
 
 .step-box {
+    background: #fff;
     position: relative;
-    background-color: #ddd;
-    color: #555;
-    padding: 8px 20px 8px 30px;
-    min-width: 140px;
+    padding: 10px 20px;
+    border-radius: 30px;
     font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 2px solid #e0e0e0;
+    cursor: pointer;
 }
 
-.step-box:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -20px;
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid #ddd;
-    z-index: 1;
+.fa-circle {
+    font-size: 1em;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0;
+    color: #fff;
+    transition: all 0.3s ease;
 }
 
-.step-box:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-top: 20px solid white;
-    border-bottom: 20px solid white;
-    border-left: 20px solid transparent;
+.step-box.active {
+    background: #2196F3;
+    border-color: #2196F3;
+    transform: scale(1.05);
+}
+
+.step-box.completed {
+    background: #4CAF50;
+    border-color: #4CAF50;
 }
 
 .step-box:first-child {
