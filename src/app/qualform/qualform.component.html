@@ -1,5 +1,5 @@
 
-<form #qualForm="ngForm">
+<form #qualForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
         <label for="pc1">Entrance Examination *: </label>
         <div [class.is-invalid]="submitted && !entranceExam" class="custom-radio-group">

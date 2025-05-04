@@ -38,6 +38,10 @@ export class QualformComponent {
     }
   }
 
+  onSubmit() {
+    this.validateForm();
+  }
+
   validateForm(): boolean {
     this.submitted = true;
 
@@ -54,6 +58,7 @@ export class QualformComponent {
     );
     
     if (!isBasicFieldsValid) {
+      alert('Please fill in all required fields marked with *');
       return false;
     }
 
