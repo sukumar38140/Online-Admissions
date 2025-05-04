@@ -29,31 +29,31 @@ body {
     text-align: center;
     color: #666;
     cursor: pointer;
-    margin: 0;
-    padding: 10px 10px 10px 30px;
-    min-width: 180px;
+    margin: 0 5px;
+    padding: 15px 20px;
+    min-width: 150px;
     float: left;
     position: relative;
     background-color: #d9e3f7;
+    border-radius: 3px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; 
+    user-select: none;
     transition: all 0.2s ease;
 }
 
-.arrow-steps .step:after,
-.arrow-steps .step:before {
-    content: "";
+.arrow-steps .step:after {
+    content: '';
     position: absolute;
     top: 50%;
-    right: -15px;
-    width: 30px;
-    height: 30px;
-    background-color: #d9e3f7;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
     transform: translateY(-50%) rotate(45deg);
     z-index: 1;
-    transition: background-color 0.2s ease;
 }
 
 .arrow-steps .step:before {
@@ -81,19 +81,26 @@ body {
 .arrow-steps .step.current {
     color: #fff;
     background-color: #2196F3;
+    box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
 }
 
 .arrow-steps .step.current:after {
-    background-color: #2196F3;
+    border-color: #2196F3;
 }
 
 .arrow-steps .step.done {
     color: #fff;
     background-color: #12AD2B;
+    box-shadow: 0 2px 5px rgba(18, 173, 43, 0.3);
 }
 
 .arrow-steps .step.done:after {
-    background-color: #12AD2B;
+    border-color: #12AD2B;
+}
+
+.arrow-steps .step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .arrow-steps .step:hover {
