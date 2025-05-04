@@ -28,8 +28,8 @@ body {
     font-size: 14px;
     text-align: center;
     color: #666;
-    cursor: default;
-    margin: 0 3px;
+    cursor: pointer;
+    margin: 0;
     padding: 10px 10px 10px 30px;
     min-width: 180px;
     float: left;
@@ -39,22 +39,27 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none; 
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .arrow-steps .step:after,
 .arrow-steps .step:before {
-    content: " ";
+    content: "";
     position: absolute;
-    top: 0;
-    right: -17px;
-    width: 0;
-    height: 0;
-    border-top: 19px solid transparent;
-    border-bottom: 17px solid transparent;
-    border-left: 17px solid #d9e3f7;    
-    z-index: 2;
-    transition: border-color 0.2s ease;
+    top: 50%;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: #d9e3f7;
+    transform: translateY(-50%) rotate(45deg);
+    z-index: 1;
+    transition: background-color 0.2s ease;
+}
+
+.arrow-steps .step:before {
+    right: auto;
+    left: 0;
+    z-index: 0;
 }
 
 .arrow-steps .step:before {
@@ -79,7 +84,7 @@ body {
 }
 
 .arrow-steps .step.current:after {
-    border-left: 17px solid #2196F3;    
+    background-color: #2196F3;
 }
 
 .arrow-steps .step.done {
@@ -88,7 +93,16 @@ body {
 }
 
 .arrow-steps .step.done:after {
-    border-left: 17px solid #12AD2B;
+    background-color: #12AD2B;
+}
+
+.arrow-steps .step:hover {
+    background-color: #1976D2;
+    color: #fff;
+}
+
+.arrow-steps .step:hover:after {
+    background-color: #1976D2;
 }
 
 .progress-container {
