@@ -41,35 +41,10 @@ body {
 
 .step-box {
     position: relative;
-    background-color: #ddd;
     color: #555;
-    padding: 10px 30px 10px 40px;
+    padding: 10px 30px;
     min-width: 160px;
-}
-
-.step-box:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -20px;
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid #ddd;
-    z-index: 1;
-}
-
-.step-box:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-top: 20px solid white;
-    border-bottom: 20px solid white;
-    border-left: 20px solid transparent;
+    text-align: center;
 }
 
 .step-box:first-child {
@@ -85,21 +60,11 @@ body {
 }
 
 .step-box.active {
-    background-color: #2196F3;
-    color: white;
-}
-
-.step-box.active:after {
-    border-left-color: #2196F3;
+    color: #2196F3;
 }
 
 .step-box.completed {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.step-box.completed:after {
-    border-left-color: #4CAF50;
+    color: #4CAF50;
 }
 
 .step-box:not(.active):hover {
