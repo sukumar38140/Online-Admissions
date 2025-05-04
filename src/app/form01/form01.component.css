@@ -18,11 +18,11 @@ body {
 }
 
 .step-container {
-    border-top: 1px solid lightgrey;
-    border-bottom: 1px solid lightgrey;
     width: 92.85%;
     margin-top: 40px;
     margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .fa-circle {
@@ -30,16 +30,76 @@ body {
     color: #fff;
     padding: 2px 3.1555px;
     border-radius: 50%;
+    font-size: 1.3em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.6em;
+    height: 0.6em;
 }
 
 .step-box {
-    padding: 10px;
-    border-left: 1px solid lightgrey;
-    border-right: 1px solid lightgrey;
-    background-color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
     position: relative;
+    background-color: #ddd;
+    color: #555;
+    padding: 10px 30px 10px 40px;
+    min-width: 160px;
+}
+
+.step-box:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #ddd;
+    z-index: 1;
+}
+
+.step-box:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 20px solid white;
+    border-bottom: 20px solid white;
+    border-left: 20px solid transparent;
+}
+
+.step-box:first-child {
+    padding-left: 20px;
+}
+
+.step-box:first-child:before {
+    display: none;
+}
+
+.step-box:last-child:after {
+    display: none;
+}
+
+.step-box.active {
+    background-color: #2196F3;
+    color: white;
+}
+
+.step-box.active:after {
+    border-left-color: #2196F3;
+}
+
+.step-box.completed {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.step-box.completed:after {
+    border-left-color: #4CAF50;
 }
 
 .step-box:not(.active):hover {
@@ -63,32 +123,10 @@ body {
     z-index: 1;
 }
 
-.fa-circle {
-    background-color: lightgrey;
-    color: #fff;
-    padding: 2px 3.1555px;
-    border-radius: 50%;
-    font-size: 1.3em;
-    /* Adjust this value to control the size */
-    line-height: 1;
-    /* Helps with vertical alignment */
-    display: inline-flex;
-    /* Helps with centering */
-    align-items: center;
-    /* helps with centering */
-    justify-content: center;
-    /* helps with centering */
-    width: 0.6em;
-    /* Ensure width matches font-size */
-    height: 0.6em;
-    /* Ensure height matches font-size */
-}
-
 .active .fa-circle {
     background-color: #fff !important;
     color: #2196F3;
     font-size: 1.3em;
-    /* Adjust this value to control the size */
     line-height: 1;
     display: inline-flex;
     align-items: center;
@@ -111,19 +149,12 @@ body {
     padding: 2px 3.1555px;
     border-radius: 50%;
     font-size: 1.3em;
-    /* Adjust this value to control the size */
     line-height: 1;
-    /* Helps with vertical alignment */
     display: inline-flex;
-    /* Helps with centering */
     align-items: center;
-    /* helps with centering */
     justify-content: center;
-    /* helps with centering */
     width: 0.6em;
-    /* Ensure width matches font-size */
     height: 0.6em;
-    /* Ensure height matches font-size */
 }
 
 .custom-button-size {
