@@ -18,11 +18,12 @@ body {
 }
 
 .step-container {
-    width: 92.85%;
+    width: 95%;
     margin-top: 40px;
     margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
+    gap: 15px;
 }
 
 .fa-circle {
@@ -43,8 +44,9 @@ body {
     position: relative;
     background-color: #ddd;
     color: #555;
-    padding: 10px 30px 10px 40px;
-    min-width: 160px;
+    padding: 8px 20px 8px 30px;
+    min-width: 140px;
+    font-size: 0.95em;
 }
 
 .step-box:after {
