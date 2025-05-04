@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-qualform',
+  standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './qualform.component.html',
   styleUrl: './qualform.component.css'

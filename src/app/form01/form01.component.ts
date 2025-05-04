@@ -16,7 +16,7 @@ import { PartformComponent } from '../partform/partform.component';
 @Component({
   selector: 'app-form01',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, PerformComponent, QualformComponent, PartformComponent],
   providers: [CrudService],
   templateUrl: './form01.component.html',
   styleUrl: './form01.component.css'
