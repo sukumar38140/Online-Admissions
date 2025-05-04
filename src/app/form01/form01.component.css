@@ -167,11 +167,11 @@ body {
         flex-direction: column;
         padding: 0 10px;
     }
-    
+
     .step {
         margin-bottom: 10px;
     }
-    
+
     .step:after {
         display: none;
     }
@@ -209,30 +209,32 @@ body {
 }
 
 .fa-circle {
-    background-color: lightgrey;
+    background-color: #e0e0e0;
     color: #fff;
     padding: 2px 3.1555px;
     border-radius: 50%;
-    font-size: 1.3em; /* Adjust this value to control the size */
-    line-height: 1; /* Helps with vertical alignment */
-    display: inline-flex; /* Helps with centering */
-    align-items: center; /* helps with centering */
-    justify-content: center; /* helps with centering */
-    width: 0.6em; /* Ensure width matches font-size */
-    height: 0.6em; /* Ensure height matches font-size */
-  }
-
-  .active .fa-circle {
-    background-color: #fff !important;
-    color: #2196F3;
-    font-size: 1.3em; /* Adjust this value to control the size */
+    font-size: 1.5em;
     line-height: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 0.6em;
-    height: 0.6em;
-  }  
+    width: 0.8em;
+    height: 0.8em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.active .fa-circle {
+    background-color: #fff !important;
+    color: #2196F3;
+    font-size: 1.5em; 
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.8em;
+    height: 0.8em;
+}  
 
 .active {
     background-color: #2196F3;
@@ -247,16 +249,16 @@ body {
     color: #fff;
     padding: 2px 3.1555px;
     border-radius: 50%;
-    font-size: 1.3em; /* Adjust this value to control the size */
-    line-height: 1; /* Helps with vertical alignment */
-    display: inline-flex; /* Helps with centering */
-    align-items: center; /* helps with centering */
-    justify-content: center; /* helps with centering */
-    width: 0.6em; /* Ensure width matches font-size */
-    height: 0.6em; /* Ensure height matches font-size */
-  }
+    font-size: 1.3em; 
+    line-height: 1; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 0.6em; 
+    height: 0.6em; 
+}
 
-  .custom-button-size {
+.custom-button-size {
     width: 300px;
     height: 50px;
     align-items: center;
