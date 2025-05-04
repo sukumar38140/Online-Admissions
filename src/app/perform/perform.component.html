@@ -25,27 +25,77 @@
     </div>
     <div class="form-row">
     <div class="col">
+        <label class="form-control-label">Full Name *:</label>
+        <input type="text" name="fullName" [(ngModel)]="fullName" class="form-control" placeholder="Enter Full Name"
+               [class.is-invalid]="submitted && !fullName?.trim()" required>
+        <div class="invalid-feedback" *ngIf="submitted && !fullName?.trim()">
+            Full Name is required
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <label class="form-control-label">E-Mail ID *:</label>
+        <input type="email" name="email" [(ngModel)]="email" class="form-control" placeholder="Enter Email ID"
+               [class.is-invalid]="submitted && (!email?.trim() || !isValidEmail(email))" required>
+        <div class="invalid-feedback" *ngIf="submitted && (!email?.trim() || !isValidEmail(email))">
+            Please enter a valid email address
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <label class="form-control-label">Mobile Number *:</label>
+        <input type="text" name="mobile" [(ngModel)]="mobile" class="form-control" placeholder="Enter 10-digit Mobile Number"
+               [class.is-invalid]="submitted && (!mobile?.trim() || !isValidMobile(mobile))" required>
+        <div class="invalid-feedback" *ngIf="submitted && (!mobile?.trim() || !isValidMobile(mobile))">
+            Please enter a valid 10-digit mobile number
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
         <label class="form-control-label">Date of Birth *:</label>
         <input type="date" name="dob" [(ngModel)]="dob" class="form-control" placeholder="Date of Birth" 
-               [class.is-invalid]="submitted && formErrors['dob']" required>
-        <div class="invalid-feedback" *ngIf="submitted && formErrors['dob']">
-            {{ formErrors['dob'] }}
+               [class.is-invalid]="submitted && !dob" required>
+        <div class="invalid-feedback" *ngIf="submitted && !dob">
+            Date of Birth is required
         </div>
     </div>
     <div class="col">
         <label class="form-control-label">Place of Birth *:</label>
         <input type="text" name="pob" [(ngModel)]="pob" class="form-control" placeholder="Place of Birth" 
-               (input)="convertToUppercase($event)" [class.is-invalid]="submitted && formErrors['pob']" required>
-        <div class="invalid-feedback" *ngIf="submitted && formErrors['pob']">
-            {{ formErrors['pob'] }}
+               (input)="convertToUppercase($event)" [class.is-invalid]="submitted && !pob?.trim()" required>
+        <div class="invalid-feedback" *ngIf="submitted && !pob?.trim()">
+            Place of Birth is required
         </div>
     </div>
-</div> 
-<hr class="mb-4">
+</div>
 <div class="form-row">
     <div class="col">
         <label for="Quota" class="form-control-label">Quota *:</label>
-        <select name="quota" [(ngModel)]="quota" class="form-control" [class.is-invalid]="submitted && formErrors['quota']" required>
+        <select name="quota" [(ngModel)]="quota" class="form-control" [class.is-invalid]="submitted && !quota" required>
+            <option value="">-- Select Quota here --</option>
+            <option value="MANAGEMENT">MANAGEMENT</option>
+            <option value="CONVENER">CONVENER</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="submitted && !quota">
+            Please select a quota
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <label class="form-control-label">Academic Year *:</label>
+        <input type="text" name="academicYear" [(ngModel)]="academicYear" class="form-control" placeholder="Enter Academic Year"
+               [class.is-invalid]="submitted && !academicYear?.trim()" required>
+        <div class="invalid-feedback" *ngIf="submitted && !academicYear?.trim()">
+            Academic Year is required
+        </div>
+    </div>
+</div>
+<hr class="mb-4">
+<div class="form-row">
         <div class="invalid-feedback" *ngIf="submitted && formErrors['quota']">
             {{ formErrors['quota'] }}
         </div>

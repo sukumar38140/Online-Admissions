@@ -87,7 +87,7 @@ export class PerformComponent implements AfterViewInit {
   message = '';
 
   formErrors: { [key: string]: string } = {};
-  
+
 
   ngAfterViewInit() {
   }
@@ -108,80 +108,31 @@ export class PerformComponent implements AfterViewInit {
     return /^[0-9]{12}$/.test(this.aadharNo);
   }
 
+  isValidEmail(email: string): boolean {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  }
+
+  isValidMobile(mobile: string): boolean {
+    const mobileRegex = /^[0-9]{10}$/;
+    return mobileRegex.test(mobile);
+  }
+
   validateForm(): boolean {
     this.submitted = true;
 
-    // Required fields validation
-    if (!this.branch || !this.nationality || !this.religion || 
-        !this.minority || !this.caste || !this.motherTongue || 
-        !this.bloodGroup || !this.isAadharValid() ||
-        this.accommodation === undefined || 
-        this.transport === undefined || 
-        this.handicapped === undefined ||
-        !this.communicationAddress || !this.communicationCity ||
-        !this.communicationState || !this.communicationCountry ||
-        !this.communicationZip || !this.presentAddress ||
-        !this.presentCity || !this.presentState ||
-        !this.presentcountry || !this.presentZip) {
+    if (!this.fullName?.trim() || 
+        !this.email?.trim() || 
+        !this.isValidEmail(this.email) ||
+        !this.mobile?.trim() ||
+        !this.isValidMobile(this.mobile) ||
+        !this.dob ||
+        !this.pob?.trim() ||
+        !this.quota ||
+        !this.academicYear?.trim()) {
       return false;
     }
-
-    // Optional PAN validation
-    if (this.panCardNo && !this.isPANValid()) {
-      return false;
-    }
-
-    // Required field validations
-    const requiredFields = {
-      fullName: 'Full Name',
-      email: 'Email ID',
-      mobile: 'Mobile Number',
-      dob: 'Date of Birth',
-      pob: 'Place of Birth',
-      quota: 'Quota',
-      academicYear: 'Academic Year',
-      communicationAddress: 'Communication Address',
-      communicationCity: 'City',
-      communicationState: 'State',
-      communicationCountry: 'Country',
-      communicationZip: 'Zip Code',
-      permanentAddress: 'Permanent Address',
-      permanentCity: 'Permanent City',
-      permanentState: 'Permanent State',
-      permanentCountry: 'Permanent Country',
-      permanentZip: 'Permanent Zip Code'
-
-    };
-
-    // Check each required field
-    Object.entries(requiredFields).forEach(([field, label]) => {
-      const value = (this as any)[field];
-      if (!value || (typeof value === 'string' && value.trim() === '')) {
-        this.formErrors[field] = `${label} is required`;
-      }
-    });
-
-    // Email validation
-    if (this.email && !this.email.trim()) {
-      this.formErrors['email'] = 'Email is required';
-    } else {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (this.email && !emailRegex.test(this.email)) {
-        this.formErrors['email'] = 'Please enter a valid email address';
-      }
-    }
-
-    // Mobile validation  
-    if (!this.mobile || !this.mobile.trim()) {
-      this.formErrors['mobile'] = 'Mobile number is required';
-    } else {
-      const mobileRegex = /^[0-9]{10}$/;
-      if (!mobileRegex.test(this.mobile)) {
-        this.formErrors['mobile'] = 'Please enter a valid 10-digit mobile number';
-      }
-    }
-
-    return Object.keys(this.formErrors).length === 0;
+    return true;
   }
 
   nextStep(step: number) {
