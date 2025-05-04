@@ -17,19 +17,92 @@ body {
     box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
 }
 
-.step-container {
-    border-top: 1px solid lightgrey;
-    border-bottom: 1px solid lightgrey;
-    width: 92.85%;
-    margin-top: 40px;
-    margin-bottom: 50px;
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px auto;
+    max-width: 1200px;
+    position: relative;
+    padding: 0 20px;
 }
 
-.fa-circle {
-    background-color: lightgrey;
-    color: #fff;
-    padding: 2px 3.1555px;
+.step {
+    flex: 1;
+    position: relative;
+    background: #f8f9fa;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.step:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background: #f8f9fa;
+    transform: translateY(-50%) rotate(45deg);
+    z-index: 1;
+    border-top: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
+
+.step-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background: #2196F3;
+    color: white;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+}
+
+.step-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.step.active {
+    background: #2196F3;
+}
+
+.step.active:after {
+    background: #2196F3;
+}
+
+.step.active .step-number {
+    background: white;
+    color: #2196F3;
+}
+
+.step.active .step-title {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .progress-container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+    
+    .step {
+        margin-bottom: 10px;
+    }
+    
+    .step:after {
+        display: none;
+    }
 }
 
 .step-box {

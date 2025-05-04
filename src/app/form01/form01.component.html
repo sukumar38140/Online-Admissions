@@ -4,14 +4,44 @@
 
           <!-- Step 1: Terms and Conditions -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 1">
-              <div class="row justify-content-center mx-auto step-container">
-                  <div class="col-md-2 col-4 step-box active" (click)="goToStep(1)">
-                      <h6 class="step-title-0">
-                          <span class="fa fa-circle"></span>
-                          <span class="break-line"></span>
-                          <span class="step-title">TERMS & CONDITIONS</span>
-                      </h6>
-                  </div>
+              <div class="progress-container">
+    <div class="step" [ngClass]="{'active': currentStep >= 1}" (click)="goToStep(1)">
+        <div class="step-content">
+            <div class="step-number">1</div>
+            <div class="step-title">TERMS & CONDITIONS</div>
+        </div>
+    </div>
+    <div class="step" [ngClass]="{'active': currentStep >= 2}" (click)="goToStep(2)">
+        <div class="step-content">
+            <div class="step-number">2</div>
+            <div class="step-title">PERSONAL DETAILS</div>
+        </div>
+    </div>
+    <div class="step" [ngClass]="{'active': currentStep >= 3}" (click)="goToStep(3)">
+        <div class="step-content">
+            <div class="step-number">3</div>
+            <div class="step-title">QUALIFIED DETAILS</div>
+        </div>
+    </div>
+    <div class="step" [ngClass]="{'active': currentStep >= 4}" (click)="goToStep(4)">
+        <div class="step-content">
+            <div class="step-number">4</div>
+            <div class="step-title">PARENT DETAILS</div>
+        </div>
+    </div>
+    <div class="step" [ngClass]="{'active': currentStep >= 5}" (click)="goToStep(5)">
+        <div class="step-content">
+            <div class="step-number">5</div>
+            <div class="step-title">CONFIRMATION</div>
+        </div>
+    </div>
+    <div class="step" [ngClass]="{'active': currentStep >= 6}" (click)="goToStep(6)">
+        <div class="step-content">
+            <div class="step-number">6</div>
+            <div class="step-title">APPLICATION ID</div>
+        </div>
+    </div>
+</div>
                   <div class="col-md-2 col-4 step-box" (click)="goToStep(2)">
                       <h6 class="step-title-0">
                           <span class="fa fa-circle"></span>
