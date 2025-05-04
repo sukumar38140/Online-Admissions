@@ -4,27 +4,50 @@
 
           <!-- Step 1: Terms and Conditions -->
           <div class="card b-0 rounded-0" [class.show]="currentStep === 1">
-              <div class="arrow-steps clearfix">
-                  <div class="step" [ngClass]="{'current': currentStep === 1, 'done': currentStep > 1}" (click)="goToStep(1)">
-                      <span>TERMS & CONDITIONS</span>
+              <div class="row justify-content-center mx-auto step-container">
+                  <div class="col-md-2 col-4 step-box active" (click)="goToStep(1)">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">TERMS & CONDITIONS</span>
+                      </h6>
                   </div>
-                  <div class="step" [ngClass]="{'current': currentStep === 2, 'done': currentStep > 2}" (click)="goToStep(2)">
-                      <span>PERSONAL DETAILS</span>
+                  <div class="col-md-2 col-4 step-box" (click)="goToStep(2)">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">PERSONAL DETAILS</span>
+                      </h6>
                   </div>
-                  <div class="step" [ngClass]="{'current': currentStep === 3, 'done': currentStep > 3}" (click)="goToStep(3)">
-                      <span>QUALIFIED DETAILS</span>
+                  <div class="col-md-2 col-4 step-box" (click)="goToStep(3)">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">QUALIFIED DETAILS</span>
+                      </h6>
                   </div>
-                  <div class="step" [ngClass]="{'current': currentStep === 4, 'done': currentStep > 4}" (click)="goToStep(4)">
-                      <span>PARENT DETAILS</span>
+                  <div class="col-md-2 col-4 step-box" (click)="goToStep(4)">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">PARENT DETAILS</span>
+                      </h6>
                   </div>
-                  <div class="step" [ngClass]="{'current': currentStep === 5, 'done': currentStep > 5}" (click)="goToStep(5)">
-                      <span>CONFIRMATION</span>
+                  <div class="col-md-2 col-4 step-box" (click)="goToStep(5)">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">CONFIRMATION</span>
+                      </h6>
                   </div>
-                  <div class="step" [ngClass]="{'current': currentStep === 6}" (click)="goToStep(6)">
-                      <span>APPLICATION ID</span>
+                  <div class="col-md-2 col-4 step-box" (click)="goToStep(6)">
+                      <h6 class="step-title-0">
+                          <span class="fa fa-circle"></span>
+                          <span class="break-line"></span>
+                          <span class="step-title">APPLICATION ID</span>
+                      </h6>
                   </div>
               </div>
-    
               <div class="p-3 justify-content-center text-center">
                   <h4 class="heading" style="color: #4863A0; font-weight: 700;"><u>Terms and Conditions</u></h4>
                   <div class="custom-control custom-checkbox mb-4">
@@ -99,8 +122,8 @@
                       <div class="col-xl-7 col-lg-8 col-10 list text-left">
                           <label class="text-danger mb-3">* Required</label>
                           <div class="form-group">
-                              <div #performComponent>
-                                  <app-perform></app-perform>
+                              <div>
+                                  <app-perform #performComponent></app-perform>
                               </div>
                               <hr class="mb-4" style="margin-top: 20px; margin-bottom: 10px;">
                           </div>
@@ -275,7 +298,7 @@
                   </div>
                   <div class="col-md-2 col-4 step-box active" (click)="goToStep(5)">
                       <h6 class="step-title-0">
-                          <span class="fa fa-circle"></span>
+                          <span class="fa fa-check"></span>
                           <span class="break-line"></span>
                           <span class="step-title">CONFIRMATION</span>
                       </h6>
