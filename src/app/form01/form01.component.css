@@ -26,21 +26,39 @@ body {
     z-index: 0;
 }
 
-/* Progress bar background line removed */
-
 .step-box {
     background: #fff;
     position: relative;
-    padding: 10px 20px;
-    border-radius: 30px;
+    padding: 10px 35px 10px 20px;
     font-size: 0.95em;
     display: flex;
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border: 2px solid #e0e0e0;
     cursor: pointer;
+    clip-path: polygon(85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%, 0% 0%);
+    margin-right: -20px;
+    background: #e0e0e0;
+    border: none;
+}
+
+.step-box:first-child {
+    clip-path: polygon(85% 0%, 100% 50%, 85% 100%, 0% 100%, 0% 50%, 0% 0%);
+}
+
+.step-box:last-child {
+    clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0% 100%, 15% 50%, 0% 0%);
+}
+
+.step-box.active {
+    background: #2196F3;
+    color: white;
+    z-index: 1;
+}
+
+.step-box.completed {
+    background: #4CAF50;
+    color: white;
 }
 
 .fa-circle {
