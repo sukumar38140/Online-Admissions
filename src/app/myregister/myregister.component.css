@@ -33,4 +33,14 @@
     margin:30px 0 20px 0;
     background:rgba(0, 0, 128, 0.2);
 }
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
 }

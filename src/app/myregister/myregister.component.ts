@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 // export class MyregisterComponent {
   export class MyregisterComponent { 
     reactiveForm : FormGroup;
+    submitted = false;
   
     constructor(private router: Router, private registerform: FormBuilder) {
       this.router = router; 
@@ -37,7 +38,13 @@ import { CommonModule } from '@angular/common';
     get terms() { return this.reactiveForm.get('terms'); }
   
     onSubmit() {
-      // console.log(this.reactiveForm.value);
+      this.submitted = true;
+
+      if (this.reactiveForm.invalid) {
+        return;
+      }
+
+      console.log(this.reactiveForm.value);
     }
 
     login() {
