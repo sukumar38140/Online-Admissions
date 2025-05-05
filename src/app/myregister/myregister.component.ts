@@ -45,6 +45,7 @@ import { CommonModule } from '@angular/common';
       }
 
       console.log(this.reactiveForm.value);
+      this.router.navigate(['/mylogin']);
     }
 
     login() {
