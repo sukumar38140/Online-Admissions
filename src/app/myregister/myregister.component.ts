@@ -41,7 +41,6 @@ import { CommonModule } from '@angular/common';
       this.submitted = true;
 
       if (this.reactiveForm.invalid) {
-        alert('Please fill in all required fields correctly');
         return;
       }
 
