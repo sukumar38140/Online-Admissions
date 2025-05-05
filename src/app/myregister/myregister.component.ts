@@ -41,11 +41,16 @@ import { CommonModule } from '@angular/common';
       this.submitted = true;
 
       if (this.reactiveForm.invalid) {
+        alert('Please fill in all required fields correctly');
         return;
       }
 
       console.log(this.reactiveForm.value);
-      this.router.navigate(['/form01']);
+      this.router.navigate(['/form01']).then(() => {
+        // Reset form after successful navigation
+        this.reactiveForm.reset();
+        this.submitted = false;
+      });
     }
 
     login() {
