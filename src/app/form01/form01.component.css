@@ -26,16 +26,7 @@ body {
     z-index: 0;
 }
 
-.step-container::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 4px;
-    width: 100%;
-    background: #e0e0e0;
-    z-index: -1;
-}
+/* Progress bar background line removed */
 
 .step-box {
     background: #fff;
